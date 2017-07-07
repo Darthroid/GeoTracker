@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gpstracky/ViewController.swift"
+            timestampString = "518803196.904957"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "gpstracky.ViewController.datesArray.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "gpstracky"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darthroid/%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80/swift/gpstracky/gpstracky/ViewController.swift"
+                  timestampString = "517494998.255799"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "gpstracky.ViewController.datesArray.setter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "gpstracky"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darthroid/%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80/swift/gpstracky/gpstracky/ViewController.swift"
+                  timestampString = "517494998.259048"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "gpstracky.ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; gpstracky.ViewController"
+                  moduleName = "gpstracky"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darthroid/%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80/swift/gpstracky/gpstracky/ViewController.swift"
+                  timestampString = "517494998.262502"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "gpstracky.ViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;gpstracky.ViewController&gt;"
+                  moduleName = "gpstracky"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darthroid/%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80/swift/gpstracky/gpstracky/ViewController.swift"
+                  timestampString = "517494998.266289"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "122">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gpstracky/ViewController.swift"
+            timestampString = "518820792.190059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "drawOnMap(object:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
