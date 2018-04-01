@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 class StartTrackingViewController: UIViewController {
-
+  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var statusTextView: UITextView!
+  @IBOutlet weak var finishTrackingButton: UIButton!
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +26,9 @@ class StartTrackingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+  @IBAction func finishTracking(_ sender: Any) {
+  }
+  
     /*
     // MARK: - Navigation
 
