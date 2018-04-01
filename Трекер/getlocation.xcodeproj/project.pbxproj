@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C0194491EFA8BDA00E162CC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0194481EFA8BDA00E162CC /* CoreData.framework */; };
 		5C01944F1EFA8C1100E162CC /* getlocation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C01944D1EFA8C1100E162CC /* getlocation.xcdatamodeld */; };
+		5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */; };
 		5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC21E83F83400F8146E /* AppDelegate.swift */; };
 		5C8C3AC51E83F83400F8146E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC41E83F83400F8146E /* ViewController.swift */; };
 		5C8C3AC81E83F83400F8146E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC61E83F83400F8146E /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		5C0194481EFA8BDA00E162CC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = getlocation.xcdatamodel; sourceTree = "<group>"; };
+		5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerViewController.swift; sourceTree = "<group>"; };
 		5C8C3ABF1E83F83400F8146E /* getlocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getlocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8C3AC21E83F83400F8146E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C8C3AC41E83F83400F8146E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				5C8C3AC21E83F83400F8146E /* AppDelegate.swift */,
 				5C8C3AC41E83F83400F8146E /* ViewController.swift */,
 				5C8C3AC61E83F83400F8146E /* Main.storyboard */,
+				5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */,
 				5C8C3AC91E83F83400F8146E /* Assets.xcassets */,
 				5C8C3ACB1E83F83400F8146E /* LaunchScreen.storyboard */,
 				5C8C3ACE1E83F83400F8146E /* Info.plist */,
@@ -166,6 +169,7 @@
 			files = (
 				5C8C3AC51E83F83400F8146E /* ViewController.swift in Sources */,
 				5C01944F1EFA8C1100E162CC /* getlocation.xcdatamodeld in Sources */,
+				5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */,
 				5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
