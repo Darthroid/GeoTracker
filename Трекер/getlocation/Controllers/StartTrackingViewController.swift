@@ -8,23 +8,28 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class StartTrackingViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var statusTextView: UITextView!
   @IBOutlet weak var finishTrackingButton: UIButton!
   
+  var id: String?
+  var updateFrequency: Double?
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  var trackerData: TrackerData?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+//    trackerData?.id = id!
+    
+  }
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
     
   @IBAction func finishTracking(_ sender: Any) {
   }
