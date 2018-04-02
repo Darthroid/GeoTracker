@@ -9,15 +9,7 @@
 import UIKit
 
 class TrackerData: NSObject {
-  var latitude: Double
-  var longitude: Double
-  var id: String
-  var timeStamp: String
-  
-  init(latitude: Double, longitude: Double, id: String, timeStamp: String) {
-    self.latitude = latitude
-    self.longitude = longitude
-    self.id = id
-    self.timeStamp = timeStamp
-  }
+  var latitude: Double?
+  var longitude: Double?
+  var id: String?
 }
