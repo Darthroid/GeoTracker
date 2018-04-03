@@ -12,4 +12,5 @@ class TrackerData: NSObject {
   var latitude: Double?
   var longitude: Double?
   var id: String?
+  var timestamp: Double?
 }
