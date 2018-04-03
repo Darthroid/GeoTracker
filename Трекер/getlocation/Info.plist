@@ -4,6 +4,10 @@
 <dict>
 	<key>UIApplicationExitsOnSuspend</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>we need your location info</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>we need your location info</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDocumentTypes</key>
@@ -54,8 +58,6 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
