@@ -13,32 +13,33 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate {
+  @IBOutlet weak var map: MKMapView!
+  @IBOutlet var tableView: UITableView!
+
   var refreshControl: UIRefreshControl!
   var data: [String: [ObjectData]] = [:]
-  let textCellIdentifier = "coordinatesCell"
-  let regionRadius: CLLocationDistance = 1000
   var indexes = [String]()
   var dates = [String]()
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-  
+
     tableView.delegate = self
     tableView.dataSource = self
     map.delegate = self
-  
-    refreshControl = UIRefreshControl() //pull to refresh
+
+    refreshControl = UIRefreshControl()
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
     tableView.addSubview(refreshControl)
-    
+
     fetchJSON()
   }
-  
+
   func fetchJSON() {
     let urlString = "http://trackmygps.000webhostapp.com/index.php?action=select"
     Alamofire.request(urlString).responseJSON { (responseData) -> Void in
-      if((responseData.result.value) != nil) {
+      if (responseData.result.value) != nil {
         let json = JSON(responseData.result.value!)
         self.parseJSON(json: json)
       } else {
@@ -46,43 +47,42 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       }
     }
   }
-  
+
   func parseJSON(json: JSON) {
     data.removeAll()
-    for index in 0...json.count-1{
+    for index in 0...json.count-1 {
       let item = json[index]
-      if(data[item["objectID"].stringValue] == nil)
-      {
+      if data[item["objectID"].stringValue] == nil {
         data[item["objectID"].stringValue] = []
       }
+
       data[item["objectID"].stringValue]?.append(ObjectData(latitude: item["latitude"].doubleValue, longitude: item["longitude"].doubleValue, date: item["date"].stringValue))
     }
     indexes = [String](data.keys)
     self.tableView.reloadData()
   }
-  
+
   func showError(message: String) {
     let ac = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
     ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     present(ac, animated: true)
   }
-  
-  
+
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
-  
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return data.count
   }
 
   internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath as IndexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: "coordinatesCell", for: indexPath as IndexPath)
     let row = indexPath.row
     cell.textLabel?.text = indexes[row]
     return cell
   }
-  
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     let row = indexPath.row
@@ -90,80 +90,81 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let allAnnotations = self.map.annotations
     self.map.removeAnnotations(allAnnotations)
     map.removeOverlays(overlays)
-    drawOnMap(object: "\(indexes[row])")
+    drawOnMap(object: indexes[row])
   }
-  
-  func refresh(sender:AnyObject) {    //pull-to-refresh для таблицы
+
+  func refresh(sender: AnyObject) {
     fetchJSON()
     refreshControl.endRefreshing()
     tableView.reloadData()
   }
-  
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
-  
-  func centerMapOnLocation(location: CLLocation) {    //центрование карты на стартовой локации
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+
+  func centerMapOnLocation(location: CLLocation) {
+    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 1000 * 2.0, 1000 * 2.0)
     map.setRegion(coordinateRegion, animated: true)
   }
-  func drawOnMap(object: String){ //отрисовка polyline-линии маршрута объекта на карте
+
+  func drawOnMap(object: String) {
     var i = 0
     dates = Array(repeating: String(), count: (data["\(object)"]?.count)!)
     var locations: [CLLocationCoordinate2D] = Array(repeating: CLLocationCoordinate2D(), count: (data["\(object)"]?.count)!)
-    for keys in data{
-        if keys.key == object{
-            for values in keys.value{
-                locations[i] = CLLocationCoordinate2D(latitude: values.latitude, longitude: values.longitude)
-                dates[i] = values.date
-                i+=1
-            }
+    for keys in data {
+      if keys.key == object {
+        for values in keys.value {
+          locations[i] = CLLocationCoordinate2D(latitude: values.latitude, longitude: values.longitude)
+          dates[i] = values.date
+          i+=1
         }
+      }
     }
+
     let polyLine = MKPolyline(coordinates: locations, count: locations.count)
-    //polyLine.title = "\(String(describing: data["\(object)"]))"
     map.add(polyLine)
-  
+
     UIView.animate(withDuration: 1.5, animations: { () -> Void in
-        if let first = self.map.overlays.first {
-            let rect = self.map.overlays.reduce(first.boundingMapRect, {MKMapRectUnion($0, $1.boundingMapRect)})
-            self.map.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 50.0, left: 50.0, bottom: 50.0, right: 50.0), animated: true)
-            let startPin = MKPointAnnotation()
-          
-            let finishPin = MKPointAnnotation()
-            startPin.coordinate = locations[0]
-            finishPin.coordinate = locations[locations.count-1]
-            startPin.title = "Start: \(self.dates[0])"
-            finishPin.title = "Finish: \(self.dates[self.dates.count-1])"
-            self.map.addAnnotation(startPin)
-            self.map.addAnnotation(finishPin)
-        }
-      })
+      if let first = self.map.overlays.first {
+        let rect = self.map.overlays.reduce(first.boundingMapRect, {MKMapRectUnion($0, $1.boundingMapRect)})
+        self.map.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 50.0, left: 50.0, bottom: 50.0, right: 50.0), animated: true)
+        let startPin = MKPointAnnotation()
+        let finishPin = MKPointAnnotation()
+        startPin.coordinate = locations[0]
+        finishPin.coordinate = locations[locations.count-1]
+        startPin.title = "Start: \(self.dates[0])"
+        finishPin.title = "Finish: \(self.dates[self.dates.count-1])"
+        self.map.addAnnotation(startPin)
+        self.map.addAnnotation(finishPin)
+      }
+    })
+  }
+
+  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    if overlay.isKind(of: MKPolyline.self) {
+      // draw the track
+      let polyLine = overlay
+      let polyLineRenderer = MKPolylineRenderer(overlay: polyLine)
+
+      polyLineRenderer.strokeColor = UIColor.blue
+      polyLineRenderer.lineWidth = 2.0
+      return polyLineRenderer
     }
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        if overlay.isKind(of: MKPolyline.self) {
-            // draw the track
-            let polyLine = overlay
-            let polyLineRenderer = MKPolylineRenderer(overlay: polyLine)
-            polyLineRenderer.strokeColor = UIColor.blue
-            polyLineRenderer.lineWidth = 2.0
-          
-            return polyLineRenderer
-        }
-        return MKPolylineRenderer()
+    return MKPolylineRenderer()
+  }
+
+  @IBAction func changeMapStyle(_ sender: UISegmentedControl) {
+    switch sender.selectedSegmentIndex {
+    case 0:
+      map.mapType = .standard
+    case 1:
+      map.mapType = .satellite
+    case 2:
+      map.mapType = .hybrid
+    default:
+      map.mapType = .hybrid
     }
-    @IBAction func changeMapStyle(_ sender: Any) {  //переключатель стилей карты (спутник, схема, гибрид)
-        switch ((sender as AnyObject).selectedSegmentIndex) {
-        case 0:
-            map.mapType = .standard
-        case 1:
-            map.mapType = .satellite
-        case 2:
-            map.mapType = .hybrid
-        default:
-            map.mapType = .hybrid
-        }
-    }
-    @IBOutlet weak var map: MKMapView!
-    @IBOutlet var tableView: UITableView!
+  }
+
 }
