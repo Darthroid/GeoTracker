@@ -7,16 +7,15 @@
 //
 
 import Foundation
-class ObjectData
-{
-    init(latitude: Double, longitude: Double, date: String)
-    {
-        self.latitude = latitude
-        self.longitude = longitude
-        self.date = date
-    }
-    
-    var latitude: Double
-    var longitude: Double
-    var date: String
+class ObjectData: NSObject {
+
+  var latitude: Double
+  var longitude: Double
+  var date: String
+
+  init(latitude: Double, longitude: Double, date: String) {
+    self.latitude = latitude
+    self.longitude = longitude
+    self.date = date
+  }
 }
