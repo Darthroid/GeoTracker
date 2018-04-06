@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
     tableView.addSubview(refreshControl)
 
-    fetchJSON()
+    performSelector(inBackground: #selector(fetchJSON), with: nil)
   }
 
   func fetchJSON() {
@@ -59,7 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       data[item["objectID"].stringValue]?.append(ObjectData(latitude: item["latitude"].doubleValue, longitude: item["longitude"].doubleValue, date: item["date"].stringValue))
     }
     indexes = [String](data.keys)
-    self.tableView.reloadData()
+    self.tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
   }
 
   func showError(message: String) {
@@ -94,9 +94,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   }
 
   func refresh(sender: AnyObject) {
-    fetchJSON()
+    performSelector(inBackground: #selector(fetchJSON), with: nil)
     refreshControl.endRefreshing()
-    tableView.reloadData()
+    tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
   }
 
   override func didReceiveMemoryWarning() {
