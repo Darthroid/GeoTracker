@@ -121,7 +121,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
       }
     }
-
+    dates = parseTimestamp(timestamp: dates)
     let polyLine = MKPolyline(coordinates: locations, count: locations.count)
     map.add(polyLine)
 
@@ -139,6 +139,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.map.addAnnotation(finishPin)
       }
     })
+  }
+
+  func parseTimestamp(timestamp: [String]) -> [String] {
+    for index in 0...dates.count-1 {
+      let interval = TimeInterval(dates[index])
+      let time = NSDate(timeIntervalSince1970: TimeInterval(interval!))
+      dates[index] = String(describing: time)
+    }
+    return dates
   }
 
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
