@@ -18,7 +18,6 @@ extension Data {
 
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
-    @NSManaged public var date: String?
-    @NSManaged public var objectid: String?
+    @NSManaged public var id: String?
 
 }

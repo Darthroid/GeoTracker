@@ -9,27 +9,33 @@
 /* Begin PBXBuildFile section */
 		5C0194491EFA8BDA00E162CC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0194481EFA8BDA00E162CC /* CoreData.framework */; };
 		5C01944F1EFA8C1100E162CC /* getlocation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C01944D1EFA8C1100E162CC /* getlocation.xcdatamodeld */; };
+		5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C637E142071595300603F17 /* StartTrackingViewController.swift */; };
+		5C7712D020728778002E1D35 /* TrackerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7712CF20728778002E1D35 /* TrackerData.swift */; };
 		5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */; };
 		5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC21E83F83400F8146E /* AppDelegate.swift */; };
-		5C8C3AC51E83F83400F8146E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC41E83F83400F8146E /* ViewController.swift */; };
 		5C8C3AC81E83F83400F8146E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC61E83F83400F8146E /* Main.storyboard */; };
 		5C8C3ACA1E83F83400F8146E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC91E83F83400F8146E /* Assets.xcassets */; };
 		5C8C3ACD1E83F83400F8146E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3ACB1E83F83400F8146E /* LaunchScreen.storyboard */; };
 		5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCF1F421E8FEFF0005D02ED /* MapKit.framework */; };
+		61B2EA98A36E59A9FC89F015 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9CD5E0F0B136F835386097 /* Pods_getlocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		517D7D7B85470FE1818097AD /* Pods-getlocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.release.xcconfig"; path = "Pods/Target Support Files/Pods-getlocation/Pods-getlocation.release.xcconfig"; sourceTree = "<group>"; };
 		5C0194481EFA8BDA00E162CC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = getlocation.xcdatamodel; sourceTree = "<group>"; };
+		5C637E142071595300603F17 /* StartTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTrackingViewController.swift; sourceTree = "<group>"; };
+		5C7712CF20728778002E1D35 /* TrackerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerData.swift; sourceTree = "<group>"; };
 		5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerViewController.swift; sourceTree = "<group>"; };
 		5C8C3ABF1E83F83400F8146E /* getlocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getlocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8C3AC21E83F83400F8146E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C8C3AC41E83F83400F8146E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C8C3AC71E83F83400F8146E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C8C3AC91E83F83400F8146E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C8C3ACC1E83F83400F8146E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C8C3ACE1E83F83400F8146E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BC9CD5E0F0B136F835386097 /* Pods_getlocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_getlocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFE2504FE1796C173DA71741 /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,18 +45,46 @@
 			files = (
 				5C0194491EFA8BDA00E162CC /* CoreData.framework in Frameworks */,
 				5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */,
+				61B2EA98A36E59A9FC89F015 /* Pods_getlocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21A093CCE3EDECAF59D3B5BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FFE2504FE1796C173DA71741 /* Pods-getlocation.debug.xcconfig */,
+				517D7D7B85470FE1818097AD /* Pods-getlocation.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5C637E162071596000603F17 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */,
+				5C637E142071595300603F17 /* StartTrackingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5C7712CE20728750002E1D35 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5C7712CF20728778002E1D35 /* TrackerData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5C8C3AB61E83F83400F8146E = {
 			isa = PBXGroup;
 			children = (
 				5C8C3AC11E83F83400F8146E /* getlocation */,
 				5C8C3AC01E83F83400F8146E /* Products */,
 				5CCF1F411E8FEFF0005D02ED /* Frameworks */,
+				21A093CCE3EDECAF59D3B5BA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,10 +99,10 @@
 		5C8C3AC11E83F83400F8146E /* getlocation */ = {
 			isa = PBXGroup;
 			children = (
+				5C7712CE20728750002E1D35 /* Model */,
+				5C637E162071596000603F17 /* Controllers */,
 				5C8C3AC21E83F83400F8146E /* AppDelegate.swift */,
-				5C8C3AC41E83F83400F8146E /* ViewController.swift */,
 				5C8C3AC61E83F83400F8146E /* Main.storyboard */,
-				5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */,
 				5C8C3AC91E83F83400F8146E /* Assets.xcassets */,
 				5C8C3ACB1E83F83400F8146E /* LaunchScreen.storyboard */,
 				5C8C3ACE1E83F83400F8146E /* Info.plist */,
@@ -82,6 +116,7 @@
 			children = (
 				5C0194481EFA8BDA00E162CC /* CoreData.framework */,
 				5CCF1F421E8FEFF0005D02ED /* MapKit.framework */,
+				BC9CD5E0F0B136F835386097 /* Pods_getlocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -93,9 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C8C3AD11E83F83400F8146E /* Build configuration list for PBXNativeTarget "getlocation" */;
 			buildPhases = (
+				886EA340694BEB8CCC1C080A /* [CP] Check Pods Manifest.lock */,
 				5C8C3ABB1E83F83400F8146E /* Sources */,
 				5C8C3ABC1E83F83400F8146E /* Frameworks */,
 				5C8C3ABD1E83F83400F8146E /* Resources */,
+				9A9676A2175DA37913A94443 /* [CP] Embed Pods Frameworks */,
+				9959ABD5CA1EAF1E01ABD4F8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -162,14 +200,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		886EA340694BEB8CCC1C080A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-getlocation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9959ABD5CA1EAF1E01ABD4F8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-getlocation/Pods-getlocation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A9676A2175DA37913A94443 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-getlocation/Pods-getlocation-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-getlocation/Pods-getlocation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5C8C3ABB1E83F83400F8146E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C8C3AC51E83F83400F8146E /* ViewController.swift in Sources */,
+				5C7712D020728778002E1D35 /* TrackerData.swift in Sources */,
 				5C01944F1EFA8C1100E162CC /* getlocation.xcdatamodeld in Sources */,
 				5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */,
+				5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */,
 				5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +382,7 @@
 		};
 		5C8C3AD21E83F83400F8146E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFE2504FE1796C173DA71741 /* Pods-getlocation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 97A6BHXBQU;
@@ -302,6 +396,7 @@
 		};
 		5C8C3AD31E83F83400F8146E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 517D7D7B85470FE1818097AD /* Pods-getlocation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 97A6BHXBQU;
