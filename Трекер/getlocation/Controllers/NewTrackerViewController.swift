@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTrackerViewController: UITableViewController, UIPickerViewDelegate {
+class NewTrackerViewController: UITableViewController, UIPickerViewDelegate, UITextFieldDelegate {
   @IBOutlet weak var trackerIdTextField: UITextField!
   @IBOutlet weak var detailLabel: UILabel!
   @IBOutlet weak var startTrakingButton: UIBarButtonItem!
@@ -25,6 +25,7 @@ class NewTrackerViewController: UITableViewController, UIPickerViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     updateFrequencyPicker.delegate = self
+    trackerIdTextField.delegate = self
   }
   
   override func didReceiveMemoryWarning() {
@@ -42,6 +43,11 @@ class NewTrackerViewController: UITableViewController, UIPickerViewDelegate {
     detailLabel.text = "\(updateFrequencyPicker.selectedRow(inComponent: 0))"
   }
   
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    trackerIdTextField.resignFirstResponder()
+    return true
+  }
+
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 1 && indexPath.row == 0 {
       toggleUpdateFrequencyPicker()
