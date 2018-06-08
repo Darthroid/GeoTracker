@@ -1,5 +1,12 @@
 # GeoTracker
+
 Geotracker is a set of applications that helps to emulate a GPS-tracker device and then view its movement with client-app.
+
+## Tracker App
+![alt text](Screenshots/1.png) ![alt text](Screenshots/2.png)
+
+## Client App
+![alt text](Screenshots/3.png)
 
 This project consists of 3 parts: 
 
@@ -10,4 +17,3 @@ This project consists of 3 parts:
 ## Installation
 
 Download project and do `pod install` for both tracker and client apps. **Notice**: you need to host API yourself to ensure that all runs properly.
-
