@@ -82,21 +82,37 @@ class StartTrackingViewController: UIViewController, CLLocationManagerDelegate, 
     let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Data")
 
-    do {
-      self.data = try managedContext.fetch(fetchRequest)
-      for alldata in self.data {
-        self.sendTrackerData(lat: alldata.value(forKey: "latitude") as! Double, lon: alldata.value(forKey: "longitude") as! Double, id: alldata.value(forKey: "id") as! String, timestamp: alldata.value(forKey: "timestamp") as! Double)
+    
+    DispatchQueue.global(qos: .userInitiated).async {
+      do {
+        self.data = try managedContext.fetch(fetchRequest)
+        for alldata in self.data {
+          usleep(1000000)
+          self.sendTrackerData(lat: alldata.value(forKey: "latitude") as! Double,
+                               lon: alldata.value(forKey: "longitude") as! Double,
+                               id: alldata.value(forKey: "id") as! String,
+                               timestamp: alldata.value(forKey: "timestamp") as! Double) { completion in
+            if completion {
+              print("Done")
+            }
+          }
+        }
+      } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
       }
-    } catch let error as NSError {
-      print("Could not fetch. \(error), \(error.userInfo)")
     }
+    
   }
 
   // MARK: - Sending all observed data to server
 
-  func sendTrackerData(lat: Double, lon: Double, id: String, timestamp: Double) {
+  func sendTrackerData(lat: Double, lon: Double, id: String, timestamp: Double, completion:@escaping (_ result:Bool) -> Void) {
     let url = "http://trackmygps.000webhostapp.com/index.php?action=insert&latitude=\(lat)&longitude=\(lon)&objectID=\(id)&date=\(String(timestamp))"
-    Alamofire.request(url)
+    Alamofire.request(url).validate(statusCode: 200..<300).response { response in
+      if response.response?.statusCode == 200 {
+        completion(true)
+      }
+    }
   }
 
   // MARK: - Clearing all data from CoreData
@@ -109,6 +125,7 @@ class StartTrackingViewController: UIViewController, CLLocationManagerDelegate, 
 
     do {
       try managedContext.execute(delAllReqVar)
+      print("Deleted")
     }
     catch {
       print(error)
@@ -123,8 +140,8 @@ class StartTrackingViewController: UIViewController, CLLocationManagerDelegate, 
    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     location.append(locations[0])
     statusTextView.text = String(describing: locations[0])
-    let spanX = 0.007
-    let spanY = 0.007
+    let spanX = 0.03
+    let spanY = 0.03
     let newRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
     mapView.setRegion(newRegion, animated: true)
 
