@@ -31,7 +31,9 @@ class NetworkManager {
                         data[item["objectID"].stringValue] = []
                     }
                     
-                    data[item["objectID"].stringValue]?.append(TrackerPoint(latitude: item["latitude"].doubleValue, longitude: item["longitude"].doubleValue, date: item["date"].int64Value))
+                    data[item["objectID"].stringValue]?.append(TrackerPoint(latitude: item["latitude"].doubleValue,
+                                                                            longitude: item["longitude"].doubleValue,
+                                                                            date: item["date"].int64Value))
                 }
                 completion(data)
             }

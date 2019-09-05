@@ -17,16 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        guard let splitViewController = window?.rootViewController as? UISplitViewController,
-            let leftNavController = splitViewController.viewControllers.first as? UINavigationController,
-            let masterViewController = leftNavController.topViewController as? TrackerListViewController,
-            let rightNavController = splitViewController.viewControllers.last as? UINavigationController,
-            let detailViewController = rightNavController.topViewController as? TrackerDetailViewController
-        else { fatalError() }
-        
-        masterViewController.delegate = detailViewController
-        detailViewController.navigationItem.leftItemsSupplementBackButton = true
-        detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        if let splitViewController = self.window?.rootViewController as? UISplitViewController {
+            splitViewController.preferredDisplayMode = .allVisible
+            if let navigationController = splitViewController.viewControllers.last as? UINavigationController {
+                navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            }
+        }
         
         return true
     }

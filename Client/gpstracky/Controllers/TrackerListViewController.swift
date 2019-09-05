@@ -15,23 +15,37 @@ protocol TrackerSelectionDelegate: class {
 class TrackerListViewController: UITableViewController {
     
     private var trackers: [String: [TrackerPoint]] = [:]
+    private var selectedTracker: Tracker?
+    
+    fileprivate var collapseDetailViewController = true
     
     weak var delegate: TrackerSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        splitViewController?.delegate = self
+        self.configureRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.fetchTrackersList()
+    }
+    
+    private func configureRefreshControl() {
+        let refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "Reload")
+        refreshControl.addTarget(self, action: #selector(refreshControlDidDragged(_:)), for: .valueChanged)
+        self.tableView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshControlDidDragged(_ sender: UIRefreshControl) {
+        self.fetchTrackersList()
+    }
+    
+    private func fetchTrackersList() {
         NetworkManager.fetchTrackers(completion: { [weak self] fetchedTrackers in
+            self?.refreshControl?.endRefreshing()
             if let fetchedTrackers = fetchedTrackers {
                 self?.trackers = fetchedTrackers
                 self?.tableView.reloadData()
@@ -42,12 +56,10 @@ class TrackerListViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return trackers.count
     }
     
@@ -60,21 +72,31 @@ class TrackerListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tracker = trackers.map({$0.value})[indexPath.row]
-        delegate?.trackerSelected(tracker)
-        
-        if let detailViewController = delegate as? TrackerDetailViewController,
-            let detailNavigationController = detailViewController.navigationController {
-            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
-        }
+        self.selectedTracker = trackers.map({$0.value})[indexPath.row]
+        performSegue(withIdentifier: "showDetail", sender: self)
     }
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        collapseDetailViewController = false
+        guard let navController = segue.destination as? UINavigationController,
+            let viewController = navController.topViewController as? TrackerDetailViewController else {
+                fatalError("Expected DetailViewController")
+        }
+        
+        // Manage the display mode button
+        viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        viewController.navigationItem.leftItemsSupplementBackButton = true
+        
+        // Configure the secondary view controller
+        viewController.tracker = selectedTracker
     }
     
+}
+
+extension TrackerListViewController: UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return collapseDetailViewController
+    }
 }

@@ -11,9 +11,13 @@ import Foundation
 class DateManager {
     static func timestampToString(_ timestamp: Int64?) -> String {
         guard let timestamp = timestamp else { return "" }
-        let timeInt: TimeInterval = Double(timestamp) / 1000
-        let date = Date(timeIntervalSince1970: timeInt)
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: TimeZone.current.identifier)
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+        let strDate = dateFormatter.string(from: date)
 
-        return String(describing: date)
+        return String(describing: strDate)
     }
 }
