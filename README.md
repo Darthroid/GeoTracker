@@ -3,10 +3,13 @@
 Geotracker is a set of applications that helps to emulate a GPS-tracker device and then view its movement with client-app.
 
 ## Tracker App
-![alt text](Screenshots/1.png) ![alt text](Screenshots/2.png)
+![alt text](Screenshots/tracker1.png) ![alt text](Screenshots/2.png)
 
 ## Client App
-![alt text](Screenshots/3.png)
+![alt text](Screenshots/client1.png) ![alt text](Screenshots/client2.png)
+
+Also supports iPad
+![alt text](Screenshots/client3.png)
 
 This project consists of 3 parts: 
 
