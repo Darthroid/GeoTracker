@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        LocationManager.shared.requestAlwaysAuthorization()
+//        LocationManager.shared.requestAlwaysAuthorization()
+        LocationManager.shared.requestWhenInUseAuthorization()
         LocationManager.shared.allowsBackgroundLocationUpdates = true
         LocationManager.shared.pausesLocationUpdatesAutomatically = false
         CoreDataManager.shared.initalizeStack(completion: {})

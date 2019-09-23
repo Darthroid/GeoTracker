@@ -43,9 +43,10 @@ public class CoreDataManager {
     
     // MARK: - Create (Insert)
     
-    func insertTracker(with id: String, points: [TrackerPoint] = []) throws {
+    func insertTracker(withId id: String, name: String, points: [TrackerPoint] = []) throws {
         let tracker = Tracker(context: self.context)
         tracker.id = id
+        tracker.name = name
         
         points.forEach({ [unowned self] _point in
             let point = Point(context: self.context)
@@ -66,13 +67,22 @@ public class CoreDataManager {
     // MARK: - Read (Fetch)
     
     func fetchTrackers() throws -> [Tracker] {
-        let trackers = try self.context.fetch(Tracker.fetchRequest() as NSFetchRequest<Tracker>)
+        let request = Tracker.fetchRequest() as NSFetchRequest<Tracker>
+        let trackers = try self.context.fetch(request)
         return trackers
     }
     
     func fetchTrackers(withId id: String) throws -> [Tracker] {
         let request = NSFetchRequest<Tracker>(entityName: "Tracker")
         request.predicate = NSPredicate(format: "id == %@", id)
+        
+        let trackers = try self.context.fetch(request)
+        return trackers
+    }
+    
+    func fetchTrackers(withName name: String) throws -> [Tracker] {
+        let request = NSFetchRequest<Tracker>(entityName: "Tracker")
+        request.predicate = NSPredicate(format: "name == %@", name)
         
         let trackers = try self.context.fetch(request)
         return trackers

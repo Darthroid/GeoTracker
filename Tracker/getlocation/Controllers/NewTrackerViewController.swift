@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 
 class NewTrackerViewController: UITableViewController {
-    @IBOutlet weak var trackerIdTextField: UITextField!
+    @IBOutlet weak var trackerNameTextField: UITextField!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var startTrakingButton: UIBarButtonItem!
     @IBOutlet weak var updateFrequencyPicker: UIPickerView! {
@@ -26,15 +27,16 @@ class NewTrackerViewController: UITableViewController {
                                                                                  ("10 minutes", 60.0 * 10),
                                                                                  ("30 minutes", 60.0 * 30),
                                                                                  ("1 hour", 60.0 * 60)]
-    private var selectedUpdateFrequency: Double!
+    private var selectedUpdateFrequency: Double?
     
     // MARK: - ViewController LifeCycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateFrequencyPicker.delegate = self
         updateFrequencyPicker.dataSource = self
-        trackerIdTextField.delegate = self
+        trackerNameTextField.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,30 +45,43 @@ class NewTrackerViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "start" {
-            if let vc = segue.destination as? StartTrackingViewController {
-                guard let id = trackerIdTextField.text, !id.isEmpty else {
-                    AlertManager.showError(title: ERROR_TITLE, message: "Please enter id")
-                    return
-                }
-                vc.id = id
-                
-                guard let updateFrequency = selectedUpdateFrequency, !selectedUpdateFrequency.isNaN else {
-                    AlertManager.showError(title: ERROR_TITLE, message: "Please select update frequency")
-                    return
-                }
-                vc.updateFrequency = updateFrequency
+        if  segue.identifier == "start",
+            let vc = segue.destination as? StartTrackingViewController,
+            let trackerName = trackerNameTextField.text, !trackerName.isEmpty,
+            let updateFrequency = selectedUpdateFrequency, !updateFrequency.isNaN
+        {
+            vc.trackerName = trackerName
+            vc.updateFrequency = updateFrequency
+        }
+    }
+    
+    // MARK: - User defined methods
+    
+    private func validateTrackerAndStart() -> Bool {
+        switch LocationManager.authorizationStatus() {
+        case .notDetermined, .restricted, .denied:
+            AlertManager.showError(title: ERROR_TITLE, message: "\(Bundle.main.displayName) has no access to location.")
+            return false
+        case .authorizedAlways, .authorizedWhenInUse:
+            guard   let trackerName = trackerNameTextField.text,
+                    let updateFrequency = selectedUpdateFrequency,
+                    !trackerName.isEmpty,
+                    !updateFrequency.isNaN else
+            {
+                AlertManager.showError(title: ERROR_TITLE, message: "Please fill in all fields and try again")
+                return false
             }
+            
+            return true
+        @unknown default:
+            return false
         }
     }
     
     // MARK: - Actions methods
     
     @IBAction func startTracking(_ sender: Any) {
-        switch LocationManager.authorizationStatus() {
-        case .notDetermined, .restricted, .denied:
-            AlertManager.showError(title: ERROR_TITLE, message: "\(Bundle.main.displayName) has no access to location.")
-        case .authorizedAlways, .authorizedWhenInUse:
+        if validateTrackerAndStart() {
             performSegue(withIdentifier: "start", sender: self)
         }
     }
@@ -125,7 +140,7 @@ extension NewTrackerViewController: UIPickerViewDelegate, UIPickerViewDataSource
 
 extension NewTrackerViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        trackerIdTextField.resignFirstResponder()
+        trackerNameTextField.resignFirstResponder()
         return true
     }
 }

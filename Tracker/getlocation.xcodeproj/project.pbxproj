@@ -19,6 +19,8 @@
 		5C17FED22326E00F0086BAE6 /* Point+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FECE2326E00F0086BAE6 /* Point+CoreDataProperties.swift */; };
 		5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FECF2326E00F0086BAE6 /* Point+CoreDataClass.swift */; };
 		5C17FED52326E0410086BAE6 /* Tracker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FED42326E0410086BAE6 /* Tracker+CoreDataProperties.swift */; };
+		5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C569093233771CE00265673 /* TrackerListViewController.swift */; };
+		5C569097233809B300265673 /* TrackerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C569096233809B300265673 /* TrackerCell.swift */; };
 		5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C637E142071595300603F17 /* StartTrackingViewController.swift */; };
 		5C7712D020728778002E1D35 /* TrackerPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7712CF20728778002E1D35 /* TrackerPoint.swift */; };
 		5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */; };
@@ -44,6 +46,8 @@
 		5C17FECE2326E00F0086BAE6 /* Point+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5C17FECF2326E00F0086BAE6 /* Point+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5C17FED42326E0410086BAE6 /* Tracker+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tracker+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C569093233771CE00265673 /* TrackerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListViewController.swift; sourceTree = "<group>"; };
+		5C569096233809B300265673 /* TrackerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCell.swift; sourceTree = "<group>"; };
 		5C637E142071595300603F17 /* StartTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTrackingViewController.swift; sourceTree = "<group>"; };
 		5C7712CF20728778002E1D35 /* TrackerPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerPoint.swift; sourceTree = "<group>"; };
 		5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerViewController.swift; sourceTree = "<group>"; };
@@ -127,11 +131,21 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		5C5690952338098B00265673 /* TrackerListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5C569093233771CE00265673 /* TrackerListViewController.swift */,
+				5C569096233809B300265673 /* TrackerCell.swift */,
+			);
+			path = TrackerListViewController;
+			sourceTree = "<group>";
+		};
 		5C637E162071596000603F17 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */,
 				5C637E142071595300603F17 /* StartTrackingViewController.swift */,
+				5C5690952338098B00265673 /* TrackerListViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -220,13 +234,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Darthroid;
 				TargetAttributes = {
 					5C8C3ABE1E83F83400F8146E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 97A6BHXBQU;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -244,6 +258,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -315,6 +330,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C17FED02326E00F0086BAE6 /* Tracker+CoreDataClass.swift in Sources */,
+				5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */,
+				5C569097233809B300265673 /* TrackerCell.swift in Sources */,
 				5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */,
 				5C7712D020728778002E1D35 /* TrackerPoint.swift in Sources */,
 				5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */,
@@ -358,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -415,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -472,7 +491,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.darthroid.getlocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -488,7 +507,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.darthroid.getlocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
