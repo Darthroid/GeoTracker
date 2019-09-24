@@ -29,6 +29,7 @@ class StartTrackingViewController: UIViewController {
         mapView.delegate = self
         mapView.showsUserLocation = true
         LocationManager.shared.delegate = self
+        LocationManager.shared.desiredAccuracy = kCLLocationAccuracyHundredMeters   //TODO: put that into settings
         
         self.startFetchingLocation()
     }

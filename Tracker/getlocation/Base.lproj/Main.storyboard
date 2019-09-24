@@ -187,7 +187,7 @@
         <scene sceneID="BqY-Fr-SHh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ECu-FT-uUo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="location" catalog="system" id="fUm-WQ-QPX"/>
+                    <tabBarItem key="tabBarItem" title="" image="marker" id="fUm-WQ-QPX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="LXy-ox-5VO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
@@ -218,11 +218,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XrM-2d-tv9">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XrM-2d-tv9">
                                             <rect key="frame" x="16" y="11" width="343" height="278"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LxO-Ua-qLZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="200" id="h4h-c4-IEf"/>
                                                     </constraints>
@@ -262,16 +263,22 @@
                                                 <constraint firstItem="RKf-G1-A5B" firstAttribute="width" secondItem="LxO-Ua-qLZ" secondAttribute="width" id="sc6-sH-Te5"/>
                                             </constraints>
                                         </stackView>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QJA-rZ-hP0">
+                                            <rect key="frame" x="177.5" y="101" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <constraints>
+                                        <constraint firstItem="QJA-rZ-hP0" firstAttribute="centerX" secondItem="LxO-Ua-qLZ" secondAttribute="centerX" id="0WL-So-c7t"/>
                                         <constraint firstItem="XrM-2d-tv9" firstAttribute="trailing" secondItem="DKJ-MP-yww" secondAttribute="trailingMargin" id="Vu5-dw-exu"/>
                                         <constraint firstItem="XrM-2d-tv9" firstAttribute="centerY" secondItem="DKJ-MP-yww" secondAttribute="centerY" id="dTw-En-yTb"/>
                                         <constraint firstItem="XrM-2d-tv9" firstAttribute="leading" secondItem="DKJ-MP-yww" secondAttribute="leadingMargin" id="r8O-rg-hKo"/>
+                                        <constraint firstItem="QJA-rZ-hP0" firstAttribute="centerY" secondItem="LxO-Ua-qLZ" secondAttribute="centerY" id="ueB-8K-z92"/>
                                         <constraint firstItem="XrM-2d-tv9" firstAttribute="centerX" secondItem="DKJ-MP-yww" secondAttribute="centerX" id="vVE-3c-MzU"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="QJA-rZ-hP0" id="iNb-Lv-ube"/>
                                     <outlet property="cardStackView" destination="XrM-2d-tv9" id="3Ad-Su-iIM"/>
                                     <outlet property="routeImageView" destination="LxO-Ua-qLZ" id="1dH-ve-app"/>
                                     <outlet property="trackerDescriptionLabel" destination="kLb-zI-aHY" id="cKU-0V-nuS"/>
@@ -319,7 +326,7 @@
         <scene sceneID="gyL-kw-3NA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZtS-iY-YzI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="list.dash" catalog="system" id="fu3-7K-EX7"/>
+                    <tabBarItem key="tabBarItem" title="" image="list" id="fu3-7K-EX7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="jEs-XW-EXa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
@@ -336,7 +343,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.dash" catalog="system" width="64" height="44"/>
-        <image name="location" catalog="system" width="64" height="60"/>
+        <image name="list" width="23" height="23"/>
+        <image name="marker" width="23" height="23"/>
     </resources>
 </document>

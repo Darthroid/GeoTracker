@@ -28,6 +28,7 @@
 		5C8C3AC81E83F83400F8146E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC61E83F83400F8146E /* Main.storyboard */; };
 		5C8C3ACA1E83F83400F8146E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC91E83F83400F8146E /* Assets.xcassets */; };
 		5C8C3ACD1E83F83400F8146E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3ACB1E83F83400F8146E /* LaunchScreen.storyboard */; };
+		5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */; };
 		5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCF1F421E8FEFF0005D02ED /* MapKit.framework */; };
 		61B2EA98A36E59A9FC89F015 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9CD5E0F0B136F835386097 /* Pods_getlocation.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		5C8C3AC91E83F83400F8146E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C8C3ACC1E83F83400F8146E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C8C3ACE1E83F83400F8146E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapSnapshotter.swift; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BC9CD5E0F0B136F835386097 /* Pods_getlocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_getlocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFE2504FE1796C173DA71741 /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				5C11BF2C23302483000A12D2 /* Bundle.swift */,
+				5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
 				5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */,
 				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
+				5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */,
 				5C17FED22326E00F0086BAE6 /* Point+CoreDataProperties.swift in Sources */,
 				5C11BF2D23302483000A12D2 /* Bundle.swift in Sources */,
 				5C17FE222326D25F0086BAE6 /* DataManager.swift in Sources */,

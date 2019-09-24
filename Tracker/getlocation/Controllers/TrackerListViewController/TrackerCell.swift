@@ -15,13 +15,31 @@ class TrackerCell: UITableViewCell {
     @IBOutlet weak var trackerDescriptionWrapperView: UIView!
     @IBOutlet weak var trackerNameLabel: UILabel!
     @IBOutlet weak var trackerDescriptionLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private let imageCache = NSCache<NSString, UIImage>()
+    private var snapshotter: MKMapSnapshotter?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        self.cardStackView.layer.cornerRadius = 15
+        self.setStyle()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.routeImageView?.image = nil
+        
+        // Stop rendering snapshot if cell is going to be reused
+        self.snapshotter?.cancel()
+        
+        self.activityIndicator?.stopAnimating()
+    }
+    
+    func setStyle() {
         self.routeImageView?.layer.cornerRadius = 15
         self.trackerDescriptionWrapperView.layer.cornerRadius = 15
         
@@ -29,109 +47,71 @@ class TrackerCell: UITableViewCell {
             self.routeImageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             self.trackerDescriptionWrapperView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         }
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
+        
+        if #available(iOS 13, *) {
+            activityIndicator.style = .large
+        }
     }
     
     func configure(with tracker: Tracker) {
         self.trackerNameLabel.text = tracker.name
         self.trackerDescriptionLabel.text = "\(String(describing: tracker.points?.count ?? 0)) points"
-        self.takeSnapShot(points: tracker.points, id: tracker.id)
+        
+        if let cachedImage = self.imageCache.object(forKey: (tracker.id ?? "") as NSString) {
+            self.routeImageView.image = cachedImage
+        } else {
+            self.takeSnapShot(points: tracker.points, id: tracker.id)
+        }
     }
     
     private func takeSnapShot(points: Set<Point>?, id: String?) {
+        self.routeImageView?.image = nil
+        let mapSnapshotOptions = MKMapSnapshotter.Options()
 
+        guard let coordinates = points?.map({ CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }) else { return }
+        let polyLine = MKPolyline(coordinates: coordinates, count: coordinates.count)
+        let region = MKCoordinateRegion(polyLine.boundingMapRect)
+
+        mapSnapshotOptions.region = region
+
+        // Set the scale of the image. We'll just use the scale of the current device, which is 2x scale on Retina screens.
+        mapSnapshotOptions.scale = UIScreen.main.scale
+
+        // Set the size of the image output.
+        mapSnapshotOptions.size = self.routeImageView.bounds.size
+
+        mapSnapshotOptions.showsBuildings = false
+        mapSnapshotOptions.showsPointsOfInterest = false
+
+        let snapshotter = MKMapSnapshotter(options: mapSnapshotOptions)
+        self.snapshotter = snapshotter
         
-        let takeSnapshotBlock = {
-            let mapSnapshotOptions = MKMapSnapshotter.Options()
-
-            guard let coordinates = points?.map({ CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }) else { return }
-            let polyLine = MKPolyline(coordinates: coordinates, count: coordinates.count)
-            let region = MKCoordinateRegion(polyLine.boundingMapRect)
-
-            mapSnapshotOptions.region = region
-
-            // Set the scale of the image. We'll just use the scale of the current device, which is 2x scale on Retina screens.
-            mapSnapshotOptions.scale = UIScreen.main.scale
-
-            // Set the size of the image output.
-            mapSnapshotOptions.size = CGSize(width: self.routeImageView.bounds.size.width,
-                                             height: self.routeImageView.bounds.size.height)
-
-            mapSnapshotOptions.showsBuildings = false
-            mapSnapshotOptions.showsPointsOfInterest = false
-
-            let snapShotter = MKMapSnapshotter(options: mapSnapshotOptions)
-
-            snapShotter.start(with: .global(qos: .userInteractive)) { [unowned self] snapshot, error in
-                guard let snapshot = snapshot else {
-                    return
-                }
-                
-                let finalImage = snapshot.drawPolyline(polyLine, color: UIColor.blue, lineWidth: 3)
-                self.imageCache.setObject(finalImage, forKey: (id ?? "") as NSString)
+        self.activityIndicator.startAnimating()
+        
+        snapshotter.start(with: .global(qos: .userInteractive)) { [unowned self] snapshot, error in
+            guard let snapshot = snapshot else {
+                return
+            }
+            
+            let finalImage = snapshot.drawPolyline(polyLine, color: UIColor.blue, lineWidth: 3)
+            self.imageCache.setObject(finalImage, forKey: (id ?? "") as NSString)
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
                 self.routeImageView.image = finalImage
             }
-        }
-        
-        
-        if let cachedImage = self.imageCache.object(forKey: (id ?? "") as NSString) {
-            self.routeImageView.image = cachedImage
-        } else {
-            takeSnapshotBlock()
         }
     }
 
 }
 
-
-extension MKMapSnapshotter.Snapshot {
-
-    func drawPolyline(_ polyline: MKPolyline, color: UIColor, lineWidth: CGFloat) -> UIImage {
-        UIGraphicsBeginImageContext(self.image.size)
-        let rectForImage = CGRect(x: 0, y: 0, width: self.image.size.width, height: self.image.size.height)
-
-        // Draw map
-        self.image.draw(in: rectForImage)
-
-        var pointsToDraw = [CGPoint]()
-
-
-        let points = polyline.points()
-        var i = 0
-        while (i < polyline.pointCount)  {
-            let point = points[i]
-            let pointCoord = point.coordinate
-            let pointInSnapshot = self.point(for: pointCoord)
-            pointsToDraw.append(pointInSnapshot)
-            i += 1
-        }
-
-        let context = UIGraphicsGetCurrentContext()
-        context!.setLineWidth(lineWidth)
-
-        for point in pointsToDraw {
-            if (point == pointsToDraw.first) {
-                context!.move(to: point)
-            } else {
-                context!.addLine(to: point)
-            }
-        }
-
-        context?.setStrokeColor(color.cgColor)
-        context?.strokePath()
-
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image!
+extension UIView {
+    func installShadow(cornerRadiuis: Int, color: UIColor, offset: CGSize, opacity: CGFloat) {
+        layer.cornerRadius = 2
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 1)
+        layer.shadowOpacity = 0.45
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shadowRadius = 1.0
     }
 }
