@@ -10,7 +10,8 @@ import UIKit
 import MapKit
 
 class TrackerCell: UITableViewCell {
-    @IBOutlet weak var cardStackView: UIStackView!
+//    @IBOutlet weak var cardStackView: UIStackView!
+    @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var routeImageView: UIImageView!
     @IBOutlet weak var trackerDescriptionWrapperView: UIView!
     @IBOutlet weak var trackerNameLabel: UILabel!
@@ -39,12 +40,18 @@ class TrackerCell: UITableViewCell {
         self.activityIndicator?.stopAnimating()
     }
     
-    func setStyle() {
-        self.routeImageView?.layer.cornerRadius = 15
-        self.trackerDescriptionWrapperView.layer.cornerRadius = 15
+    private func setStyle() {   //TODO: remove shadow for dark appearance
+        self.cardView.cornerRadius = 20.0
+        self.cardView.shadowColor = UIColor.gray.cgColor
+        self.cardView.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.cardView.shadowRadius = 6.0
+        self.cardView.shadowOpacity = 0.4
+        
+        self.routeImageView?.layer.cornerRadius = 20
+        self.trackerDescriptionWrapperView.layer.cornerRadius = 20
         
         if #available(iOS 11.0, *) {
-            self.routeImageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+            self.routeImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             self.trackerDescriptionWrapperView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         }
         

@@ -10,6 +10,9 @@ import UIKit
 import CoreLocation
 
 class NewTrackerViewController: UITableViewController {
+    
+    // MARK: - Outlets & connections
+    
     @IBOutlet weak var trackerNameTextField: UITextField!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var startTrakingButton: UIBarButtonItem!
@@ -19,14 +22,9 @@ class NewTrackerViewController: UITableViewController {
         }
     }
     
-    private var updateFrequencyPickerOptions: [(time: String, value: Double)] = [("5 seconds", 5.0),
-                                                                                 ("10 seconds", 10.0),
-                                                                                 ("30 seconds", 30.0),
-                                                                                 ("1 minute", 60.0),
-                                                                                 ("5 minutes", 60.0 * 5),
-                                                                                 ("10 minutes", 60.0 * 10),
-                                                                                 ("30 minutes", 60.0 * 30),
-                                                                                 ("1 hour", 60.0 * 60)]
+    // MARK: - Private properties
+    
+    private var updateFrequencyPickerOptions = UPDATE_FREQUENCY_OPTIONS
     private var selectedUpdateFrequency: Double?
     
     // MARK: - ViewController LifeCycle methods

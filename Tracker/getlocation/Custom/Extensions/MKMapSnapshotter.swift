@@ -20,7 +20,6 @@ extension MKMapSnapshotter.Snapshot {
 
         var pointsToDraw = [CGPoint]()
 
-
         let points = polyline.points()
         var i = 0
         while (i < polyline.pointCount)  {
