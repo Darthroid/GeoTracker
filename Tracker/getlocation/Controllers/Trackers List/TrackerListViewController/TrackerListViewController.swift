@@ -12,7 +12,15 @@ class TrackerListViewController: UITableViewController {
 
     // MARK: - private properties
     
-    private var trackers: [Tracker]?
+	private var trackers: [Tracker]? {
+		didSet {
+			if trackers?.count ?? 0 > 0 {
+				self.tableView.removeNoDataPlaceholder()
+			} else {
+				self.tableView.setNoDataPlaceholder("No available trackers")
+			}
+		}
+	}
     private var selectedTracker: Tracker?
     
     // MARK: - ViewController LifeCycle methods

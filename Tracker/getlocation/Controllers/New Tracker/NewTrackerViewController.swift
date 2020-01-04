@@ -36,6 +36,16 @@ class NewTrackerViewController: UITableViewController {
         updateFrequencyPicker.dataSource = self
         trackerNameTextField.delegate = self
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.setupInterface()
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		self.clearInputs()
+	}
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,6 +64,17 @@ class NewTrackerViewController: UITableViewController {
     }
     
     // MARK: - User defined methods
+	
+	private func setupInterface() {
+		// selecting uipicker row programatically
+		self.updateFrequencyPicker.selectRow(0, inComponent: 0, animated: true)
+		self.updateFrequencyPicker.delegate?.pickerView?(self.updateFrequencyPicker, didSelectRow: 0, inComponent: 0)
+	}
+	
+	private func clearInputs() {
+		self.trackerNameTextField.endEditing(true)
+		self.trackerNameTextField.text = ""
+	}
     
     private func validateTrackerAndStart() -> Bool {
         switch LocationManager.authorizationStatus() {

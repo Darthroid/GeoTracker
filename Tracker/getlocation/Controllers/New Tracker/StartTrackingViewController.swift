@@ -103,7 +103,7 @@ class StartTrackingViewController: UIViewController {
     
     private func saveTrackerData() {
         guard points.isEmpty == false else {
-            AlertManager.showError(title: ERROR_TITLE, message: "No points to save")
+//            AlertManager.showError(title: ERROR_TITLE, message: "No points to save")
             return
         }
         do {
