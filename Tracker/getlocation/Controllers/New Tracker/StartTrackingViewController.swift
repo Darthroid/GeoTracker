@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreData
-import Alamofire
 
 class StartTrackingViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
