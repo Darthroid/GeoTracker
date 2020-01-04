@@ -31,7 +31,10 @@ class TrackerListViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+																 target: self,
+																 action: #selector(addButtonTap))
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -57,6 +60,28 @@ class TrackerListViewController: UITableViewController {
             AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
         }
     }
+	
+	@objc func addButtonTap() {
+		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+		let newTrackerAction = UIAlertAction(title: "New tracker", style: .default, handler: { _ in
+			self.tabBarController?.selectedIndex = 0
+		})
+		
+		let importAction = UIAlertAction(title: "Import", style: .default, handler: { _ in
+			let documentPicker = UIDocumentPickerViewController(documentTypes: ["com.topografix.gpx"],
+																in: .import)
+			documentPicker.delegate = self
+			
+			self.present(documentPicker, animated: true)
+		})
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		actionSheet.addAction(newTrackerAction)
+		actionSheet.addAction(importAction)
+		actionSheet.addAction(cancelAction)
+		
+		self.present(actionSheet, animated: true)
+	}
 }
 
 // MARK: - UITableViewDelegate methods
@@ -106,4 +131,10 @@ extension TrackerListViewController {
             }
         }
     }
+}
+
+extension TrackerListViewController: UIDocumentPickerDelegate {
+	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+		// TODO: parse & save tracker from .gpx file
+	}
 }
