@@ -31,7 +31,7 @@ class TrackerListViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+//        self.navigationItem.leftBarButtonItem = self.editButtonItem
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
 																 target: self,
 																 action: #selector(addButtonTap))
@@ -136,5 +136,11 @@ extension TrackerListViewController {
 extension TrackerListViewController: UIDocumentPickerDelegate {
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
 		// TODO: parse & save tracker from .gpx file
+		do {
+			let points = try GPXParseManager.parseGPX(fromUrl: url, save: true)
+			print(points)
+		} catch {
+			print(error)
+		}
 	}
 }

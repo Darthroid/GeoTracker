@@ -8,7 +8,18 @@
 
 import UIKit
 
-class TrackerPoint {
+class TrackerPoint: CustomStringConvertible {
+	var description: String {
+		let properties = [
+			"id": id,
+			"latitude": latitude,
+			"longitude": longitude,
+			"timestamp": timestamp
+		] as [String: Any]
+		
+		return "<\(TrackerPoint.self): \(properties)>\n"
+	}
+	
     var latitude: Double
     var longitude: Double
     var id: String

@@ -32,10 +32,14 @@
 		5CA6B759233BE53100C6A0D5 /* TrackerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */; };
 		5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B75C233E952F00C6A0D5 /* CardView.swift */; };
 		5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCF1F421E8FEFF0005D02ED /* MapKit.framework */; };
+		62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */; };
 		D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6CF23C0D44200C1BE82 /* UITableView.swift */; };
+		D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.release.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.release.xcconfig"; sourceTree = "<group>"; };
+		25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_getlocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0194481EFA8BDA00E162CC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = getlocation.xcdatamodel; sourceTree = "<group>"; };
 		5C11BF29233001AB000A12D2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -64,7 +68,9 @@
 		5CA6B75A233E8BED00C6A0D5 /* getlocation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = getlocation.entitlements; sourceTree = "<group>"; };
 		5CA6B75C233E952F00C6A0D5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
 		D146A6CF23C0D44200C1BE82 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 			files = (
 				5C0194491EFA8BDA00E162CC /* CoreData.framework in Frameworks */,
 				5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */,
+				62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +111,7 @@
 				5C17FE152326C6F90086BAE6 /* AlertManager.swift */,
 				5C17FE212326D25F0086BAE6 /* CoreDataManager.swift */,
 				5C11BF29233001AB000A12D2 /* LocationManager.swift */,
+				D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 				5C8C3AC11E83F83400F8146E /* getlocation */,
 				5CCF1F411E8FEFF0005D02ED /* Frameworks */,
 				5C8C3AC01E83F83400F8146E /* Products */,
+				AC3B0CA3C66174521E5AD62E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,8 +240,18 @@
 			children = (
 				5C0194481EFA8BDA00E162CC /* CoreData.framework */,
 				5CCF1F421E8FEFF0005D02ED /* MapKit.framework */,
+				25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC3B0CA3C66174521E5AD62E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */,
+				0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,9 +261,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C8C3AD11E83F83400F8146E /* Build configuration list for PBXNativeTarget "getlocation" */;
 			buildPhases = (
+				D3B0238793B3F9D7BE584B70 /* [CP] Check Pods Manifest.lock */,
 				5C8C3ABB1E83F83400F8146E /* Sources */,
 				5C8C3ABC1E83F83400F8146E /* Frameworks */,
 				5C8C3ABD1E83F83400F8146E /* Resources */,
+				014A648AC323E48B2E89F4E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,10 +304,9 @@
 			};
 			buildConfigurationList = 5C8C3ABA1E83F83400F8146E /* Build configuration list for PBXProject "getlocation" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -313,6 +333,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		014A648AC323E48B2E89F4E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-getlocation/Pods-getlocation-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CoreGPX/CoreGPX.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreGPX.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-getlocation/Pods-getlocation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3B0238793B3F9D7BE584B70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-getlocation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5C8C3ABB1E83F83400F8146E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -333,6 +396,7 @@
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
 				5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */,
 				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
+				D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */,
 				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
 				5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */,
 				5C17FED22326E00F0086BAE6 /* Point+CoreDataProperties.swift in Sources */,
@@ -475,6 +539,7 @@
 		};
 		5C8C3AD21E83F83400F8146E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = getlocation/getlocation.entitlements;
@@ -492,6 +557,7 @@
 		};
 		5C8C3AD31E83F83400F8146E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = getlocation/getlocation.entitlements;

@@ -22,6 +22,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+	
+	
+	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+		let fileName = (url.lastPathComponent as NSString).deletingPathExtension
+		let ac = UIAlertController(title: "Import \(fileName) ?", message: "", preferredStyle: .alert)
+		
+		let importAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+			do {
+				try _ = GPXParseManager.parseGPX(fromUrl: url, save: true)
+			} catch {
+				print(error)
+			}
+		})
+		
+		let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+		
+		ac.addAction(importAction)
+		ac.addAction(cancelAction)
+		
+		CommonUtils.visibleViewController?.present(ac, animated: true)
+		
+		return true
+	}
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
