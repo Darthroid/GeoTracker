@@ -35,6 +35,7 @@
 		62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */; };
 		D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6CF23C0D44200C1BE82 /* UITableView.swift */; };
 		D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */; };
+		D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
 		D146A6CF23C0D44200C1BE82 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParseManager.swift; sourceTree = "<group>"; };
+		D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailBottomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				5CA6B757233BE20F00C6A0D5 /* TrackerListViewController */,
-				5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */,
+				D1BD527823C23D1800427EA9 /* TrackerDetailsViewController */,
 			);
 			path = "Trackers List";
 			sourceTree = "<group>";
@@ -252,6 +254,15 @@
 				0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D1BD527823C23D1800427EA9 /* TrackerDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */,
+				D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */,
+			);
+			path = TrackerDetailsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +407,7 @@
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
 				5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */,
 				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
+				D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */,
 				D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */,
 				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
 				5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */,

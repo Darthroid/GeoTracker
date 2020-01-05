@@ -92,7 +92,7 @@ extension TrackerDetailViewController: MKMapViewDelegate {
         UIView.animate(withDuration: 1.5, animations: { [weak self]  in
             if let topOverlay = self?.mapView?.overlays.first(where: { $0 is MKPolyline }) {
                 if let rect = self?.mapView?.overlays.reduce(topOverlay.boundingMapRect, {$0.union($1.boundingMapRect)}) {
-                    let edgePadding = UIEdgeInsets(top: 50.0, left: 50.0, bottom: 50.0, right: 50.0)
+                    let edgePadding = UIEdgeInsets(top: 100.0, left: 100.0, bottom: 100.0, right: 100.0)
                     self?.mapView?.setVisibleMapRect(rect, edgePadding: edgePadding, animated: true)
                 }
                
