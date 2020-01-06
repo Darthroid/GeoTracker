@@ -37,11 +37,16 @@ class TrackerListViewController: UITableViewController {
 																 action: #selector(addButtonTap(_:)))
         self.tableView.delegate = self
         self.tableView.dataSource = self
+		
+		self.fetchTrackers()
+		
+		CoreDataManager.shared.addObserver(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.fetchTrackers()
+        
+		self.setupInterface()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,9 +54,18 @@ class TrackerListViewController: UITableViewController {
             vc.tracker = selectedTracker
         }
     }
+	
+	deinit {
+		CoreDataManager.shared.removeObserver(self)
+	}
     
     // MARK: - User defined methods
     
+	private func setupInterface() {
+		let interfaceIdiom = UIDevice.current.userInterfaceIdiom
+		self.tableView.separatorStyle = interfaceIdiom == .phone ? .none : .singleLine
+	}
+	
     private func fetchTrackers() {
         do {
             self.trackers = try CoreDataManager.shared.fetchTrackers()
@@ -101,16 +115,26 @@ extension TrackerListViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+		return UIDevice.current.userInterfaceIdiom == .phone ? 300 : UITableView.automaticDimension
     }
         
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackerCell.self), for: indexPath) as! TrackerCell
-        if let tracker = self.trackers?[indexPath.row] {
-            cell.configure(with: tracker)
-        }
-        
-        return cell
+		guard let tracker = self.trackers?[indexPath.row] else {
+			assert(false)
+			return UITableViewCell()
+		}
+		
+		if UIDevice.current.userInterfaceIdiom == .phone {	// cell with route preview
+			let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackerCell.self),
+													 for: indexPath) as! TrackerCell
+			cell.configure(with: tracker)
+			return cell
+		} else {	// default title/subtitle cell
+			let cell = tableView.dequeueReusableCell(withIdentifier: "TrackerCellSimple", for: indexPath)
+			cell.textLabel?.text = tracker.name
+			cell.detailTextLabel?.text = "\(String(describing: tracker.points?.count ?? 0)) points"
+			return cell
+		}
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,8 +152,6 @@ extension TrackerListViewController {
         if editingStyle == .delete, let tracker = trackers?[indexPath.row] {
             do {
                 try CoreDataManager.shared.delete(tracker: tracker)
-                trackers?.removeAll(where: { tracker.id == $0.id })
-                tableView.deleteRows(at: [indexPath], with: .fade)
             } catch {
                 AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
             }
@@ -148,4 +170,38 @@ extension TrackerListViewController: UIDocumentPickerDelegate {
 			print(error)
 		}
 	}
+}
+
+// MARK: - CoreDataObserver methods
+
+extension TrackerListViewController: CoreDataObserver {
+	func didInsert(ids: [String], trackers: [Tracker]) {
+		trackers.forEach({ self.trackers?.append($0) })
+		
+		DispatchQueue.main.async {
+			self.tableView.beginUpdates()
+			self.tableView.insertRows(at: [IndexPath(row: (self.trackers?.count ?? 1) - 1, section: 0)], with: .automatic)
+			self.tableView.endUpdates()
+		}
+	}
+	
+	func didUpdate(ids: [String], trackers: [Tracker]) {
+//		trackers.forEach({ tracker in
+//
+//		})
+	}
+	
+	func didDelete(ids: [String], trackers: [Tracker]) {
+		trackers.forEach({ tracker in
+			guard let index = self.trackers?.firstIndex(of: tracker) else { return }
+			self.trackers?.remove(at: index)
+			
+			DispatchQueue.main.async {
+				self.tableView.beginUpdates()
+				self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+				self.tableView.endUpdates()
+			}
+		})
+	}
+
 }

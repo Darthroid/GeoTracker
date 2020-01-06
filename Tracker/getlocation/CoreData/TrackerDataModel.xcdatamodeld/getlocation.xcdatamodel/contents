@@ -8,7 +8,7 @@
         <relationship name="tracker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tracker" inverseName="points" inverseEntity="Tracker"/>
     </entity>
     <entity name="Tracker" representedClassName=".Tracker" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="points" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Point" inverseName="tracker" inverseEntity="Point"/>
     </entity>

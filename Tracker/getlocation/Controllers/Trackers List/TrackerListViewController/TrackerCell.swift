@@ -64,7 +64,7 @@ class TrackerCell: UITableViewCell {
         self.trackerNameLabel.text = tracker.name
         self.trackerDescriptionLabel.text = "\(String(describing: tracker.points?.count ?? 0)) points"
         
-        if let cachedImage = self.imageCache.object(forKey: (tracker.id ?? "") as NSString) {
+        if let cachedImage = self.imageCache.object(forKey: (tracker.id) as NSString) {
             self.routeImageView.image = cachedImage
         } else {
             self.takeSnapShot(points: tracker.points, id: tracker.id)

@@ -16,7 +16,7 @@ extension Tracker {
         return NSFetchRequest<Tracker>(entityName: "Tracker")
     }
 
-    @NSManaged public var id: String?
+    @NSManaged public var id: String
     @NSManaged public var name: String?
     @NSManaged public var points: Set<Point>?
 
