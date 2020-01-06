@@ -10,13 +10,20 @@ import UIKit
 import MapKit
 
 class TrackerDetailViewController: UIViewController {
+	// MARK: - Outlets
+	
     @IBOutlet weak var mapView: MKMapView!
+	@IBOutlet weak var containerView: UIView!
     @IBOutlet weak var buttonsWrapperView: CardView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
     
+	// MARK: - public properties
+	
     var tracker: Tracker?
     
+    // MARK: - ViewController LifeCycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,15 +33,25 @@ class TrackerDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.drawOnMap()
-        self.setStyle()
+        self.setupInterface()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.clearMap()
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "bottomContainer" {
+			let bottomDetailController = segue.destination as? TrackerDetailBottomViewController
+			bottomDetailController?.delegate = self
+			bottomDetailController?.tracker = self.tracker
+		}
+	}
+	
+    // MARK: - User defined methods
     
-    private func setStyle() {   //TODO: remove shadow for dark appearance
+    private func setupInterface() {   //TODO: remove shadow for dark appearance
         self.buttonsWrapperView.cornerRadius = 10.0
         self.buttonsWrapperView.shadowColor = UIColor.gray.cgColor
         self.buttonsWrapperView.shadowOffset = CGSize(width: 0.0, height: 0.0)
@@ -49,16 +66,20 @@ class TrackerDetailViewController: UIViewController {
             self.infoButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         }
     }
-    
+	
+    // MARK: - Actions methods
+
     @IBAction func closeButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func infoButtonTapped(_ sender: Any) {
-        
+        // TODO: map style switch
     }
     
 }
+
+// MARK: - MKMapViewDelegate methods
 
 extension TrackerDetailViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -118,4 +139,12 @@ extension TrackerDetailViewController: MKMapViewDelegate {
         self.mapView?.removeAnnotations(allAnnotations ?? [])
         self.mapView?.removeOverlays(overlays ?? [])
     }
+}
+
+// MARK: - TrackerDetailBottomDelegate methods
+
+extension TrackerDetailViewController: TrackerDetailBottomDelegate {
+	func didSelectPoint(_ point: TrackerPoint) {
+		// TODO: draw point and move map
+	}
 }

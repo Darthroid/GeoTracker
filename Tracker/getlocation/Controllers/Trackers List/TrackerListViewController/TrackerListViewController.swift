@@ -34,7 +34,7 @@ class TrackerListViewController: UITableViewController {
 //        self.navigationItem.leftBarButtonItem = self.editButtonItem
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
 																 target: self,
-																 action: #selector(addButtonTap))
+																 action: #selector(addButtonTap(_:)))
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -61,7 +61,7 @@ class TrackerListViewController: UITableViewController {
         }
     }
 	
-	@objc func addButtonTap() {
+	@objc func addButtonTap(_ sender: Any?) {
 		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		let newTrackerAction = UIAlertAction(title: "New tracker", style: .default, handler: { _ in
 			self.tabBarController?.selectedIndex = 0
@@ -79,6 +79,10 @@ class TrackerListViewController: UITableViewController {
 		actionSheet.addAction(newTrackerAction)
 		actionSheet.addAction(importAction)
 		actionSheet.addAction(cancelAction)
+
+		if let presentation = actionSheet.popoverPresentationController {
+			presentation.barButtonItem = self.navigationItem.rightBarButtonItem
+		}
 		
 		self.present(actionSheet, animated: true)
 	}
@@ -133,12 +137,13 @@ extension TrackerListViewController {
     }
 }
 
+// MARK: - UIDocumentPickerDelegate methods
+
 extension TrackerListViewController: UIDocumentPickerDelegate {
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-		// TODO: parse & save tracker from .gpx file
 		do {
-			let points = try GPXParseManager.parseGPX(fromUrl: url, save: true)
-			print(points)
+			let /*points*/ _ = try GPXParseManager.parseGPX(fromUrl: url, save: true)
+//			print(points)
 		} catch {
 			print(error)
 		}
