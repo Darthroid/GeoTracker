@@ -145,6 +145,22 @@ extension TrackerDetailViewController: MKMapViewDelegate {
 
 extension TrackerDetailViewController: TrackerDetailBottomDelegate {
 	func didSelectPoint(_ point: TrackerPoint) {
-		// TODO: draw point and move map
+		
+		// TODO: filter added annotations somehow else
+		let annotationsToRemove = self.mapView.annotations.filter({ $0 is CustomPointAnnotation })
+		self.mapView.removeAnnotations(annotationsToRemove)
+		
+		let annotation = CustomPointAnnotation()
+		annotation.coordinate = point.toCLLocationCoordinates()
+		annotation.title = Date().stringfromTimeStamp(point.timestamp)
+		annotation.subtitle = "Latitude: \(point.latitude)" + "\n" + "Longitude: \(point.longitude)"
+		annotation.id = point.id
+		
+		
+		self.mapView.addAnnotation(annotation)
 	}
+//
+//	func didRequestSnapshot() -> Data? {
+//		TODO: create snapshot of map with annotations and polyLine
+//	}
 }

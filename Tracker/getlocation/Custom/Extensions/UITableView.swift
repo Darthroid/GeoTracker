@@ -29,12 +29,12 @@ extension UITableView {
 
         self.isScrollEnabled = false
         self.backgroundView = label
-//        self.separatorStyle = .none
+        self.separatorStyle = .none
     }
 	
     func removeNoDataPlaceholder() {
         self.isScrollEnabled = true
         self.backgroundView = nil
-//        self.separatorStyle = .singleLine
+		self.separatorStyle = UIDevice.current.userInterfaceIdiom == .phone ? .none : .singleLine
     }
 }

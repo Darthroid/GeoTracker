@@ -35,6 +35,9 @@
 		62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */; };
 		D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6CF23C0D44200C1BE82 /* UITableView.swift */; };
 		D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */; };
+		D1950B1223C498DE0080F97F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1123C498DE0080F97F /* UIView.swift */; };
+		D1950B1423C4ACA90080F97F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1323C4ACA80080F97F /* Date.swift */; };
+		D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */; };
 		D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,9 @@
 		C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
 		D146A6CF23C0D44200C1BE82 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParseManager.swift; sourceTree = "<group>"; };
+		D1950B1123C498DE0080F97F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D1950B1323C4ACA80080F97F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailBottomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +101,8 @@
 				5C11BF2C23302483000A12D2 /* Bundle.swift */,
 				5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */,
 				D146A6CF23C0D44200C1BE82 /* UITableView.swift */,
+				D1950B1123C498DE0080F97F /* UIView.swift */,
+				D1950B1323C4ACA80080F97F /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 			children = (
 				5C11BF2B2330242F000A12D2 /* Extensions */,
 				5CA6B75E233EA1C900C6A0D5 /* Views */,
+				D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -398,16 +407,19 @@
 				5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */,
 				5C7712D020728778002E1D35 /* TrackerPoint.swift in Sources */,
 				5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */,
+				D1950B1423C4ACA90080F97F /* Date.swift in Sources */,
 				5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */,
 				5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */,
 				5CA6B759233BE53100C6A0D5 /* TrackerDetailViewController.swift in Sources */,
 				5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */,
 				5C17FED52326E0410086BAE6 /* Tracker+CoreDataProperties.swift in Sources */,
+				D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */,
 				5C17FE162326C6F90086BAE6 /* AlertManager.swift in Sources */,
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
 				5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */,
 				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
 				D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */,
+				D1950B1223C498DE0080F97F /* UIView.swift in Sources */,
 				D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */,
 				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
 				5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */,

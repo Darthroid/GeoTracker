@@ -10,6 +10,7 @@ import UIKit
 
 protocol TrackerDetailBottomDelegate: class {
 	func didSelectPoint(_ point: TrackerPoint)
+//	func didRequestSnapshot() -> Data?
 }
 
 class TrackerDetailBottomViewController: UIViewController {
@@ -17,6 +18,7 @@ class TrackerDetailBottomViewController: UIViewController {
     // MARK: - Outlets & connections
 	
 	@IBOutlet weak var trackerNameLabel: UILabel!
+	@IBOutlet weak var shareButton: UIButton!
 	@IBOutlet weak var tableView: UITableView!
 	
     // MARK: - Public properties
@@ -54,7 +56,49 @@ class TrackerDetailBottomViewController: UIViewController {
 	private func setupInterface() {
 		self.trackerNameLabel.text = tracker?.name ?? ""
 	}
+	
+	private func presentShareSheet(with itemsToShare: [Any], sender: Any) {
+		let activityViewController = UIActivityViewController(activityItems: itemsToShare,
+															  applicationActivities: [])
+		
+		activityViewController.popoverPresentationController?.sourceView = sender as? UIView
 
+		self.present(activityViewController, animated: true, completion: nil)
+	}
+	
+	// MARK: - Actions
+	
+	@IBAction func shareTap(_ sender: Any) {
+//		let actionSheet = UIAlertController(title: "Export options", message: nil, preferredStyle: .actionSheet)
+//
+//		let snapshotAction = UIAlertAction(title: "Map snapshot", style: .default, handler: { _ in
+//			guard let snapshot = self.delegate?.didRequestSnapshot() else { return }
+//			self.presentShareSheet(with: [snapshot], sender: sender)
+//		})
+		
+//		let gpxAction = UIAlertAction(title: "GPS Exchange Format (GPX)", style: .default, handler: { _ in
+		guard let tracker = self.tracker else { return }
+		GPXParseManager.createGPX(fromTracker: tracker, save: true, completionHandler: { gpxString, fileUrl in
+			DispatchQueue.main.async {
+				if let fileUrl = fileUrl {
+					self.presentShareSheet(with: [fileUrl], sender: sender)
+				} else {
+					self.presentShareSheet(with: [gpxString], sender: sender)
+				}
+			}
+		})
+//		})
+		
+//		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//
+//		actionSheet.addAction(snapshotAction)
+//		actionSheet.addAction(gpxAction)
+//		actionSheet.addAction(cancelAction)
+//		actionSheet.popoverPresentationController?.sourceView = sender as? UIView
+//
+//		self.present(actionSheet, animated: true)
+	}
+	
 }
 
 // MARK: - UITableViewDelegate methods
@@ -67,13 +111,8 @@ extension TrackerDetailBottomViewController: UITableViewDelegate, UITableViewDat
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "PointCell", for: indexPath)
 		let point = self.points[indexPath.row]
-		
-		let df = DateFormatter()
-		df.dateFormat = "yyyy-MM-dd hh:mm:ss"
-		let date = Date(timeIntervalSince1970: TimeInterval(point.timestamp))
-		let dateString = df.string(from: date)
-		
-		cell.textLabel?.text = dateString
+
+		cell.textLabel?.text = Date().stringfromTimeStamp(point.timestamp)
 		cell.detailTextLabel?.text = "Latitude: \(point.latitude)" + "\n" + "Longitude: \(point.longitude)"
 		
 		return cell

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class TrackerPoint: CustomStringConvertible {
 	var description: String {
@@ -31,4 +32,8 @@ class TrackerPoint: CustomStringConvertible {
         self.id = id
         self.timestamp = timestamp
     }
+	
+	public func toCLLocationCoordinates() -> CLLocationCoordinate2D {
+		return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+	}
 }

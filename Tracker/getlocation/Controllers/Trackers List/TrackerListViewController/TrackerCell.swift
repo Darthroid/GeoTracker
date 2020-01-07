@@ -95,30 +95,21 @@ class TrackerCell: UITableViewCell {
         
         self.activityIndicator.startAnimating()
         
-        snapshotter.start(with: .global(qos: .userInteractive)) { [unowned self] snapshot, error in
+        snapshotter.start(with: .global(qos: .userInteractive)) { [weak self] snapshot, error in
             guard let snapshot = snapshot else {
+				DispatchQueue.main.async {
+					self?.activityIndicator.stopAnimating()
+				}
                 return
             }
             
             let finalImage = snapshot.drawPolyline(polyLine, color: UIColor.blue, lineWidth: 3)
-            self.imageCache.setObject(finalImage, forKey: (id ?? "") as NSString)
+            self?.imageCache.setObject(finalImage, forKey: (id ?? "") as NSString)
             DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                self.routeImageView.image = finalImage
+                self?.activityIndicator.stopAnimating()
+                self?.routeImageView.image = finalImage
             }
         }
     }
 
-}
-
-extension UIView {
-    func installShadow(cornerRadiuis: Int, color: UIColor, offset: CGSize, opacity: CGFloat) {
-        layer.cornerRadius = 2
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowOpacity = 0.45
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-        layer.shadowRadius = 1.0
-    }
 }

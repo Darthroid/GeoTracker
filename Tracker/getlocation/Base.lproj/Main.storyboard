@@ -211,6 +211,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="jRk-6O-4VT">
+                            <rect key="frame" x="0.0" y="421" width="375" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TrackerCellSimple" textLabel="Uwn-sp-vM7" detailTextLabel="b3j-Xr-7c4" style="IBUITableViewCellStyleSubtitle" id="agE-sb-c2D">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
@@ -546,7 +551,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cAg-VO-7to">
-                                <rect key="frame" x="0.0" y="60" width="375" height="346"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="302"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PointCell" textLabel="oun-eG-RPx" detailTextLabel="dK4-Qf-tKN" style="IBUITableViewCellStyleSubtitle" id="Hct-kl-3Bf">
@@ -576,7 +581,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-Tl-LuH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracker Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCe-F6-ZYp">
                                         <rect key="frame" x="16" y="15" width="161.33333333333334" height="30"/>
@@ -584,11 +589,24 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo2-q6-XRW">
+                                        <rect key="frame" x="315" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Wo2-q6-XRW" secondAttribute="height" multiplier="1:1" id="2l7-3V-sgT"/>
+                                            <constraint firstAttribute="height" constant="60" id="UrV-ic-ERp"/>
+                                        </constraints>
+                                        <state key="normal" image="share"/>
+                                        <connections>
+                                            <action selector="shareTap:" destination="AI1-nS-xzh" eventType="touchUpInside" id="eLq-R0-p6M"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Wo2-q6-XRW" secondAttribute="trailing" id="LPZ-CG-MC8"/>
                                     <constraint firstAttribute="height" constant="60" id="aRL-UH-55S"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SCe-F6-ZYp" secondAttribute="trailingMargin" constant="16" id="m4r-Ql-cUf"/>
+                                    <constraint firstItem="Wo2-q6-XRW" firstAttribute="top" secondItem="Gh5-Tl-LuH" secondAttribute="top" id="bkd-3q-iP0"/>
+                                    <constraint firstItem="Wo2-q6-XRW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SCe-F6-ZYp" secondAttribute="trailingMargin" constant="16" id="m4r-Ql-cUf"/>
                                     <constraint firstItem="SCe-F6-ZYp" firstAttribute="centerY" secondItem="Gh5-Tl-LuH" secondAttribute="centerY" id="sS4-ec-mOC"/>
                                     <constraint firstItem="SCe-F6-ZYp" firstAttribute="leading" secondItem="Gh5-Tl-LuH" secondAttribute="leadingMargin" constant="8" id="scl-b0-6Wy"/>
                                 </constraints>
@@ -599,13 +617,14 @@
                             <constraint firstAttribute="trailing" secondItem="Gh5-Tl-LuH" secondAttribute="trailing" id="B0M-tO-rg0"/>
                             <constraint firstAttribute="bottom" secondItem="cAg-VO-7to" secondAttribute="bottom" id="Ho9-eB-d3y"/>
                             <constraint firstItem="cAg-VO-7to" firstAttribute="top" secondItem="Gh5-Tl-LuH" secondAttribute="bottom" id="MO3-F1-DWV"/>
-                            <constraint firstItem="Gh5-Tl-LuH" firstAttribute="top" secondItem="caP-cd-p7A" secondAttribute="top" id="Q7r-ZY-lUk"/>
+                            <constraint firstItem="Gh5-Tl-LuH" firstAttribute="top" secondItem="NW1-GZ-9zt" secondAttribute="bottom" id="Q7r-ZY-lUk"/>
                             <constraint firstItem="cAg-VO-7to" firstAttribute="leading" secondItem="caP-cd-p7A" secondAttribute="leading" id="Q9Q-OV-AEC"/>
                             <constraint firstAttribute="trailing" secondItem="cAg-VO-7to" secondAttribute="trailing" id="b79-3J-CBI"/>
                             <constraint firstItem="Gh5-Tl-LuH" firstAttribute="leading" secondItem="caP-cd-p7A" secondAttribute="leading" id="mrH-mq-3gm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="shareButton" destination="Wo2-q6-XRW" id="Czf-4N-yg2"/>
                         <outlet property="tableView" destination="cAg-VO-7to" id="mEy-hN-xJD"/>
                         <outlet property="trackerNameLabel" destination="SCe-F6-ZYp" id="zRr-AA-dSX"/>
                     </connections>
@@ -620,5 +639,6 @@
         <image name="info" width="33.333332061767578" height="33.333332061767578"/>
         <image name="list" width="23" height="23"/>
         <image name="marker" width="23" height="23"/>
+        <image name="share" width="30" height="30"/>
     </resources>
 </document>

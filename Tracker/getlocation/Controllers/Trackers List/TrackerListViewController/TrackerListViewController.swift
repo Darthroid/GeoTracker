@@ -69,7 +69,7 @@ class TrackerListViewController: UITableViewController {
     private func fetchTrackers() {
         do {
             self.trackers = try CoreDataManager.shared.fetchTrackers()
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
         } catch {
             AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
         }
@@ -168,6 +168,7 @@ extension TrackerListViewController: UIDocumentPickerDelegate {
 //			print(points)
 		} catch {
 			print(error)
+			AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
 		}
 	}
 }
