@@ -23,7 +23,7 @@ public class CoreDataManager {
 	
 	private var observations = [ObjectIdentifier: Observation]()
     
-    private var context: NSManagedObjectContext {
+    public var context: NSManagedObjectContext {
         return self.persistentContainer.viewContext
     }
     
@@ -51,20 +51,12 @@ public class CoreDataManager {
     
     // MARK: - Create (Insert)
     
-    func insertTracker(withId id: String, name: String, points: [TrackerPoint] = []) throws {
+    func insertTracker(withId id: String, name: String, points: [Point] = []) throws {
         let tracker = Tracker(context: self.context)
         tracker.id = id
         tracker.name = name
         
-        points.forEach({ [unowned self] _point in
-            let point = Point(context: self.context)
-            point.id = _point.id
-            point.latitude = _point.latitude
-            point.longitude = _point.longitude
-            point.timestamp = _point.timestamp
-            
-            tracker.addToPoints(point)
-        })
+        points.forEach({ tracker.addToPoints($0)})
         
         self.context.insert(tracker)
 		self.event(.insert, ids: [tracker.id], trackers: [tracker])

@@ -51,23 +51,21 @@ class TrackerListViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? TrackerDetailViewController {
-            viewController.tracker = selectedTracker
-			viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-			viewController.navigationItem.leftItemsSupplementBackButton = true
-        }
+//        if let viewController = segue.destination as? TrackerDetailViewController {
+//            viewController.tracker = selectedTracker
+//			viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+//			viewController.navigationItem.leftItemsSupplementBackButton = true
+//        }
 		
         collapseDetailViewController = false
-//        guard let navController = segue.destination as? UINavigationController,
-//            let viewController = navController.topViewController as? TrackerDetailViewController else {
-//                fatalError("Expected DetailViewController")
-//        }
-        
-        // Manage the display mode button
-
-        
-        // Configure the secondary view controller
-//        viewController.tracker = selectedTracker
+        guard let navController = segue.destination as? UINavigationController
+			, let viewController = navController.topViewController as? TrackerDetailViewController else {
+                fatalError("Expected DetailViewController")
+        }
+		
+		viewController.tracker = selectedTracker
+		viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+		viewController.navigationItem.leftItemsSupplementBackButton = true
     }
 	
 	deinit {

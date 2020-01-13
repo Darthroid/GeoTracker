@@ -22,7 +22,6 @@
 		5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C569093233771CE00265673 /* TrackerListViewController.swift */; };
 		5C569097233809B300265673 /* TrackerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C569096233809B300265673 /* TrackerCell.swift */; };
 		5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C637E142071595300603F17 /* StartTrackingViewController.swift */; };
-		5C7712D020728778002E1D35 /* TrackerPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7712CF20728778002E1D35 /* TrackerPoint.swift */; };
 		5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */; };
 		5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC21E83F83400F8146E /* AppDelegate.swift */; };
 		5C8C3AC81E83F83400F8146E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC61E83F83400F8146E /* Main.storyboard */; };
@@ -60,7 +59,6 @@
 		5C569093233771CE00265673 /* TrackerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListViewController.swift; sourceTree = "<group>"; };
 		5C569096233809B300265673 /* TrackerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCell.swift; sourceTree = "<group>"; };
 		5C637E142071595300603F17 /* StartTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTrackingViewController.swift; sourceTree = "<group>"; };
-		5C7712CF20728778002E1D35 /* TrackerPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerPoint.swift; sourceTree = "<group>"; };
 		5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerViewController.swift; sourceTree = "<group>"; };
 		5C8C3ABF1E83F83400F8146E /* getlocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getlocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8C3AC21E83F83400F8146E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,14 +165,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		5C7712CE20728750002E1D35 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5C7712CF20728778002E1D35 /* TrackerPoint.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		5C8C3AB61E83F83400F8146E = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +195,6 @@
 				5C17FECB2326DF220086BAE6 /* CoreData */,
 				5CA6B75B233E951000C6A0D5 /* Custom */,
 				5C17FE142326C6E80086BAE6 /* Managers */,
-				5C7712CE20728750002E1D35 /* Models */,
 				5C17FE172326C7AD0086BAE6 /* Utils */,
 				5C8C3ACB1E83F83400F8146E /* LaunchScreen.storyboard */,
 				5C8C3AC61E83F83400F8146E /* Main.storyboard */,
@@ -408,7 +397,6 @@
 				5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */,
 				5C569097233809B300265673 /* TrackerCell.swift in Sources */,
 				5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */,
-				5C7712D020728778002E1D35 /* TrackerPoint.swift in Sources */,
 				5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */,
 				D1950B1423C4ACA90080F97F /* Date.swift in Sources */,
 				5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */,

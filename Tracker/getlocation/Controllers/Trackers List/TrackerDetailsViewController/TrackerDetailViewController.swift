@@ -52,6 +52,9 @@ class TrackerDetailViewController: UIViewController {
     // MARK: - User defined methods
     
     private func setupInterface() {   //TODO: remove shadow for dark appearance
+//		self.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+//		self.navigationItem.leftItemsSupplementBackButton = true
+		
         self.buttonsWrapperView.cornerRadius = 10.0
         self.buttonsWrapperView.shadowColor = UIColor.gray.cgColor
         self.buttonsWrapperView.shadowOffset = CGSize(width: 0.0, height: 0.0)
@@ -144,7 +147,7 @@ extension TrackerDetailViewController: MKMapViewDelegate {
 // MARK: - TrackerDetailBottomDelegate methods
 
 extension TrackerDetailViewController: TrackerDetailBottomDelegate {
-	func didSelectPoint(_ point: TrackerPoint) {
+	func didSelectPoint(_ point: Point) {
 		
 		// TODO: filter added annotations somehow else
 		let annotationsToRemove = self.mapView.annotations.filter({ $0 is CustomPointAnnotation })
