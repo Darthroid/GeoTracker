@@ -331,7 +331,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Trackers List" id="iZf-FG-GYq"/>
                     <connections>
-                        <segue destination="XKY-ms-uhY" kind="showDetail" identifier="trackerDetail" id="kr7-bO-pDR"/>
+                        <segue destination="gWD-oi-BMZ" kind="showDetail" identifier="trackerDetail" id="kr7-bO-pDR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnf-D0-HUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -493,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AcA-vo-lxD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2945" y="1699"/>
+            <point key="canvasLocation" x="2945" y="1720"/>
         </scene>
         <!--Primary Split View Controller-->
         <scene sceneID="bUq-ur-tWV">
@@ -502,7 +502,7 @@
                     <tabBarItem key="tabBarItem" title="" image="list" id="ABR-Sd-CRH"/>
                     <connections>
                         <segue destination="ZtS-iY-YzI" kind="relationship" relationship="masterViewController" id="4ND-E0-P7g"/>
-                        <segue destination="XKY-ms-uhY" kind="relationship" relationship="detailViewController" id="oY7-Io-eY4"/>
+                        <segue destination="gWD-oi-BMZ" kind="relationship" relationship="detailViewController" id="oY7-Io-eY4"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2N-cX-m63" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -531,7 +531,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQd-Mj-PoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-809" y="565"/>
+            <point key="canvasLocation" x="-265" y="531"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gyL-kw-3NA">
@@ -645,7 +645,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNo-ha-OZm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4639" y="1082"/>
+            <point key="canvasLocation" x="3790" y="1886"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OwB-YL-jEe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gWD-oi-BMZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vDg-ti-gZK">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XKY-ms-uhY" kind="relationship" relationship="rootViewController" id="c2L-o0-hkG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LYy-6Z-Wot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2007" y="1720"/>
         </scene>
     </scenes>
     <resources>
@@ -656,6 +674,6 @@
         <image name="share" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kr7-bO-pDR"/>
+        <segue reference="oY7-Io-eY4"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -52,6 +52,9 @@ class TrackerDetailViewController: UIViewController {
     // MARK: - User defined methods
     
     private func setupInterface() {   //TODO: remove shadow for dark appearance
+//		self.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+//		self.navigationItem.leftItemsSupplementBackButton = true
+		
         self.buttonsWrapperView.cornerRadius = 10.0
         self.buttonsWrapperView.shadowColor = UIColor.gray.cgColor
         self.buttonsWrapperView.shadowOffset = CGSize(width: 0.0, height: 0.0)
