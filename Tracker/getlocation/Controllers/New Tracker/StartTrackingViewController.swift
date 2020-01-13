@@ -20,7 +20,7 @@ class StartTrackingViewController: UIViewController {
     var updateFrequency: Double?
     weak var timer: Timer?
 
-    private var points = [TrackerPoint]()
+    private var points = [Point]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,10 +91,12 @@ class StartTrackingViewController: UIViewController {
             if  let latitude = LocationManager.shared.location?.coordinate.latitude,
                 let longitude = LocationManager.shared.location?.coordinate.longitude
             {
-                let point = TrackerPoint(latitude: latitude,
-                                         longitude: longitude,
-                                         id: UUID().uuidString,
-                                         timestamp: Int64(NSDate().timeIntervalSince1970))
+				let point = Point()
+				point.latitude = latitude
+				point.longitude = longitude
+				point.id = UUID().uuidString
+				point.timestamp = Int64(NSDate().timeIntervalSince1970)
+				
                 self.points.append(point)
                 print(point.latitude, point.longitude, point.id)
             }

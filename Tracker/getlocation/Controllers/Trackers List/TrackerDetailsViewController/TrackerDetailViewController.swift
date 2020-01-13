@@ -144,7 +144,7 @@ extension TrackerDetailViewController: MKMapViewDelegate {
 // MARK: - TrackerDetailBottomDelegate methods
 
 extension TrackerDetailViewController: TrackerDetailBottomDelegate {
-	func didSelectPoint(_ point: TrackerPoint) {
+	func didSelectPoint(_ point: Point) {
 		
 		// TODO: filter added annotations somehow else
 		let annotationsToRemove = self.mapView.annotations.filter({ $0 is CustomPointAnnotation })

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TrackerDetailBottomDelegate: class {
-	func didSelectPoint(_ point: TrackerPoint)
+	func didSelectPoint(_ point: Point)
 //	func didRequestSnapshot() -> Data?
 }
 
@@ -24,18 +24,15 @@ class TrackerDetailBottomViewController: UIViewController {
     // MARK: - Public properties
 	
 	public weak var delegate: TrackerDetailBottomDelegate?
-	public var tracker: Tracker? {
-		didSet {
-			self.points = tracker?.points?.map({ TrackerPoint(latitude: $0.latitude,
-															  longitude: $0.longitude,
-															  id: $0.id,
-															  timestamp: $0.timestamp) }) ?? []
-		}
-	}
+	public var tracker: Tracker?
 	
 	// MARK: - Private properties
 	
-	private var points: [TrackerPoint] = []
+	private var points: [Point] {
+		get {
+			return Array<Point>(self.tracker?.points ?? [])
+		}
+	}
 
     // MARK: - ViewController LifeCycle methods
 
