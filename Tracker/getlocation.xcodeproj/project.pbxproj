@@ -8,24 +8,59 @@
 
 /* Begin PBXBuildFile section */
 		5C0194491EFA8BDA00E162CC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0194481EFA8BDA00E162CC /* CoreData.framework */; };
-		5C01944F1EFA8C1100E162CC /* getlocation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C01944D1EFA8C1100E162CC /* getlocation.xcdatamodeld */; };
+		5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C01944D1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld */; };
+		5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C11BF29233001AB000A12D2 /* LocationManager.swift */; };
+		5C11BF2D23302483000A12D2 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C11BF2C23302483000A12D2 /* Bundle.swift */; };
+		5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FE122326C51E0086BAE6 /* Constant.swift */; };
+		5C17FE162326C6F90086BAE6 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FE152326C6F90086BAE6 /* AlertManager.swift */; };
+		5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FE182326C7BD0086BAE6 /* CommonUtils.swift */; };
+		5C17FE222326D25F0086BAE6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FE212326D25F0086BAE6 /* CoreDataManager.swift */; };
+		5C17FED02326E00F0086BAE6 /* Tracker+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FECC2326E00F0086BAE6 /* Tracker+CoreDataClass.swift */; };
+		5C17FED22326E00F0086BAE6 /* Point+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FECE2326E00F0086BAE6 /* Point+CoreDataProperties.swift */; };
+		5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FECF2326E00F0086BAE6 /* Point+CoreDataClass.swift */; };
+		5C17FED52326E0410086BAE6 /* Tracker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FED42326E0410086BAE6 /* Tracker+CoreDataProperties.swift */; };
+		5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C569093233771CE00265673 /* TrackerListViewController.swift */; };
+		5C569097233809B300265673 /* TrackerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C569096233809B300265673 /* TrackerCell.swift */; };
 		5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C637E142071595300603F17 /* StartTrackingViewController.swift */; };
-		5C7712D020728778002E1D35 /* TrackerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7712CF20728778002E1D35 /* TrackerData.swift */; };
+		5C7712D020728778002E1D35 /* TrackerPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7712CF20728778002E1D35 /* TrackerPoint.swift */; };
 		5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */; };
 		5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC21E83F83400F8146E /* AppDelegate.swift */; };
 		5C8C3AC81E83F83400F8146E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC61E83F83400F8146E /* Main.storyboard */; };
 		5C8C3ACA1E83F83400F8146E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3AC91E83F83400F8146E /* Assets.xcassets */; };
 		5C8C3ACD1E83F83400F8146E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3ACB1E83F83400F8146E /* LaunchScreen.storyboard */; };
+		5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */; };
+		5CA6B759233BE53100C6A0D5 /* TrackerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */; };
+		5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B75C233E952F00C6A0D5 /* CardView.swift */; };
 		5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCF1F421E8FEFF0005D02ED /* MapKit.framework */; };
-		61B2EA98A36E59A9FC89F015 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9CD5E0F0B136F835386097 /* Pods_getlocation.framework */; };
+		62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */; };
+		D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6CF23C0D44200C1BE82 /* UITableView.swift */; };
+		D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */; };
+		D178195B23CBA5EE006A4104 /* PrimarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */; };
+		D1950B1223C498DE0080F97F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1123C498DE0080F97F /* UIView.swift */; };
+		D1950B1423C4ACA90080F97F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1323C4ACA80080F97F /* Date.swift */; };
+		D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */; };
+		D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		517D7D7B85470FE1818097AD /* Pods-getlocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.release.xcconfig"; path = "Pods/Target Support Files/Pods-getlocation/Pods-getlocation.release.xcconfig"; sourceTree = "<group>"; };
+		0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.release.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.release.xcconfig"; sourceTree = "<group>"; };
+		25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_getlocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0194481EFA8BDA00E162CC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = getlocation.xcdatamodel; sourceTree = "<group>"; };
+		5C11BF29233001AB000A12D2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5C11BF2C23302483000A12D2 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		5C17FE122326C51E0086BAE6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		5C17FE152326C6F90086BAE6 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		5C17FE182326C7BD0086BAE6 /* CommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
+		5C17FE212326D25F0086BAE6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5C17FECC2326E00F0086BAE6 /* Tracker+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tracker+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C17FECE2326E00F0086BAE6 /* Point+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C17FECF2326E00F0086BAE6 /* Point+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C17FED42326E0410086BAE6 /* Tracker+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tracker+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C569093233771CE00265673 /* TrackerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListViewController.swift; sourceTree = "<group>"; };
+		5C569096233809B300265673 /* TrackerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCell.swift; sourceTree = "<group>"; };
 		5C637E142071595300603F17 /* StartTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTrackingViewController.swift; sourceTree = "<group>"; };
-		5C7712CF20728778002E1D35 /* TrackerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerData.swift; sourceTree = "<group>"; };
+		5C7712CF20728778002E1D35 /* TrackerPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerPoint.swift; sourceTree = "<group>"; };
 		5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerViewController.swift; sourceTree = "<group>"; };
 		5C8C3ABF1E83F83400F8146E /* getlocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getlocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8C3AC21E83F83400F8146E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,9 +68,19 @@
 		5C8C3AC91E83F83400F8146E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C8C3ACC1E83F83400F8146E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C8C3ACE1E83F83400F8146E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapSnapshotter.swift; sourceTree = "<group>"; };
+		5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailViewController.swift; sourceTree = "<group>"; };
+		5CA6B75A233E8BED00C6A0D5 /* getlocation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = getlocation.entitlements; sourceTree = "<group>"; };
+		5CA6B75C233E952F00C6A0D5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		BC9CD5E0F0B136F835386097 /* Pods_getlocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_getlocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFE2504FE1796C173DA71741 /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
+		C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
+		D146A6CF23C0D44200C1BE82 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParseManager.swift; sourceTree = "<group>"; };
+		D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
+		D1950B1123C498DE0080F97F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D1950B1323C4ACA80080F97F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailBottomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,46 +90,98 @@
 			files = (
 				5C0194491EFA8BDA00E162CC /* CoreData.framework in Frameworks */,
 				5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */,
-				61B2EA98A36E59A9FC89F015 /* Pods_getlocation.framework in Frameworks */,
+				62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		21A093CCE3EDECAF59D3B5BA /* Pods */ = {
+		5C11BF2B2330242F000A12D2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FFE2504FE1796C173DA71741 /* Pods-getlocation.debug.xcconfig */,
-				517D7D7B85470FE1818097AD /* Pods-getlocation.release.xcconfig */,
+				5C11BF2C23302483000A12D2 /* Bundle.swift */,
+				5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */,
+				D146A6CF23C0D44200C1BE82 /* UITableView.swift */,
+				D1950B1123C498DE0080F97F /* UIView.swift */,
+				D1950B1323C4ACA80080F97F /* Date.swift */,
 			);
-			name = Pods;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5C17FE112326C50D0086BAE6 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				5C17FE122326C51E0086BAE6 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		5C17FE142326C6E80086BAE6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5C17FE152326C6F90086BAE6 /* AlertManager.swift */,
+				5C17FE212326D25F0086BAE6 /* CoreDataManager.swift */,
+				5C11BF29233001AB000A12D2 /* LocationManager.swift */,
+				D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5C17FE172326C7AD0086BAE6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5C17FE182326C7BD0086BAE6 /* CommonUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5C17FECB2326DF220086BAE6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5C01944D1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld */,
+				5C17FECF2326E00F0086BAE6 /* Point+CoreDataClass.swift */,
+				5C17FECE2326E00F0086BAE6 /* Point+CoreDataProperties.swift */,
+				5C17FECC2326E00F0086BAE6 /* Tracker+CoreDataClass.swift */,
+				5C17FED42326E0410086BAE6 /* Tracker+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		5C5690952338098B00265673 /* Trackers List */ = {
+			isa = PBXGroup;
+			children = (
+				5CA6B757233BE20F00C6A0D5 /* TrackerListViewController */,
+				D1BD527823C23D1800427EA9 /* TrackerDetailsViewController */,
+			);
+			path = "Trackers List";
 			sourceTree = "<group>";
 		};
 		5C637E162071596000603F17 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */,
-				5C637E142071595300603F17 /* StartTrackingViewController.swift */,
+				5CA6B756233BE1EB00C6A0D5 /* New Tracker */,
+				5C5690952338098B00265673 /* Trackers List */,
+				D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		5C7712CE20728750002E1D35 /* Model */ = {
+		5C7712CE20728750002E1D35 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5C7712CF20728778002E1D35 /* TrackerData.swift */,
+				5C7712CF20728778002E1D35 /* TrackerPoint.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5C8C3AB61E83F83400F8146E = {
 			isa = PBXGroup;
 			children = (
 				5C8C3AC11E83F83400F8146E /* getlocation */,
-				5C8C3AC01E83F83400F8146E /* Products */,
 				5CCF1F411E8FEFF0005D02ED /* Frameworks */,
-				21A093CCE3EDECAF59D3B5BA /* Pods */,
+				5C8C3AC01E83F83400F8146E /* Products */,
+				AC3B0CA3C66174521E5AD62E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,16 +196,57 @@
 		5C8C3AC11E83F83400F8146E /* getlocation */ = {
 			isa = PBXGroup;
 			children = (
-				5C7712CE20728750002E1D35 /* Model */,
-				5C637E162071596000603F17 /* Controllers */,
-				5C8C3AC21E83F83400F8146E /* AppDelegate.swift */,
-				5C8C3AC61E83F83400F8146E /* Main.storyboard */,
-				5C8C3AC91E83F83400F8146E /* Assets.xcassets */,
-				5C8C3ACB1E83F83400F8146E /* LaunchScreen.storyboard */,
+				5CA6B75A233E8BED00C6A0D5 /* getlocation.entitlements */,
 				5C8C3ACE1E83F83400F8146E /* Info.plist */,
-				5C01944D1EFA8C1100E162CC /* getlocation.xcdatamodeld */,
+				5C8C3AC21E83F83400F8146E /* AppDelegate.swift */,
+				5C8C3AC91E83F83400F8146E /* Assets.xcassets */,
+				5C17FE112326C50D0086BAE6 /* Constant */,
+				5C637E162071596000603F17 /* Controllers */,
+				5C17FECB2326DF220086BAE6 /* CoreData */,
+				5CA6B75B233E951000C6A0D5 /* Custom */,
+				5C17FE142326C6E80086BAE6 /* Managers */,
+				5C7712CE20728750002E1D35 /* Models */,
+				5C17FE172326C7AD0086BAE6 /* Utils */,
+				5C8C3ACB1E83F83400F8146E /* LaunchScreen.storyboard */,
+				5C8C3AC61E83F83400F8146E /* Main.storyboard */,
 			);
 			path = getlocation;
+			sourceTree = "<group>";
+		};
+		5CA6B756233BE1EB00C6A0D5 /* New Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				5C7F00B72071283B0034A2AB /* NewTrackerViewController.swift */,
+				5C637E142071595300603F17 /* StartTrackingViewController.swift */,
+			);
+			path = "New Tracker";
+			sourceTree = "<group>";
+		};
+		5CA6B757233BE20F00C6A0D5 /* TrackerListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5C569093233771CE00265673 /* TrackerListViewController.swift */,
+				5C569096233809B300265673 /* TrackerCell.swift */,
+			);
+			path = TrackerListViewController;
+			sourceTree = "<group>";
+		};
+		5CA6B75B233E951000C6A0D5 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				5C11BF2B2330242F000A12D2 /* Extensions */,
+				5CA6B75E233EA1C900C6A0D5 /* Views */,
+				D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		5CA6B75E233EA1C900C6A0D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5CA6B75C233E952F00C6A0D5 /* CardView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5CCF1F411E8FEFF0005D02ED /* Frameworks */ = {
@@ -116,9 +254,27 @@
 			children = (
 				5C0194481EFA8BDA00E162CC /* CoreData.framework */,
 				5CCF1F421E8FEFF0005D02ED /* MapKit.framework */,
-				BC9CD5E0F0B136F835386097 /* Pods_getlocation.framework */,
+				25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC3B0CA3C66174521E5AD62E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */,
+				0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D1BD527823C23D1800427EA9 /* TrackerDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */,
+				D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */,
+			);
+			path = TrackerDetailsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,11 +284,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C8C3AD11E83F83400F8146E /* Build configuration list for PBXNativeTarget "getlocation" */;
 			buildPhases = (
-				886EA340694BEB8CCC1C080A /* [CP] Check Pods Manifest.lock */,
+				D3B0238793B3F9D7BE584B70 /* [CP] Check Pods Manifest.lock */,
 				5C8C3ABB1E83F83400F8146E /* Sources */,
 				5C8C3ABC1E83F83400F8146E /* Frameworks */,
 				5C8C3ABD1E83F83400F8146E /* Resources */,
-				9A9676A2175DA37913A94443 /* [CP] Embed Pods Frameworks */,
+				014A648AC323E48B2E89F4E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,12 +306,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Darthroid;
 				TargetAttributes = {
 					5C8C3ABE1E83F83400F8146E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 97A6BHXBQU;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -170,7 +327,7 @@
 			};
 			buildConfigurationList = 5C8C3ABA1E83F83400F8146E /* Build configuration list for PBXProject "getlocation" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -200,40 +357,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		886EA340694BEB8CCC1C080A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-getlocation-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A9676A2175DA37913A94443 /* [CP] Embed Pods Frameworks */ = {
+		014A648AC323E48B2E89F4E9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-getlocation/Pods-getlocation-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CoreGPX/CoreGPX.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreGPX.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-getlocation/Pods-getlocation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3B0238793B3F9D7BE584B70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-getlocation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -243,11 +404,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C7712D020728778002E1D35 /* TrackerData.swift in Sources */,
-				5C01944F1EFA8C1100E162CC /* getlocation.xcdatamodeld in Sources */,
+				5C17FED02326E00F0086BAE6 /* Tracker+CoreDataClass.swift in Sources */,
+				5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */,
+				5C569097233809B300265673 /* TrackerCell.swift in Sources */,
+				5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */,
+				5C7712D020728778002E1D35 /* TrackerPoint.swift in Sources */,
+				5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */,
+				D1950B1423C4ACA90080F97F /* Date.swift in Sources */,
 				5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */,
 				5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */,
+				5CA6B759233BE53100C6A0D5 /* TrackerDetailViewController.swift in Sources */,
 				5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */,
+				5C17FED52326E0410086BAE6 /* Tracker+CoreDataProperties.swift in Sources */,
+				D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */,
+				5C17FE162326C6F90086BAE6 /* AlertManager.swift in Sources */,
+				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
+				5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */,
+				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
+				D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */,
+				D1950B1223C498DE0080F97F /* UIView.swift in Sources */,
+				D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */,
+				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
+				D178195B23CBA5EE006A4104 /* PrimarySplitViewController.swift in Sources */,
+				5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */,
+				5C17FED22326E00F0086BAE6 /* Point+CoreDataProperties.swift in Sources */,
+				5C11BF2D23302483000A12D2 /* Bundle.swift in Sources */,
+				5C17FE222326D25F0086BAE6 /* CoreDataManager.swift in Sources */,
+				D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,20 +460,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -326,20 +518,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -366,29 +567,37 @@
 		};
 		5C8C3AD21E83F83400F8146E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFE2504FE1796C173DA71741 /* Pods-getlocation.debug.xcconfig */;
+			baseConfigurationReference = C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = getlocation/getlocation.entitlements;
 				DEVELOPMENT_TEAM = 97A6BHXBQU;
 				INFOPLIST_FILE = getlocation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.darthroid.getlocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		5C8C3AD31E83F83400F8146E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 517D7D7B85470FE1818097AD /* Pods-getlocation.release.xcconfig */;
+			baseConfigurationReference = 0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = getlocation/getlocation.entitlements;
 				DEVELOPMENT_TEAM = 97A6BHXBQU;
 				INFOPLIST_FILE = getlocation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.darthroid.getlocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -416,13 +625,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5C01944D1EFA8C1100E162CC /* getlocation.xcdatamodeld */ = {
+		5C01944D1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */,
 			);
 			currentVersion = 5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */;
-			path = getlocation.xcdatamodeld;
+			path = TrackerDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

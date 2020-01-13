@@ -1,0 +1,87 @@
+//
+//  GPXParseManager.swift
+//  getlocation
+//
+//  Created by Олег Комаристый on 05.01.2020.
+//  Copyright © 2020 Darthroid. All rights reserved.
+//
+
+import Foundation
+import CoreGPX
+
+class GPXParseManager {
+	public class func parseGPX(fromUrl url: URL, save: Bool = false) throws -> [TrackerPoint] {
+		_ = url.startAccessingSecurityScopedResource()
+		guard let gpx = GPXParser(withURL: url)?.parsedData() else {
+			throw NSError(domain: "Unable to parse gpx from path: \(url)", code: 1, userInfo: nil)
+		}
+		let trackerName = (url.lastPathComponent as NSString).deletingPathExtension
+		
+		url.stopAccessingSecurityScopedResource()
+		return GPXParseManager.parse(trackerName, waypoints: gpx.waypoints, save: save)
+	}
+	
+	/// Creates gpx formatted string and optionally saves to documents directory
+	/// - Parameters:
+	///   - tracker: Tracker with points to be processed
+	///   - save: Indicates whether it needs to be saved to file or not
+	public class func createGPX(fromTracker tracker: Tracker, save: Bool = false, completionHandler: @escaping (String, URL?) -> Void) {
+		let root = GPXRoot(creator: Bundle.main.displayName)
+		var waypoints: [GPXWaypoint] = []
+		
+		tracker.points?.forEach({ point in
+			let waypoint = GPXWaypoint(latitude: point.latitude, longitude: point.longitude)
+			waypoints.append(waypoint)
+		})
+		
+		root.add(waypoints: waypoints)
+		
+		let gpxString = root.gpx()
+		
+		if save {
+			DispatchQueue.global(qos: .userInitiated).async {
+				let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
+				do {
+					let date = Date()
+					let dateString = date.stringfromTimeStamp(Int64(date.timeIntervalSince1970))
+					
+					let fileName = tracker.name ?? "Tracker_" + dateString
+					
+					try root.outputToFile(saveAt: url, fileName: fileName)
+					completionHandler(gpxString, url.appendingPathComponent(fileName).appendingPathExtension("gpx"))
+				} catch {
+					completionHandler(gpxString, nil)
+				}
+			}
+		} else {
+			completionHandler(gpxString, nil)
+		}
+	}
+	
+	private class func parse(_ name: String, waypoints: [GPXWaypoint], save: Bool = false) -> [TrackerPoint] {
+		var trackerPoints: [TrackerPoint] = []
+		let trackerId = UUID().uuidString
+		
+		waypoints.forEach({ waypoint in
+			guard let latitude = waypoint.latitude, let longitude = waypoint.longitude else { return }
+			let id = UUID().uuidString	// we need to generate uuid for every waypoint
+			let convertedPoint = TrackerPoint(latitude: latitude,
+											  longitude: longitude,
+											  id: id,
+											  timestamp: Int64(waypoint.time?.timeIntervalSince1970 ?? 0))
+			trackerPoints.append(convertedPoint)
+		})
+		
+		if save {
+			do {
+				try CoreDataManager.shared.insertTracker(withId: trackerId,
+														 name: name,
+														 points: trackerPoints)
+			} catch {
+				print(error)
+			}
+		}
+		
+		return trackerPoints
+	}
+}
