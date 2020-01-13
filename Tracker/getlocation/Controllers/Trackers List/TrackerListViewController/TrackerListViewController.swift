@@ -22,6 +22,7 @@ class TrackerListViewController: UITableViewController {
 		}
 	}
     private var selectedTracker: Tracker?
+	private var collapseDetailViewController = true
     
     // MARK: - ViewController LifeCycle methods
     
@@ -50,9 +51,23 @@ class TrackerListViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? TrackerDetailViewController {
-            vc.tracker = selectedTracker
+        if let viewController = segue.destination as? TrackerDetailViewController {
+            viewController.tracker = selectedTracker
+			viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+			viewController.navigationItem.leftItemsSupplementBackButton = true
         }
+		
+        collapseDetailViewController = false
+//        guard let navController = segue.destination as? UINavigationController,
+//            let viewController = navController.topViewController as? TrackerDetailViewController else {
+//                fatalError("Expected DetailViewController")
+//        }
+        
+        // Manage the display mode button
+
+        
+        // Configure the secondary view controller
+//        viewController.tracker = selectedTracker
     }
 	
 	deinit {
@@ -171,6 +186,14 @@ extension TrackerListViewController: UIDocumentPickerDelegate {
 			AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
 		}
 	}
+}
+
+// MARK: - UISplitViewControllerDelegate methods
+
+extension TrackerListViewController: UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return collapseDetailViewController
+    }
 }
 
 // MARK: - CoreDataObserver methods
