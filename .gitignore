@@ -6,6 +6,15 @@
 build/
 DerivedData/
 
+## OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
