@@ -8,15 +8,19 @@
 
 import Foundation
 
-class TrackerViewModel {
+class TrackerViewModel: RowViewModel {
 	private var tracker: Tracker
 	
 	public var points: [Point] {
-		return Array(tracker.points ?? Set())	// TODO: deal with optionals
+		return Array(tracker.points ?? Set())
 	}
 	
 	public var name: String {
 		return tracker.name ?? ""
+	}
+	
+	public var description: String {
+		"\(String(describing: points.count)) points"
 	}
 	
 	public var id: String {

@@ -7,16 +7,24 @@
 //
 
 import Foundation
-import UIKit
 
 class TrackerListViewModel {
-	var dataSource = TrackerListDataSource()
+	var dataSource: TrackerListDataSource!
 	
 	public init() {
+		self.subscribeForDbEvents()
 		
+		dataSource = TrackerListDataSource(eventHandler: { [weak self] event, eventViewModel in
+			switch event {
+			case .delete:
+				self?.deleteTracker(eventViewModel)
+			default:
+				assert(false, "not implemented")
+			}
+		})
 	}
 	
-	public func subscribeForDatabase() {
+	public func subscribeForDbEvents() {
 		CoreDataManager.shared.addObserver(self)
 	}
 	
@@ -30,7 +38,26 @@ class TrackerListViewModel {
 			assert(false, error.localizedDescription)
 		}
 	}
+	
+	public func deleteTracker(_ tracker: TrackerViewModel) {
+		do {
+			try CoreDataManager.shared.deleteTrackers(withId: tracker.id)
+		} catch {
+			AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
+		}
+	}
+	
+	public func parseGpxFrom(_ url: URL) {
+		do {
+			_ = try GPXParseManager.parseGPX(fromUrl: url, save: true)
+		} catch {
+			print(error)
+			AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
+		}
+	}
 }
+
+// MARK: - CoreDataObserver methods
 
 extension TrackerListViewModel: CoreDataObserver {
 	func didInsert(ids: [String], trackers: [Tracker]) {
@@ -39,24 +66,19 @@ extension TrackerListViewModel: CoreDataObserver {
 		})
 	}
 	
-	func didUpdate(ids: [String], trackers: [Tracker]) {
+	func didUpdate(ids: [String], trackers: [Tracker]?) {
 		// TODO:
 	}
 	
-	func didDelete(ids: [String], trackers: [Tracker]) {
-		trackers.forEach({ tracker in
-			self.dataSource.data.value.removeAll(where: { $0.id == tracker.id })
-		})
-	}
-}
-
-class TrackerListDataSource: GenericDataSource<TrackerViewModel>, UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return data.value.count
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		assert(false, "implement cell configuration")
-		return UITableViewCell()
+	func didDelete(ids: [String], trackers: [Tracker]?) {
+		if let trackers = trackers {
+			trackers.forEach({ tracker in
+				self.dataSource.data.value.removeAll(where: { $0.id == tracker.id })
+			})
+		} else {
+			ids.forEach({ id in
+				self.dataSource.data.value.removeAll(where: { $0.id == id })
+			})
+		}
 	}
 }

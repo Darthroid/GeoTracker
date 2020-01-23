@@ -11,42 +11,40 @@ import UIKit
 class TrackerListViewController: UITableViewController {
 
     // MARK: - private properties
-    
-	private var trackers: [Tracker]? {
-		didSet {
-			if trackers?.count ?? 0 > 0 {
-				self.tableView.removeNoDataPlaceholder()
-			} else {
-				self.tableView.setNoDataPlaceholder("No available trackers")
-			}
-		}
-	}
+
     private var selectedTracker: Tracker?
 	private var collapseDetailViewController = true
+	
+	public var viewModel = TrackerListViewModel()
     
     // MARK: - ViewController LifeCycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-//        self.navigationItem.leftBarButtonItem = self.editButtonItem
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
 																 target: self,
 																 action: #selector(addButtonTap(_:)))
         self.tableView.delegate = self
-        self.tableView.dataSource = self
+		self.tableView.dataSource = viewModel.dataSource
+		self.viewModel.fetchTrackers()
 		
-		self.fetchTrackers()
-		
-		CoreDataManager.shared.addObserver(self)
+		viewModel.dataSource.data
+			.addAndNotify(observer: self) { [weak self] in
+				guard let `self` = self else { return }
+				print(self, "dataSource changed")
+				// TODO: move placeholder handling somewhere else
+				if self.viewModel.dataSource.data.value.count > 0 {
+					self.tableView.removeNoDataPlaceholder()
+				} else {
+					self.tableView.setNoDataPlaceholder("No available trackers")
+				}
+				
+				self.tableView.reloadData()
+			}
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
 		self.setupInterface()
     }
 
@@ -67,10 +65,6 @@ class TrackerListViewController: UITableViewController {
 		viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
 		viewController.navigationItem.leftItemsSupplementBackButton = true
     }
-	
-	deinit {
-		CoreDataManager.shared.removeObserver(self)
-	}
     
     // MARK: - User defined methods
     
@@ -78,15 +72,6 @@ class TrackerListViewController: UITableViewController {
 		let interfaceIdiom = UIDevice.current.userInterfaceIdiom
 		self.tableView.separatorStyle = interfaceIdiom == .phone ? .none : .singleLine
 	}
-	
-    private func fetchTrackers() {
-        do {
-            self.trackers = try CoreDataManager.shared.fetchTrackers()
-//            self.tableView.reloadData()
-        } catch {
-            AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
-        }
-    }
 	
 	@objc func addButtonTap(_ sender: Any?) {
 		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -118,57 +103,15 @@ class TrackerListViewController: UITableViewController {
 // MARK: - UITableViewDelegate methods
 
 extension TrackerListViewController {
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trackers?.count ?? 0
-    }
-
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UIDevice.current.userInterfaceIdiom == .phone ? 300 : UITableView.automaticDimension
+//		return UIDevice.current.userInterfaceIdiom == .phone ? 300 : UITableView.automaticDimension
+		return UITableView.automaticDimension
     }
-        
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let tracker = self.trackers?[indexPath.row] else {
-			assert(false)
-			return UITableViewCell()
-		}
-		
-		if UIDevice.current.userInterfaceIdiom == .phone {	// cell with route preview
-			let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackerCell.self),
-													 for: indexPath) as! TrackerCell
-			cell.configure(with: tracker)
-			return cell
-		} else {	// default title/subtitle cell
-			let cell = tableView.dequeueReusableCell(withIdentifier: "TrackerCellSimple", for: indexPath)
-			cell.textLabel?.text = tracker.name
-			cell.detailTextLabel?.text = "\(String(describing: tracker.points?.count ?? 0)) points"
-			return cell
-		}
-    }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.selectedTracker = trackers?[indexPath.row]
+//        self.selectedTracker = trackers?[indexPath.row]
         self.performSegue(withIdentifier: "trackerDetail", sender: self)
-        // pass tracker to detail viewcontroller
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete, let tracker = trackers?[indexPath.row] {
-            do {
-                try CoreDataManager.shared.delete(tracker: tracker)
-            } catch {
-                AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
-            }
-        }
     }
 }
 
@@ -176,13 +119,19 @@ extension TrackerListViewController {
 
 extension TrackerListViewController: UIDocumentPickerDelegate {
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-		do {
-			let /*points*/ _ = try GPXParseManager.parseGPX(fromUrl: url, save: true)
-//			print(points)
-		} catch {
-			print(error)
-			AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
-		}
+		let fileName = (url.lastPathComponent as NSString).deletingPathExtension
+		let ac = UIAlertController(title: "Import \(fileName) ?", message: "", preferredStyle: .alert)
+		
+		let importAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+			self.viewModel.parseGpxFrom(url)
+		})
+		
+		let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+		
+		ac.addAction(importAction)
+		ac.addAction(cancelAction)
+		
+		self.present(ac, animated: true)
 	}
 }
 
@@ -192,38 +141,4 @@ extension TrackerListViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return collapseDetailViewController
     }
-}
-
-// MARK: - CoreDataObserver methods
-
-extension TrackerListViewController: CoreDataObserver {
-	func didInsert(ids: [String], trackers: [Tracker]) {
-		trackers.forEach({ self.trackers?.append($0) })
-		
-		DispatchQueue.main.async {
-			self.tableView.beginUpdates()
-			self.tableView.insertRows(at: [IndexPath(row: (self.trackers?.count ?? 1) - 1, section: 0)], with: .automatic)
-			self.tableView.endUpdates()
-		}
-	}
-	
-	func didUpdate(ids: [String], trackers: [Tracker]) {
-//		trackers.forEach({ tracker in
-//
-//		})
-	}
-	
-	func didDelete(ids: [String], trackers: [Tracker]) {
-		trackers.forEach({ tracker in
-			guard let index = self.trackers?.firstIndex(of: tracker) else { return }
-			self.trackers?.remove(at: index)
-			
-			DispatchQueue.main.async {
-				self.tableView.beginUpdates()
-				self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-				self.tableView.endUpdates()
-			}
-		})
-	}
-
 }

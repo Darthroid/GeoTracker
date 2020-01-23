@@ -217,7 +217,7 @@
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TrackerCellSimple" textLabel="Uwn-sp-vM7" detailTextLabel="b3j-Xr-7c4" style="IBUITableViewCellStyleSubtitle" id="agE-sb-c2D">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TrackerCellSimple" textLabel="Uwn-sp-vM7" detailTextLabel="b3j-Xr-7c4" style="IBUITableViewCellStyleSubtitle" id="agE-sb-c2D" customClass="TrackerCellSimple" customModule="getlocation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="agE-sb-c2D" id="DKJ-MP-yww">
@@ -240,7 +240,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackerCell" rowHeight="300" id="QDo-4E-li1" customClass="TrackerCell" customModule="getlocation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="93" width="375" height="300"/>
@@ -674,6 +674,6 @@
         <image name="share" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oY7-Io-eY4"/>
+        <segue reference="kr7-bO-pDR"/>
     </inferredMetricsTieBreakers>
 </document>

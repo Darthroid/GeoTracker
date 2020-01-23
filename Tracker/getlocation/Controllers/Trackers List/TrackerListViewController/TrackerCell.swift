@@ -9,7 +9,25 @@
 import UIKit
 import MapKit
 
-class TrackerCell: UITableViewCell {
+class TrackerCellSimple: UITableViewCell, CellConfigurable {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+	
+	func setup(viewModel: RowViewModel) {
+		guard let trackerModel = viewModel as? TrackerViewModel else {
+			assert(false)
+			return
+		}
+		
+		self.textLabel?.text = trackerModel.name
+		self.detailTextLabel?.text = trackerModel.description
+	}
+}
+
+class TrackerCell: UITableViewCell, CellConfigurable {
+
+	
 //    @IBOutlet weak var cardStackView: UIStackView!
     @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var routeImageView: UIImageView!
@@ -59,23 +77,30 @@ class TrackerCell: UITableViewCell {
             activityIndicator.style = .large
         }
     }
-    
-    func configure(with tracker: Tracker) {
-        self.trackerNameLabel.text = tracker.name
-        self.trackerDescriptionLabel.text = "\(String(describing: tracker.points?.count ?? 0)) points"
-        
-        if let cachedImage = self.imageCache.object(forKey: (tracker.id) as NSString) {
+	
+	func setup(viewModel: RowViewModel) {
+		guard let trackerModel = viewModel as? TrackerViewModel else {
+			assert(false)
+			return
+		}
+		
+		self.trackerNameLabel.text = trackerModel.name
+		self.trackerDescriptionLabel.text = trackerModel.description
+		
+		if let cachedImage = self.imageCache.object(forKey: (trackerModel.id) as NSString) {
             self.routeImageView.image = cachedImage
         } else {
-            self.takeSnapShot(points: tracker.points, id: tracker.id)
+            self.takeSnapShot(points: trackerModel.points, id: trackerModel.id)
         }
-    }
-    
-    private func takeSnapShot(points: Set<Point>?, id: String?) {
+	}
+
+    private func takeSnapShot(points: [Point], id: String) {
         self.routeImageView?.image = nil
         let mapSnapshotOptions = MKMapSnapshotter.Options()
 
-        guard let coordinates = points?.map({ CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }) else { return }
+        let coordinates = points.map({ CLLocationCoordinate2D(latitude: $0.latitude,
+															  longitude: $0.longitude) })
+		
         let polyLine = MKPolyline(coordinates: coordinates, count: coordinates.count)
         let region = MKCoordinateRegion(polyLine.boundingMapRect)
 
@@ -104,7 +129,7 @@ class TrackerCell: UITableViewCell {
             }
             
             let finalImage = snapshot.drawPolyline(polyLine, color: UIColor.blue, lineWidth: 3)
-            self?.imageCache.setObject(finalImage, forKey: (id ?? "") as NSString)
+            self?.imageCache.setObject(finalImage, forKey: id as NSString)
             DispatchQueue.main.async {
                 self?.activityIndicator.stopAnimating()
                 self?.routeImageView.image = finalImage

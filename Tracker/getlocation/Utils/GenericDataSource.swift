@@ -9,5 +9,17 @@
 import Foundation
 
 class GenericDataSource<T> : NSObject {
+	enum Event {
+		// TODO: events
+		case insert
+		case delete
+	}
+	
     var data: Dynamic<[T]> = Dynamic([])
+	
+	var eventHandler: (Event, T) -> Void
+	
+	public init(eventHandler: @escaping (Event, T) -> Void) {
+		self.eventHandler = eventHandler
+	}
 }

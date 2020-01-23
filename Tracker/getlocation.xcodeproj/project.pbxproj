@@ -32,6 +32,8 @@
 		5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B75C233E952F00C6A0D5 /* CardView.swift */; };
 		5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCF1F421E8FEFF0005D02ED /* MapKit.framework */; };
 		62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */; };
+		D1300D3F23D76C6A00368DD8 /* TrackerListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */; };
+		D1300D4123D7723500368DD8 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1300D4023D7723500368DD8 /* CellConfigurable.swift */; };
 		D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6CF23C0D44200C1BE82 /* UITableView.swift */; };
 		D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */; };
 		D178195B23CBA5EE006A4104 /* PrimarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */; };
@@ -76,6 +78,8 @@
 		5CA6B75C233E952F00C6A0D5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
+		D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListDataSource.swift; sourceTree = "<group>"; };
+		D1300D4023D7723500368DD8 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		D146A6CF23C0D44200C1BE82 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParseManager.swift; sourceTree = "<group>"; };
 		D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				5C17FE182326C7BD0086BAE6 /* CommonUtils.swift */,
 				D178197423D31E4E006A4104 /* Dynamic.swift */,
 				D178197923D44EED006A4104 /* GenericDataSource.swift */,
+				D1300D4023D7723500368DD8 /* CellConfigurable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 			children = (
 				5C569093233771CE00265673 /* TrackerListViewController.swift */,
 				5C569096233809B300265673 /* TrackerCell.swift */,
+				D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */,
 			);
 			path = TrackerListViewController;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 			files = (
 				5C17FED02326E00F0086BAE6 /* Tracker+CoreDataClass.swift in Sources */,
 				5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */,
+				D1300D4123D7723500368DD8 /* CellConfigurable.swift in Sources */,
 				5C569097233809B300265673 /* TrackerCell.swift in Sources */,
 				5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */,
 				5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */,
@@ -429,6 +436,7 @@
 				D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */,
 				5C17FE162326C6F90086BAE6 /* AlertManager.swift in Sources */,
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
+				D1300D3F23D76C6A00368DD8 /* TrackerListDataSource.swift in Sources */,
 				5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */,
 				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
 				D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */,
