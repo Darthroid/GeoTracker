@@ -19,8 +19,8 @@ class TrackerDetailViewController: UIViewController {
     @IBOutlet weak var infoButton: UIButton!
     
 	// MARK: - public properties
-	
-    var tracker: Tracker?
+		
+	var viewModel: TrackerViewModel?
     
     // MARK: - ViewController LifeCycle methods
 
@@ -45,7 +45,8 @@ class TrackerDetailViewController: UIViewController {
 		if segue.identifier == "bottomContainer" {
 			let bottomDetailController = segue.destination as? TrackerDetailBottomViewController
 			bottomDetailController?.delegate = self
-			bottomDetailController?.tracker = self.tracker
+//			bottomDetailController?.tracker = self.tracker
+			bottomDetailController?.viewModel = self.viewModel
 		}
 	}
 	
@@ -104,11 +105,11 @@ extension TrackerDetailViewController: MKMapViewDelegate {
     }
     
     func drawOnMap() {
-        guard let tracker = self.tracker else { return }
+		guard let points = self.viewModel?.dataSource.data.value else { return }
         
         self.clearMap()
-        guard let points = tracker.points else { return }
-        let coordinates = points.map({ CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) })
+		let coordinates = points.map({ $0.toCLLocationCoordinates() })
+		
         let polyLine = MKPolyline(coordinates: coordinates, count: coordinates.count)
         
         self.mapView?.addOverlay(polyLine)
@@ -147,7 +148,7 @@ extension TrackerDetailViewController: MKMapViewDelegate {
 // MARK: - TrackerDetailBottomDelegate methods
 
 extension TrackerDetailViewController: TrackerDetailBottomDelegate {
-	func didSelectPoint(_ point: Point) {
+	func didSelectPoint(_ point: PointViewModel) {
 		
 		// TODO: filter added annotations somehow else
 		let annotationsToRemove = self.mapView.annotations.filter({ $0 is CustomPointAnnotation })
@@ -155,15 +156,10 @@ extension TrackerDetailViewController: TrackerDetailBottomDelegate {
 		
 		let annotation = CustomPointAnnotation()
 		annotation.coordinate = point.toCLLocationCoordinates()
-		annotation.title = Date().stringfromTimeStamp(point.timestamp)
-		annotation.subtitle = "Latitude: \(point.latitude)" + "\n" + "Longitude: \(point.longitude)"
+		annotation.title = point.dateString()
+		annotation.subtitle = point.description
 		annotation.id = point.id
-		
-		
+
 		self.mapView.addAnnotation(annotation)
 	}
-//
-//	func didRequestSnapshot() -> Data? {
-//		TODO: create snapshot of map with annotations and polyLine
-//	}
 }

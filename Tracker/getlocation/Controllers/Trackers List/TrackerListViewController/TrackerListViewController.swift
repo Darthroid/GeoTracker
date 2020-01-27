@@ -12,8 +12,8 @@ class TrackerListViewController: UITableViewController {
 
     // MARK: - private properties
 
-    private var selectedTracker: Tracker?
 	private var collapseDetailViewController = true
+	private var selectedViewModel: TrackerViewModel?
 	
 	public var viewModel = TrackerListViewModel()
     
@@ -60,8 +60,11 @@ class TrackerListViewController: UITableViewController {
 			, let viewController = navController.topViewController as? TrackerDetailViewController else {
                 fatalError("Expected DetailViewController")
         }
-		
-		viewController.tracker = selectedTracker
+
+//		guard let viewController = segue.destination as? TrackerDetailViewController else {
+//			fatalError("Expected DetailViewController")
+//		}
+		viewController.viewModel = selectedViewModel
 		viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
 		viewController.navigationItem.leftItemsSupplementBackButton = true
     }
@@ -111,6 +114,7 @@ extension TrackerListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 //        self.selectedTracker = trackers?[indexPath.row]
+		self.selectedViewModel = self.viewModel.dataSource.data.value[indexPath.row]
         self.performSegue(withIdentifier: "trackerDetail", sender: self)
     }
 }

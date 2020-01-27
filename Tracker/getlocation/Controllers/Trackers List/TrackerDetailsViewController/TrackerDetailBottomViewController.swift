@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TrackerDetailBottomDelegate: class {
-	func didSelectPoint(_ point: Point)
+	func didSelectPoint(_ point: PointViewModel)
 //	func didRequestSnapshot() -> Data?
 }
 
@@ -24,15 +24,9 @@ class TrackerDetailBottomViewController: UIViewController {
     // MARK: - Public properties
 	
 	public weak var delegate: TrackerDetailBottomDelegate?
-	public var tracker: Tracker?
 	
-	// MARK: - Private properties
-	
-	private var points: [Point] {
-		get {
-			return Array<Point>(self.tracker?.points ?? [])
-		}
-	}
+	public var viewModel: TrackerViewModel?
+
 
     // MARK: - ViewController LifeCycle methods
 
@@ -40,7 +34,14 @@ class TrackerDetailBottomViewController: UIViewController {
         super.viewDidLoad()
 		
 		tableView.delegate = self
-		tableView.dataSource = self
+		tableView.dataSource = viewModel?.dataSource
+		
+		viewModel?.dataSource.data
+			.addAndNotify(observer: self) { [weak self] in
+				guard let `self` = self else { return }
+				print(self, "dataSource changed")
+				self.tableView.reloadData()
+			}
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +52,7 @@ class TrackerDetailBottomViewController: UIViewController {
     // MARK: - User defined methods
 	
 	private func setupInterface() {
-		self.trackerNameLabel.text = tracker?.name ?? ""
+		self.trackerNameLabel.text = viewModel?.name
 	}
 	
 	private func presentShareSheet(with itemsToShare: [Any], sender: Any) {
@@ -66,57 +67,23 @@ class TrackerDetailBottomViewController: UIViewController {
 	// MARK: - Actions
 	
 	@IBAction func shareTap(_ sender: Any) {
-//		let actionSheet = UIAlertController(title: "Export options", message: nil, preferredStyle: .actionSheet)
-//
-//		let snapshotAction = UIAlertAction(title: "Map snapshot", style: .default, handler: { _ in
-//			guard let snapshot = self.delegate?.didRequestSnapshot() else { return }
-//			self.presentShareSheet(with: [snapshot], sender: sender)
-//		})
-		
-//		let gpxAction = UIAlertAction(title: "GPS Exchange Format (GPX)", style: .default, handler: { _ in
-		guard let tracker = self.tracker else { return }
-		GPXParseManager.createGPX(fromTracker: tracker, save: true, completionHandler: { gpxString, fileUrl in
-			DispatchQueue.main.async {
-				if let fileUrl = fileUrl {
-					self.presentShareSheet(with: [fileUrl], sender: sender)
-				} else {
-					self.presentShareSheet(with: [gpxString], sender: sender)
-				}
+		self.viewModel?.exportAsGPX() { [weak self] gpxString, fileUrl in
+			assert(Thread.isMainThread)
+			if let fileUrl = fileUrl {
+				self?.presentShareSheet(with: [fileUrl], sender: sender)
+			} else {
+				self?.presentShareSheet(with: [gpxString], sender: sender)
 			}
-		})
-//		})
-		
-//		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//
-//		actionSheet.addAction(snapshotAction)
-//		actionSheet.addAction(gpxAction)
-//		actionSheet.addAction(cancelAction)
-//		actionSheet.popoverPresentationController?.sourceView = sender as? UIView
-//
-//		self.present(actionSheet, animated: true)
+		}
 	}
-	
 }
 
 // MARK: - UITableViewDelegate methods
 
-extension TrackerDetailBottomViewController: UITableViewDelegate, UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.points.count
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "PointCell", for: indexPath)
-		let point = self.points[indexPath.row]
-
-		cell.textLabel?.text = Date().stringfromTimeStamp(point.timestamp)
-		cell.detailTextLabel?.text = "Latitude: \(point.latitude)" + "\n" + "Longitude: \(point.longitude)"
-		
-		return cell
-	}
-	
+extension TrackerDetailBottomViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		delegate?.didSelectPoint(points[indexPath.row])
+		guard let pointModel = viewModel?.dataSource.data.value[indexPath.row] else { return }
+		delegate?.didSelectPoint(pointModel)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }

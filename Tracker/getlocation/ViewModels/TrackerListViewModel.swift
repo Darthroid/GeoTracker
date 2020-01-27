@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// ViewModel representing tracker list screen
 class TrackerListViewModel {
 	var dataSource: TrackerListDataSource!
 	

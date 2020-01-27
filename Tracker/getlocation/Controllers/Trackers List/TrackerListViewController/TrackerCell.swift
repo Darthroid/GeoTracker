@@ -90,16 +90,15 @@ class TrackerCell: UITableViewCell, CellConfigurable {
 		if let cachedImage = self.imageCache.object(forKey: (trackerModel.id) as NSString) {
             self.routeImageView.image = cachedImage
         } else {
-            self.takeSnapShot(points: trackerModel.points, id: trackerModel.id)
+			self.takeSnapShot(points: trackerModel.dataSource.data.value, id: trackerModel.id)
         }
 	}
 
-    private func takeSnapShot(points: [Point], id: String) {
+    private func takeSnapShot(points: [PointViewModel], id: String) {
         self.routeImageView?.image = nil
         let mapSnapshotOptions = MKMapSnapshotter.Options()
 
-        let coordinates = points.map({ CLLocationCoordinate2D(latitude: $0.latitude,
-															  longitude: $0.longitude) })
+		let coordinates = points.map({ $0.toCLLocationCoordinates() })
 		
         let polyLine = MKPolyline(coordinates: coordinates, count: coordinates.count)
         let region = MKCoordinateRegion(polyLine.boundingMapRect)

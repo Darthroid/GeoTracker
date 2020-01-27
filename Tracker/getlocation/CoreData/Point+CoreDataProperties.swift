@@ -21,11 +21,4 @@ extension Point {
     @NSManaged public var longitude: Double
     @NSManaged public var timestamp: Int64
     @NSManaged public var tracker: Tracker?
-
-}
-
-extension Point {
-	public func toCLLocationCoordinates() -> CLLocationCoordinate2D {
-		return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-	}
 }

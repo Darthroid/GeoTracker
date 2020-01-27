@@ -26,20 +26,20 @@ class GPXParseManager {
 	///   - tracker: Tracker with points to be processed
 	///   - save: Indicates whether it needs to be saved to file or not
 	public class func createGPX(fromTracker tracker: Tracker, save: Bool = false, completionHandler: @escaping (String, URL?) -> Void) {
-		let root = GPXRoot(creator: Bundle.main.displayName)
-		var waypoints: [GPXWaypoint] = []
-		
-		tracker.points?.forEach({ point in
-			let waypoint = GPXWaypoint(latitude: point.latitude, longitude: point.longitude)
-			waypoints.append(waypoint)
-		})
-		
-		root.add(waypoints: waypoints)
-		
-		let gpxString = root.gpx()
-		
-		if save {
-			DispatchQueue.global(qos: .userInitiated).async {
+		DispatchQueue.global(qos: .userInitiated).async {
+			let root = GPXRoot(creator: Bundle.main.displayName)
+			var waypoints: [GPXWaypoint] = []
+			
+			tracker.points?.forEach({ point in
+				let waypoint = GPXWaypoint(latitude: point.latitude, longitude: point.longitude)
+				waypoints.append(waypoint)
+			})
+			
+			root.add(waypoints: waypoints)
+			
+			let gpxString = root.gpx()
+			
+			if save {
 				let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
 				do {
 					let date = Date()
@@ -52,9 +52,9 @@ class GPXParseManager {
 				} catch {
 					completionHandler(gpxString, nil)
 				}
+			} else {
+				completionHandler(gpxString, nil)
 			}
-		} else {
-			completionHandler(gpxString, nil)
 		}
 	}
 	
