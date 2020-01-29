@@ -21,12 +21,11 @@ class NewTrackerViewController: UITableViewController {
             updateFrequencyPickerChanged()
         }
     }
-    
-    // MARK: - Private properties
-    
-    private var updateFrequencyPickerOptions = UPDATE_FREQUENCY_OPTIONS
-    private var selectedUpdateFrequency: Double?
-    
+            
+	// MARK: - Public properties
+	
+	public var viewModel = TrackerRecorderViewModel()
+	
     // MARK: - ViewController LifeCycle methods
     
     override func viewDidLoad() {
@@ -47,19 +46,9 @@ class NewTrackerViewController: UITableViewController {
 		self.clearInputs()
 	}
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if  segue.identifier == "start",
-            let vc = segue.destination as? StartTrackingViewController,
-            let trackerName = trackerNameTextField.text, !trackerName.isEmpty,
-            let updateFrequency = selectedUpdateFrequency, !updateFrequency.isNaN
-        {
-            vc.trackerName = trackerName
-            vc.updateFrequency = updateFrequency
+        if segue.identifier == "start", let vc = segue.destination as? StartTrackingViewController {
+			vc.viewModel = self.viewModel
         }
     }
     
@@ -68,7 +57,9 @@ class NewTrackerViewController: UITableViewController {
 	private func setupInterface() {
 		// selecting uipicker row programatically
 		self.updateFrequencyPicker.selectRow(0, inComponent: 0, animated: true)
-		self.updateFrequencyPicker.delegate?.pickerView?(self.updateFrequencyPicker, didSelectRow: 0, inComponent: 0)
+		self.updateFrequencyPicker.delegate?.pickerView?(self.updateFrequencyPicker,
+														 didSelectRow: 0,
+														 inComponent: 0)
 	}
 	
 	private func clearInputs() {
@@ -76,33 +67,14 @@ class NewTrackerViewController: UITableViewController {
 		self.trackerNameTextField.text = ""
 	}
     
-    private func validateTrackerAndStart() -> Bool {
-        switch LocationManager.authorizationStatus() {
-        case .notDetermined, .restricted, .denied:
-            AlertManager.showError(title: ERROR_TITLE, message: "\(Bundle.main.displayName) has no access to location.")
-            return false
-        case .authorizedAlways, .authorizedWhenInUse:
-            guard   let trackerName = trackerNameTextField.text,
-                    let updateFrequency = selectedUpdateFrequency,
-                    !trackerName.isEmpty,
-                    !updateFrequency.isNaN else
-            {
-                AlertManager.showError(title: ERROR_TITLE, message: "Please fill in all fields and try again")
-                return false
-            }
-            
-            return true
-        @unknown default:
-            return false
-        }
-    }
-    
     // MARK: - Actions methods
     
     @IBAction func startTracking(_ sender: Any) {
-        if validateTrackerAndStart() {
-            performSegue(withIdentifier: "start", sender: self)
-        }
+		if viewModel.isValidTrackerInfo {
+			performSegue(withIdentifier: "start", sender: self)
+		} else {
+			AlertManager.showError(title: ERROR_TITLE, message: "Please fill in all fields and try again")
+		}
     }
 }
 
@@ -132,16 +104,16 @@ extension NewTrackerViewController: UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return updateFrequencyPickerOptions.count
+		return viewModel.updateFrequencyOptions.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return updateFrequencyPickerOptions[row].time
+		return viewModel.updateFrequencyOptions[row].time
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedUpdateFrequency = updateFrequencyPickerOptions[row].value
-        detailLabel.text = updateFrequencyPickerOptions[row].time
+		viewModel.trackerUpdateFrequency = viewModel.updateFrequencyOptions[row].value
+		detailLabel.text = viewModel.updateFrequencyOptions[row].time
     }
     
     func showHideFrequencyPicker() {
@@ -160,6 +132,7 @@ extension NewTrackerViewController: UIPickerViewDelegate, UIPickerViewDataSource
 extension NewTrackerViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         trackerNameTextField.resignFirstResponder()
+		viewModel.trackerName = trackerNameTextField.text ?? ""
         return true
     }
 }
