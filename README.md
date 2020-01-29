@@ -5,3 +5,7 @@ From now, this project contains tracker app only. You can find previous state of
 ## Installation
 
 Download project and do `pod install`.
+
+## License
+
+GeoTracker is released under the [MIT License](LICENSE).
