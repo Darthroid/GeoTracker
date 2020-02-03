@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class TrackerRecorderViewModel {
 	
@@ -19,6 +20,12 @@ class TrackerRecorderViewModel {
 																		  ("30 minutes",  60.0 * 30),
 																		  ("1 hour",      60.0 * 60)]
 	private var points = [Point]()
+	
+	//  Coordinates used by StartTrackingViewController to draw polyLine
+	public var storedCoordinates: [CLLocationCoordinate2D] {
+		let coordinates = points.map({ CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) })
+		return coordinates
+	}
 	
 	public var trackerName: String = ""
 	public var trackerUpdateFrequency: Double = 0.0
@@ -36,16 +43,19 @@ class TrackerRecorderViewModel {
 		}
 	}
 	
+	public var eventHandler: () -> Void = {}
+	
 	public init() {
-		//
+		TrackerRecordManager.shared.delegate = self
 	}
 	
 	public func startRecording() {
-		
+		TrackerRecordManager.shared.updateFrequency = self.trackerUpdateFrequency
+		TrackerRecordManager.shared.start()
 	}
 	
 	public func stopRecording() {
-		
+		TrackerRecordManager.shared.stop()
 	}
 	
 	public func saveTrackerData() throws {
@@ -58,5 +68,31 @@ class TrackerRecorderViewModel {
 			throw(error)
 		}
 	}
+}
 
+extension TrackerRecorderViewModel: TrackerRecordManagerDelegate {
+	func trackerRecordingDidStart() {
+		// prepare for location updates
+	}
+	
+	func trackerRecordingDidPaused() {
+		// TODO: pause
+	}
+	
+	func trackerRecordingDidFinished() {
+		// do something with controller updates
+		try? self.saveTrackerData()
+		points.removeAll()
+	}
+	
+	func trackerRecordingDidUpdateLocation(_ location: CLLocation) {
+		let point = Point()
+		point.id = UUID().uuidString
+		point.latitude = location.coordinate.latitude
+		point.longitude = location.coordinate.longitude
+		point.timestamp = Int64(Date().timeIntervalSince1970)
+		
+		self.points.append(point)
+		self.eventHandler()
+	}
 }
