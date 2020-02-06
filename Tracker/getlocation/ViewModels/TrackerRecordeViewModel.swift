@@ -10,6 +10,10 @@ import Foundation
 import CoreLocation
 
 class TrackerRecorderViewModel {
+	enum TrackerRecordEvent {
+		case timerUpdate
+		case locationUpdate
+	}
 	
 	public let updateFrequencyOptions: [(time: String, value: Double)] = [("5 seconds",   5.0),
 																		  ("10 seconds",  10.0),
@@ -43,7 +47,15 @@ class TrackerRecorderViewModel {
 		}
 	}
 	
-	public var eventHandler: () -> Void = {}
+	public var locationInfoString: String {
+		guard let location = LocationManager.shared.location else { return "" }
+		return 	"Latitude: \(location.coordinate.latitude)" + "\n" +
+				"Longitude: \(location.coordinate.longitude)" + "\n" +
+				"Speed: \((location.speed * 3.6).rounded(.up)) km/h" + "\n" +
+				"Alt: \(location.altitude) m"
+	}
+	
+	public var locationUpdateHandler: (TrackerRecordEvent) -> Void = { _ in }
 	
 	public init() {
 		TrackerRecordManager.shared.delegate = self
@@ -72,7 +84,7 @@ class TrackerRecorderViewModel {
 
 extension TrackerRecorderViewModel: TrackerRecordManagerDelegate {
 	func trackerRecordingDidStart() {
-		// prepare for location updates
+		//
 	}
 	
 	func trackerRecordingDidPaused() {
@@ -85,14 +97,18 @@ extension TrackerRecorderViewModel: TrackerRecordManagerDelegate {
 		points.removeAll()
 	}
 	
-	func trackerRecordingDidUpdateLocation(_ location: CLLocation) {
+	func trackerRecordingDidTick(_ location: CLLocation) {
 		let point = Point()
 		point.id = UUID().uuidString
 		point.latitude = location.coordinate.latitude
 		point.longitude = location.coordinate.longitude
-		point.timestamp = Int64(Date().timeIntervalSince1970)
+		point.timestamp = Int64(location.timestamp.timeIntervalSince1970) //Int64(Date().timeIntervalSince1970)
 		
 		self.points.append(point)
-		self.eventHandler()
+		self.locationUpdateHandler(.timerUpdate)
+	}
+	
+	func trackerRecordingDidUpdateLocation(_ location: CLLocation) {
+		self.locationUpdateHandler(.locationUpdate)
 	}
 }

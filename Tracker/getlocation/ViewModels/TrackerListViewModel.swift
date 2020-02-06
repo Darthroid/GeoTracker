@@ -18,7 +18,7 @@ class TrackerListViewModel {
 		dataSource = TrackerListDataSource(eventHandler: { [weak self] event, eventViewModel in
 			switch event {
 			case .delete:
-				self?.deleteTracker(eventViewModel)
+				try? self?.deleteTracker(eventViewModel)
 			default:
 				assert(false, "not implemented")
 			}
@@ -40,20 +40,19 @@ class TrackerListViewModel {
 		}
 	}
 	
-	public func deleteTracker(_ tracker: TrackerViewModel) {
+	public func deleteTracker(_ tracker: TrackerViewModel) throws {
 		do {
 			try CoreDataManager.shared.deleteTrackers(withId: tracker.id)
 		} catch {
-			AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
+			throw error
 		}
 	}
 	
-	public func parseGpxFrom(_ url: URL) {
+	public func parseGpxFrom(_ url: URL) throws {
 		do {
-			_ = try GPXParseManager.parseGPX(fromUrl: url, save: true)
+			try GPXParseManager.parseGPX(fromUrl: url, save: true)
 		} catch {
-			print(error)
-			AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
+			throw(error)
 		}
 	}
 }

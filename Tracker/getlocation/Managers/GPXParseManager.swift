@@ -10,6 +10,7 @@ import Foundation
 import CoreGPX
 
 class GPXParseManager {
+	@discardableResult
 	public class func parseGPX(fromUrl url: URL, save: Bool = false) throws -> [Point] {
 		_ = url.startAccessingSecurityScopedResource()
 		guard let gpx = GPXParser(withURL: url)?.parsedData() else {

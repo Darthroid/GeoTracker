@@ -45,7 +45,6 @@ class TrackerDetailViewController: UIViewController {
 		if segue.identifier == "bottomContainer" {
 			let bottomDetailController = segue.destination as? TrackerDetailBottomViewController
 			bottomDetailController?.delegate = self
-//			bottomDetailController?.tracker = self.tracker
 			bottomDetailController?.viewModel = self.viewModel
 		}
 	}

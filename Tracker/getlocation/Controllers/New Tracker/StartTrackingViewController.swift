@@ -28,16 +28,10 @@ class StartTrackingViewController: UIViewController {
 		
 		mapView.delegate = self
 		mapView.showsUserLocation = true
+		self.mapView.setUserTrackingMode(.followWithHeading, animated: true)
 		
 		viewModel?.startRecording()
-		
-		viewModel?.eventHandler = { [weak self] in
-			guard let `self` = self else { return }
-			
-			self.mapView.setRegion(self.mapRegion(), animated: true)
-			self.mapView.removeOverlays(self.mapView.overlays)
-			self.mapView.addOverlay(self.polyLine())
-		}
+		self.observeLocationUpdates()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -50,14 +44,28 @@ class StartTrackingViewController: UIViewController {
 		viewModel?.stopRecording()
 	}
 	
+	// MARK: - User defined methods
+	
+	private func observeLocationUpdates() {
+		viewModel?.locationUpdateHandler = { [weak self] updateType in
+			guard let `self` = self else { return }
+			
+			switch updateType {
+			case .timerUpdate:
+				self.mapView.removeOverlays(self.mapView.overlays)
+				self.mapView.addOverlay(self.polyLine())
+			case .locationUpdate:
+				self.statusTextView.text = self.viewModel?.locationInfoString
+			}
+		}
+	}
+	
 	// MARK: - Actions
 	
 	@IBAction func finishTracking(_ sender: Any) {
 		viewModel?.stopRecording()
-		
 		self.dismiss(animated: true, completion: nil)
 	}
-	
 }
 
 // MARK: - MKMapViewDelegate methods
@@ -72,19 +80,6 @@ extension StartTrackingViewController: MKMapViewDelegate {
 		renderer.strokeColor = .blue
 		renderer.lineWidth = 4
 		return renderer
-	}
-	
-	private func mapRegion() -> MKCoordinateRegion {
-		let lastCoordinate = self.mapView.userLocation.coordinate
-		let startCoordinate = viewModel?.storedCoordinates.first ?? lastCoordinate
-		
-		let center = CLLocationCoordinate2D(latitude: (startCoordinate.latitude + lastCoordinate.latitude) / 2,
-											longitude: (startCoordinate.longitude + lastCoordinate.longitude) / 2)
-		
-		let span = MKCoordinateSpan(latitudeDelta: abs(lastCoordinate.latitude - startCoordinate.latitude) * 1.3,
-									longitudeDelta: abs(lastCoordinate.longitude - startCoordinate.longitude) * 1.3)
-		
-		return MKCoordinateRegion(center: center, span: span)
 	}
 	
 	private func polyLine() -> MKPolyline {

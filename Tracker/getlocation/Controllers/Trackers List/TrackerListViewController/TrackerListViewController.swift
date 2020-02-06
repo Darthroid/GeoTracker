@@ -83,7 +83,7 @@ class TrackerListViewController: UITableViewController {
 		})
 		
 		let importAction = UIAlertAction(title: "Import", style: .default, handler: { _ in
-			let documentPicker = UIDocumentPickerViewController(documentTypes: ["com.topografix.gpx"],
+			let documentPicker = UIDocumentPickerViewController(documentTypes: DOC_TYPES,
 																in: .import)
 			documentPicker.delegate = self
 			
@@ -113,7 +113,6 @@ extension TrackerListViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        self.selectedTracker = trackers?[indexPath.row]
 		self.selectedViewModel = self.viewModel.dataSource.data.value[indexPath.row]
         self.performSegue(withIdentifier: "trackerDetail", sender: self)
     }
@@ -127,7 +126,11 @@ extension TrackerListViewController: UIDocumentPickerDelegate {
 		let ac = UIAlertController(title: "Import \(fileName) ?", message: "", preferredStyle: .alert)
 		
 		let importAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
-			self.viewModel.parseGpxFrom(url)
+			do {
+				try self.viewModel.parseGpxFrom(url)
+			} catch {
+				AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
+			}
 		})
 		
 		let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)

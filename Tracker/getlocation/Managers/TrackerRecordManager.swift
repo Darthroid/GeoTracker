@@ -14,6 +14,7 @@ protocol TrackerRecordManagerDelegate: class {
 	func trackerRecordingDidStart()
 	func trackerRecordingDidPaused()
 	func trackerRecordingDidFinished()
+	func trackerRecordingDidTick(_ location: CLLocation)
 	func trackerRecordingDidUpdateLocation(_ location: CLLocation)
 }
 
@@ -72,14 +73,15 @@ class TrackerRecordManager: NSObject {
 		let longitude = location.coordinate.longitude
 		
 		print(self, #function, "lat: \(latitude); lon: \(longitude)")
-		self.delegate?.trackerRecordingDidUpdateLocation(location)
+		self.delegate?.trackerRecordingDidTick(location)
 	}
 }
 
 extension TrackerRecordManager: CLLocationManagerDelegate {
-//	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-//	}
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		guard let location = locations.last else { return }
+		delegate?.trackerRecordingDidUpdateLocation(location)
+	}
 	
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		switch status {
