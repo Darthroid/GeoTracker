@@ -80,6 +80,12 @@ class TrackerRecorderViewModel {
 			throw(error)
 		}
 	}
+	
+	private func clean() {
+		self.points.removeAll()
+		self.trackerName = ""
+		self.trackerUpdateFrequency = 0.0
+	}
 }
 
 extension TrackerRecorderViewModel: TrackerRecordManagerDelegate {
@@ -94,7 +100,7 @@ extension TrackerRecorderViewModel: TrackerRecordManagerDelegate {
 	func trackerRecordingDidFinished() {
 		// do something with controller updates
 		try? self.saveTrackerData()
-		points.removeAll()
+		self.clean()
 	}
 	
 	func trackerRecordingDidTick(_ location: CLLocation) {

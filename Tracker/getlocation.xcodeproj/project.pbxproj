@@ -37,6 +37,7 @@
 		D1320EEE23DA1ADC0082D268 /* TrackerDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */; };
 		D13B500523DE1BA8001D5997 /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B500423DE1BA8001D5997 /* PointCell.swift */; };
 		D13B500723DE1D25001D5997 /* PointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B500623DE1D25001D5997 /* PointViewModel.swift */; };
+		D143ED5A23EDDC4F00D5334D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D143ED5923EDDC4F00D5334D /* String.swift */; };
 		D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6CF23C0D44200C1BE82 /* UITableView.swift */; };
 		D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */; };
 		D171A69023DF5D7800A3C982 /* TrackerRecordeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171A68F23DF5D7800A3C982 /* TrackerRecordeViewModel.swift */; };
@@ -88,6 +89,7 @@
 		D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailsDataSource.swift; sourceTree = "<group>"; };
 		D13B500423DE1BA8001D5997 /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
 		D13B500623DE1D25001D5997 /* PointViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewModel.swift; sourceTree = "<group>"; };
+		D143ED5923EDDC4F00D5334D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D146A6CF23C0D44200C1BE82 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParseManager.swift; sourceTree = "<group>"; };
 		D171A68F23DF5D7800A3C982 /* TrackerRecordeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecordeViewModel.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				D146A6CF23C0D44200C1BE82 /* UITableView.swift */,
 				D1950B1123C498DE0080F97F /* UIView.swift */,
 				D1950B1323C4ACA80080F97F /* Date.swift */,
+				D143ED5923EDDC4F00D5334D /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D143ED5A23EDDC4F00D5334D /* String.swift in Sources */,
 				5C17FED02326E00F0086BAE6 /* Tracker+CoreDataClass.swift in Sources */,
 				5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */,
 				D1300D4123D7723500368DD8 /* CellConfigurable.swift in Sources */,

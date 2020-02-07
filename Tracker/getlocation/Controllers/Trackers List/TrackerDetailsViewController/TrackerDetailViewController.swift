@@ -20,7 +20,7 @@ class TrackerDetailViewController: UIViewController {
     
 	// MARK: - public properties
 		
-	var viewModel: TrackerViewModel?
+	public var viewModel: TrackerViewModel?
     
     // MARK: - ViewController LifeCycle methods
 
@@ -107,7 +107,7 @@ extension TrackerDetailViewController: MKMapViewDelegate {
 		guard let points = self.viewModel?.dataSource.data.value else { return }
         
         self.clearMap()
-		let coordinates = points.map({ $0.toCLLocationCoordinates() })
+		let coordinates = points.map({ $0.toCLLocationCoordinate })
 		
         let polyLine = MKPolyline(coordinates: coordinates, count: coordinates.count)
         
@@ -154,7 +154,7 @@ extension TrackerDetailViewController: TrackerDetailBottomDelegate {
 		self.mapView.removeAnnotations(annotationsToRemove)
 		
 		let annotation = CustomPointAnnotation()
-		annotation.coordinate = point.toCLLocationCoordinates()
+		annotation.coordinate = point.toCLLocationCoordinate
 		annotation.title = point.dateString()
 		annotation.subtitle = point.description
 		annotation.id = point.id

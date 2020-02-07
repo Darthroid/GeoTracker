@@ -98,7 +98,7 @@ class TrackerCell: UITableViewCell, CellConfigurable {
         self.routeImageView?.image = nil
         let mapSnapshotOptions = MKMapSnapshotter.Options()
 
-		let coordinates = points.map({ $0.toCLLocationCoordinates() })
+		let coordinates = points.map({ $0.toCLLocationCoordinate })
 		
         let polyLine = MKPolyline(coordinates: coordinates, count: coordinates.count)
         let region = MKCoordinateRegion(polyLine.boundingMapRect)

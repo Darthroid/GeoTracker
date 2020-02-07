@@ -39,7 +39,7 @@ class PointViewModel: RowViewModel {
 }
 
 extension PointViewModel {
-	public func toCLLocationCoordinates() -> CLLocationCoordinate2D {
+	public var toCLLocationCoordinate: CLLocationCoordinate2D {
 		return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
 	}
 	

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// TODO: two way binding (or just use RxSwift)
 typealias CompletionHandler = (() -> Void)
 class Dynamic<T> {
     

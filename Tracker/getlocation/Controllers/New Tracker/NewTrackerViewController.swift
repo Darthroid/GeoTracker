@@ -70,6 +70,7 @@ class NewTrackerViewController: UITableViewController {
     // MARK: - Actions methods
     
     @IBAction func startTracking(_ sender: Any) {
+		self.trackerNameTextField.endEditing(true)
 		if viewModel.isValidTrackerInfo {
 			performSegue(withIdentifier: "start", sender: self)
 		} else {
@@ -130,9 +131,12 @@ extension NewTrackerViewController: UIPickerViewDelegate, UIPickerViewDataSource
 // MARK: - UITextFieldDelegate methods
 
 extension NewTrackerViewController: UITextFieldDelegate {
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		viewModel.trackerName = trackerNameTextField.text?.trim() ?? ""
+	}
+	
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        trackerNameTextField.resignFirstResponder()
-		viewModel.trackerName = trackerNameTextField.text ?? ""
+		trackerNameTextField.endEditing(true)
         return true
     }
 }
