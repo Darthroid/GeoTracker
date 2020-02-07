@@ -32,12 +32,24 @@
 		5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B75C233E952F00C6A0D5 /* CardView.swift */; };
 		5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCF1F421E8FEFF0005D02ED /* MapKit.framework */; };
 		62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */; };
+		D1300D3F23D76C6A00368DD8 /* TrackerListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */; };
+		D1300D4123D7723500368DD8 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1300D4023D7723500368DD8 /* CellConfigurable.swift */; };
+		D1320EEE23DA1ADC0082D268 /* TrackerDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */; };
+		D13B500523DE1BA8001D5997 /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B500423DE1BA8001D5997 /* PointCell.swift */; };
+		D13B500723DE1D25001D5997 /* PointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B500623DE1D25001D5997 /* PointViewModel.swift */; };
+		D143ED5A23EDDC4F00D5334D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D143ED5923EDDC4F00D5334D /* String.swift */; };
 		D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6CF23C0D44200C1BE82 /* UITableView.swift */; };
 		D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */; };
+		D171A69023DF5D7800A3C982 /* TrackerRecordeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171A68F23DF5D7800A3C982 /* TrackerRecordeViewModel.swift */; };
 		D178195B23CBA5EE006A4104 /* PrimarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */; };
+		D178197523D31E4E006A4104 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178197423D31E4E006A4104 /* Dynamic.swift */; };
+		D178197823D44E6B006A4104 /* TrackerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178197723D44E6B006A4104 /* TrackerListViewModel.swift */; };
+		D178197A23D44EED006A4104 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178197923D44EED006A4104 /* GenericDataSource.swift */; };
+		D178197C23D451D9006A4104 /* TrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178197B23D451D9006A4104 /* TrackerViewModel.swift */; };
 		D1950B1223C498DE0080F97F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1123C498DE0080F97F /* UIView.swift */; };
 		D1950B1423C4ACA90080F97F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1323C4ACA80080F97F /* Date.swift */; };
 		D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */; };
+		D19914CE23E1FB3E00029904 /* TrackerRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19914CD23E1FB3E00029904 /* TrackerRecordManager.swift */; };
 		D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,12 +84,24 @@
 		5CA6B75C233E952F00C6A0D5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
+		D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListDataSource.swift; sourceTree = "<group>"; };
+		D1300D4023D7723500368DD8 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
+		D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailsDataSource.swift; sourceTree = "<group>"; };
+		D13B500423DE1BA8001D5997 /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
+		D13B500623DE1D25001D5997 /* PointViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewModel.swift; sourceTree = "<group>"; };
+		D143ED5923EDDC4F00D5334D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D146A6CF23C0D44200C1BE82 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParseManager.swift; sourceTree = "<group>"; };
+		D171A68F23DF5D7800A3C982 /* TrackerRecordeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecordeViewModel.swift; sourceTree = "<group>"; };
 		D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
+		D178197423D31E4E006A4104 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		D178197723D44E6B006A4104 /* TrackerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListViewModel.swift; sourceTree = "<group>"; };
+		D178197923D44EED006A4104 /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
+		D178197B23D451D9006A4104 /* TrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewModel.swift; sourceTree = "<group>"; };
 		D1950B1123C498DE0080F97F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D1950B1323C4ACA80080F97F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		D19914CD23E1FB3E00029904 /* TrackerRecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecordManager.swift; sourceTree = "<group>"; };
 		D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailBottomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +127,7 @@
 				D146A6CF23C0D44200C1BE82 /* UITableView.swift */,
 				D1950B1123C498DE0080F97F /* UIView.swift */,
 				D1950B1323C4ACA80080F97F /* Date.swift */,
+				D143ED5923EDDC4F00D5334D /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -122,6 +147,7 @@
 				5C17FE212326D25F0086BAE6 /* CoreDataManager.swift */,
 				5C11BF29233001AB000A12D2 /* LocationManager.swift */,
 				D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */,
+				D19914CD23E1FB3E00029904 /* TrackerRecordManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -130,6 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				5C17FE182326C7BD0086BAE6 /* CommonUtils.swift */,
+				D178197423D31E4E006A4104 /* Dynamic.swift */,
+				D178197923D44EED006A4104 /* GenericDataSource.swift */,
+				D1300D4023D7723500368DD8 /* CellConfigurable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -160,7 +189,6 @@
 			children = (
 				5CA6B756233BE1EB00C6A0D5 /* New Tracker */,
 				5C5690952338098B00265673 /* Trackers List */,
-				D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +219,7 @@
 				5C8C3AC21E83F83400F8146E /* AppDelegate.swift */,
 				5C8C3AC91E83F83400F8146E /* Assets.xcassets */,
 				5C17FE112326C50D0086BAE6 /* Constant */,
+				D178197623D31E6C006A4104 /* ViewModels */,
 				5C637E162071596000603F17 /* Controllers */,
 				5C17FECB2326DF220086BAE6 /* CoreData */,
 				5CA6B75B233E951000C6A0D5 /* Custom */,
@@ -216,6 +245,7 @@
 			children = (
 				5C569093233771CE00265673 /* TrackerListViewController.swift */,
 				5C569096233809B300265673 /* TrackerCell.swift */,
+				D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */,
 			);
 			path = TrackerListViewController;
 			sourceTree = "<group>";
@@ -226,6 +256,7 @@
 				5C11BF2B2330242F000A12D2 /* Extensions */,
 				5CA6B75E233EA1C900C6A0D5 /* Views */,
 				D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */,
+				D178195A23CBA5EE006A4104 /* PrimarySplitViewController.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -257,11 +288,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D178197623D31E6C006A4104 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D178197723D44E6B006A4104 /* TrackerListViewModel.swift */,
+				D178197B23D451D9006A4104 /* TrackerViewModel.swift */,
+				D13B500623DE1D25001D5997 /* PointViewModel.swift */,
+				D171A68F23DF5D7800A3C982 /* TrackerRecordeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		D1BD527823C23D1800427EA9 /* TrackerDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */,
 				D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */,
+				D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */,
+				D13B500423DE1BA8001D5997 /* PointCell.swift */,
 			);
 			path = TrackerDetailsViewController;
 			sourceTree = "<group>";
@@ -393,8 +437,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D143ED5A23EDDC4F00D5334D /* String.swift in Sources */,
 				5C17FED02326E00F0086BAE6 /* Tracker+CoreDataClass.swift in Sources */,
 				5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */,
+				D1300D4123D7723500368DD8 /* CellConfigurable.swift in Sources */,
 				5C569097233809B300265673 /* TrackerCell.swift in Sources */,
 				5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */,
 				5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */,
@@ -402,18 +448,28 @@
 				5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */,
 				5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */,
 				5CA6B759233BE53100C6A0D5 /* TrackerDetailViewController.swift in Sources */,
+				D178197823D44E6B006A4104 /* TrackerListViewModel.swift in Sources */,
 				5C8C3AC31E83F83400F8146E /* AppDelegate.swift in Sources */,
+				D171A69023DF5D7800A3C982 /* TrackerRecordeViewModel.swift in Sources */,
+				D13B500723DE1D25001D5997 /* PointViewModel.swift in Sources */,
+				D13B500523DE1BA8001D5997 /* PointCell.swift in Sources */,
+				D178197C23D451D9006A4104 /* TrackerViewModel.swift in Sources */,
+				D19914CE23E1FB3E00029904 /* TrackerRecordManager.swift in Sources */,
 				5C17FED52326E0410086BAE6 /* Tracker+CoreDataProperties.swift in Sources */,
 				D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */,
 				5C17FE162326C6F90086BAE6 /* AlertManager.swift in Sources */,
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
+				D1300D3F23D76C6A00368DD8 /* TrackerListDataSource.swift in Sources */,
 				5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */,
 				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
 				D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */,
+				D1320EEE23DA1ADC0082D268 /* TrackerDetailsDataSource.swift in Sources */,
 				D1950B1223C498DE0080F97F /* UIView.swift in Sources */,
 				D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */,
 				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
+				D178197A23D44EED006A4104 /* GenericDataSource.swift in Sources */,
 				D178195B23CBA5EE006A4104 /* PrimarySplitViewController.swift in Sources */,
+				D178197523D31E4E006A4104 /* Dynamic.swift in Sources */,
 				5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */,
 				5C17FED22326E00F0086BAE6 /* Point+CoreDataProperties.swift in Sources */,
 				5C11BF2D23302483000A12D2 /* Bundle.swift in Sources */,

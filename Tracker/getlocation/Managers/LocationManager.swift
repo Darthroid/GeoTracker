@@ -13,6 +13,9 @@ class LocationManager: CLLocationManager {
     static let shared = CLLocationManager()
     
     private override init() {
-        //
+		super.init()
+        self.requestWhenInUseAuthorization()
+        self.allowsBackgroundLocationUpdates = true
+        self.pausesLocationUpdatesAutomatically = false
     }
 }

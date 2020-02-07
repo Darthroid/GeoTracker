@@ -12,8 +12,8 @@ import CoreData
 
 public protocol CoreDataObserver: class {
 	func didInsert(ids: [String], trackers: [Tracker])
-	func didUpdate(ids: [String], trackers: [Tracker])
-	func didDelete(ids: [String], trackers: [Tracker])
+	func didUpdate(ids: [String], trackers: [Tracker]?)
+	func didDelete(ids: [String], trackers: [Tracker]?)
 }
 
 public class CoreDataManager {
@@ -109,14 +109,13 @@ public class CoreDataManager {
         }
     }
 	
-	// unused
     func deleteTrackers(withId id: String) throws {
         let fetchRequest = Tracker.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         try self.context.execute(deleteRequest)
-//		self.event(.delete, ids: [tracker.id], trackers: [tracker])
+		self.event(.delete, ids: [id], trackers: nil)
         if self.context.hasChanges {
             try self.context.save()
         }
@@ -135,7 +134,7 @@ private extension CoreDataManager {
 		case update
 	}
 	
-	func event(_ event: Event, ids: [String], trackers: [Tracker]) {
+	func event(_ event: Event, ids: [String], trackers: [Tracker]?) {
 		for (id, observation) in observations {
 			// If the observer is no longer in memory, we
 			// can clean up the observation for its ID
@@ -146,7 +145,7 @@ private extension CoreDataManager {
 			
 			switch event {
 			case .insert:
-				observer.didInsert(ids: ids, trackers: trackers)
+				observer.didInsert(ids: ids, trackers: trackers ?? [])
 			case .update:
 				observer.didUpdate(ids: ids, trackers: trackers)
 			case .delete:

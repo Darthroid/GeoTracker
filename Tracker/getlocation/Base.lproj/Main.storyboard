@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9aJ-y4-xfu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9aJ-y4-xfu">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -217,7 +217,7 @@
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TrackerCellSimple" textLabel="Uwn-sp-vM7" detailTextLabel="b3j-Xr-7c4" style="IBUITableViewCellStyleSubtitle" id="agE-sb-c2D">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TrackerCellSimple" textLabel="Uwn-sp-vM7" detailTextLabel="b3j-Xr-7c4" style="IBUITableViewCellStyleSubtitle" id="agE-sb-c2D" customClass="TrackerCellSimple" customModule="getlocation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="agE-sb-c2D" id="DKJ-MP-yww">
@@ -240,7 +240,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackerCell" rowHeight="300" id="QDo-4E-li1" customClass="TrackerCell" customModule="getlocation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="93" width="375" height="300"/>
@@ -568,7 +568,7 @@
                                 <rect key="frame" x="0.0" y="104" width="375" height="258"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PointCell" textLabel="oun-eG-RPx" detailTextLabel="dK4-Qf-tKN" style="IBUITableViewCellStyleSubtitle" id="Hct-kl-3Bf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PointCell" textLabel="oun-eG-RPx" detailTextLabel="dK4-Qf-tKN" style="IBUITableViewCellStyleSubtitle" id="Hct-kl-3Bf" customClass="PointCell" customModule="getlocation" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="66.666664123535156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hct-kl-3Bf" id="ny3-84-Vgx">
@@ -674,6 +674,6 @@
         <image name="share" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oY7-Io-eY4"/>
+        <segue reference="kr7-bO-pDR"/>
     </inferredMetricsTieBreakers>
 </document>

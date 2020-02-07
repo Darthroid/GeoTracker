@@ -14,10 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        LocationManager.shared.requestAlwaysAuthorization()
-        LocationManager.shared.requestWhenInUseAuthorization()
-        LocationManager.shared.allowsBackgroundLocationUpdates = true
-        LocationManager.shared.pausesLocationUpdatesAutomatically = false
         CoreDataManager.shared.initalizeStack(completion: {})
         
         if let splitViewController = self.window?.rootViewController as? UISplitViewController {
@@ -37,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		let importAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
 			do {
-				try _ = GPXParseManager.parseGPX(fromUrl: url, save: true)
+				try GPXParseManager.parseGPX(fromUrl: url, save: true)
 			} catch {
-				print(error)
+				AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
 			}
 		})
 		
