@@ -15,7 +15,7 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 	private var collapseDetailViewController = true
 	private var selectedViewModel: TrackerViewModel?
 	
-	public var viewModel: TrackerListViewModel?
+	public var viewModel: TrackerListViewModel!
 	public var coordinator: TrackerListCoordinator?
     
     // MARK: - ViewController LifeCycle methods
@@ -26,15 +26,15 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 																 target: self,
 																 action: #selector(addButtonTap(_:)))
         self.tableView.delegate = self
-		self.tableView.dataSource = viewModel?.dataSource
-		self.viewModel?.fetchTrackers()
+		self.tableView.dataSource = viewModel.dataSource
+		self.viewModel.fetchTrackers()
 		
-		viewModel?.dataSource.data
+		viewModel.dataSource.data
 			.addAndNotify(observer: self) { [weak self] in
 				guard let `self` = self else { return }
 				print(self, "dataSource changed")
 				// TODO: move placeholder handling somewhere else
-				if self.viewModel?.dataSource.data.value.count ?? 0 > 0 {
+				if self.viewModel.dataSource.data.value.count > 0 {
 					self.tableView.removeNoDataPlaceholder()
 				} else {
 					self.tableView.setNoDataPlaceholder("No available trackers")
@@ -47,27 +47,6 @@ class TrackerListViewController: UITableViewController, Storyboarded {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 		self.setupInterface()
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let viewController = segue.destination as? TrackerDetailViewController {
-//            viewController.tracker = selectedTracker
-//			viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-//			viewController.navigationItem.leftItemsSupplementBackButton = true
-//        }
-		
-        collapseDetailViewController = false
-        guard let navController = segue.destination as? UINavigationController
-			, let viewController = navController.topViewController as? TrackerDetailViewController else {
-                fatalError("Expected DetailViewController")
-        }
-
-//		guard let viewController = segue.destination as? TrackerDetailViewController else {
-//			fatalError("Expected DetailViewController")
-//		}
-		viewController.viewModel = selectedViewModel
-//		viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-//		viewController.navigationItem.leftItemsSupplementBackButton = true
     }
     
     // MARK: - User defined methods
@@ -114,8 +93,7 @@ extension TrackerListViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-		guard let selectedViewModel = self.viewModel?.dataSource.data.value[indexPath.row] else { return }
-//        self.performSegue(withIdentifier: "trackerDetail", sender: self)
+		let selectedViewModel = self.viewModel.dataSource.data.value[indexPath.row]
 		coordinator?.showDetail(with: selectedViewModel)
     }
 }
@@ -129,7 +107,7 @@ extension TrackerListViewController: UIDocumentPickerDelegate {
 		
 		let importAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
 			do {
-				try self.viewModel?.parseGpxFrom(url)
+				try self.viewModel.parseGpxFrom(url)
 			} catch {
 				AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
 			}

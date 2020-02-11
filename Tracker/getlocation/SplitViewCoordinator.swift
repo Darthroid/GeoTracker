@@ -76,29 +76,16 @@ class SplitViewCoordinator: Coordinator {
             .map { tab -> UINavigationController in
                 let navController = NavigationController(withPopDetailCompletion: viewDelegate.replaceDetail)
                 navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, selectedImage: nil)
-				navController.navigationBar.isTranslucent = true
-				if #available(iOS 11.0, *) {
-					navController.navigationBar.prefersLargeTitles = true
-					navController.navigationItem.largeTitleDisplayMode = .automatic
-				}
-
 				return navController
             }
-		
-		// FIXME: hotfix for incorrect navigation bar color (large titles: on)
-		if #available(iOS 13.0, *) {
-			tabBarController.view.backgroundColor = UIColor.groupTableViewBackground
-		} else {
-			tabBarController.view.backgroundColor = UIColor.white
-		}
-		
+
         tabBarController.viewControllers = navControllers
 		tabBarController.selectedIndex = SectionTab.trackersList.rawValue
         tabBarController.delegate = viewDelegate
 				
-		let a = zip(tabs, navControllers)
+		let coordinatorsSource = zip(tabs, navControllers)
 		
-		for (tab, navController) in a {
+		for (tab, navController) in coordinatorsSource {
 			switch tab {
 			case .newTracker:
 				let coordinator = NewTrackerCoordinator(navigationController: navController)

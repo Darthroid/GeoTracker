@@ -26,4 +26,9 @@ class NewTrackerCoordinator: Coordinator {
 		viewController.viewModel = viewModel
 	}
 	
+	func startRecording(with viewModel: TrackerRecorderViewModel) {
+		let viewController = StartTrackingViewController.instantiate()
+		viewController.viewModel = viewModel
+		navigationController.showDetailViewController(viewController, sender: nil)
+	}
 }

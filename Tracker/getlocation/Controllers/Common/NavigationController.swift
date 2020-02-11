@@ -27,7 +27,12 @@ class NavigationController: UINavigationController, PrimaryContainerType {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.isTranslucent = false
+		
+		self.navigationBar.isTranslucent = true
+		if #available(iOS 11.0, *) {
+			self.navigationBar.prefersLargeTitles = true
+			self.navigationItem.largeTitleDisplayMode = .automatic
+		}
     }
 
     override func popViewController(animated: Bool) -> UIViewController? {

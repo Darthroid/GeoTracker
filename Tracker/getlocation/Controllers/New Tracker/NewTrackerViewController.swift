@@ -24,7 +24,7 @@ class NewTrackerViewController: UITableViewController, Storyboarded {
             
 	// MARK: - Public properties
 	
-	public var viewModel = TrackerRecorderViewModel()
+	public var viewModel: TrackerRecorderViewModel!
 	public weak var coordinator: NewTrackerCoordinator?
 	
     // MARK: - ViewController LifeCycle methods
@@ -47,12 +47,6 @@ class NewTrackerViewController: UITableViewController, Storyboarded {
 		self.clearInputs()
 	}
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "start", let vc = segue.destination as? StartTrackingViewController {
-			vc.viewModel = self.viewModel
-        }
-    }
-    
     // MARK: - User defined methods
 	
 	private func setupInterface() {
@@ -73,7 +67,7 @@ class NewTrackerViewController: UITableViewController, Storyboarded {
     @IBAction func startTracking(_ sender: Any) {
 		self.trackerNameTextField.endEditing(true)
 		if viewModel.isValidTrackerInfo {
-			performSegue(withIdentifier: "start", sender: self)
+			coordinator?.startRecording(with: viewModel)
 		} else {
 			AlertManager.showError(title: ERROR_TITLE, message: "Please fill in all fields and try again")
 		}
