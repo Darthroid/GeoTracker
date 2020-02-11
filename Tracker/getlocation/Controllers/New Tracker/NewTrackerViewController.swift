@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class NewTrackerViewController: UITableViewController {
+class NewTrackerViewController: UITableViewController, Storyboarded {
     
     // MARK: - Outlets & connections
     
@@ -25,6 +25,7 @@ class NewTrackerViewController: UITableViewController {
 	// MARK: - Public properties
 	
 	public var viewModel = TrackerRecorderViewModel()
+	public weak var coordinator: NewTrackerCoordinator?
 	
     // MARK: - ViewController LifeCycle methods
     

@@ -13,7 +13,7 @@ protocol TrackerDetailBottomDelegate: class {
 //	func didRequestSnapshot() -> Data?
 }
 
-class TrackerDetailBottomViewController: UIViewController {
+class TrackerDetailBottomViewController: UIViewController, Storyboarded {
 	
     // MARK: - Outlets & connections
 	

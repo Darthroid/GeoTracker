@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class TrackerDetailViewController: UIViewController {
+class TrackerDetailViewController: UIViewController, Storyboarded {
 	// MARK: - Outlets
 	
     @IBOutlet weak var mapView: MKMapView!
