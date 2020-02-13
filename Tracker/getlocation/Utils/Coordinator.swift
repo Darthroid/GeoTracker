@@ -9,7 +9,19 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: class {
 	var childCoordinators: [Coordinator] { get set }
 	func start()
+	func childCoordinatorDidFinish(_ child: Coordinator)
+}
+
+extension Coordinator {
+	func childCoordinatorDidFinish(_ child: Coordinator) {
+		for (index, coordinator) in childCoordinators.enumerated() {
+			if coordinator === child {
+				childCoordinators.remove(at: index)
+				break
+			}
+		}
+	}
 }

@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         CoreDataManager.shared.initalizeStack(completion: {})
+		LocationManager.shared.requestWhenInUseAuthorization()
 		
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		self.coordinator = MainCoordinator(window: self.window!)

@@ -50,19 +50,19 @@ class SplitViewCoordinator: Coordinator {
 	
 	func start() {
 		let tabBarController = UITabBarController()
-		let tabs: [SectionTab] = [.newTracker, .trackersList]
+		let tabs: [SectionTab] = [/*.newTracker,*/ .trackersList]
 
 		self.configureTabBarController(tabBarController, with: tabs)
-		
+
         if let initialPrimaryView = tabBarController.selectedViewController as? PrimaryContainerType {
             viewDelegate.updateSecondaryWithDetail(from: initialPrimaryView)
         }
-		
+
 		let splitViewController = UISplitViewController()
         splitViewController.delegate = viewDelegate
         splitViewController.viewControllers = [tabBarController, viewDelegate.detailNavigationController]
         splitViewController.preferredDisplayMode = .allVisible
-		
+
 		if #available(iOS 13.0, *) {
 			splitViewController.primaryBackgroundStyle = .sidebar
 		}

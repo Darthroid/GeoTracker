@@ -98,6 +98,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New tracker" id="eCS-th-XPg">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="sUs-bq-3Ak">
+                            <connections>
+                                <action selector="cancel:" destination="4zR-hC-uxk" id="QL8-EX-3RU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Start" style="done" id="tiq-SZ-ga6">
                             <connections>
                                 <action selector="startTracking:" destination="4zR-hC-uxk" id="U84-OT-NFT"/>
@@ -105,11 +110,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="sUs-bq-3Ak" id="FGD-co-R9w"/>
                         <outlet property="detailLabel" destination="grV-DX-FV5" id="6xV-yA-37E"/>
                         <outlet property="startTrakingButton" destination="tiq-SZ-ga6" id="jhf-gN-dS1"/>
                         <outlet property="trackerNameTextField" destination="wIa-SU-Fvp" id="dzR-Zk-r1C"/>
                         <outlet property="updateFrequencyPicker" destination="tHn-sG-obg" id="fud-yY-vSD"/>
-                        <segue destination="d1P-U2-Hq4" kind="showDetail" identifier="start" id="opY-gk-KPJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNN-Tg-Tol" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -319,7 +324,7 @@
         <!--Tracker Detail View Controller-->
         <scene sceneID="YXY-OK-7xM">
             <objects>
-                <viewController storyboardIdentifier="TrackerDetailViewController" modalPresentationStyle="fullScreen" id="XKY-ms-uhY" customClass="TrackerDetailViewController" customModule="getlocation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrackerDetailViewController" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="XKY-ms-uhY" customClass="TrackerDetailViewController" customModule="getlocation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r5N-vU-FoG"/>
                         <viewControllerLayoutGuide type="bottom" id="nbM-5Z-b3E"/>

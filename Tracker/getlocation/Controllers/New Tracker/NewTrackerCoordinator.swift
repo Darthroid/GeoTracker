@@ -11,7 +11,10 @@ import UIKit
 
 class NewTrackerCoordinator: Coordinator {
 	var childCoordinators = [Coordinator]()
+	weak var parentCoordinator: Coordinator?
 	var navigationController: UINavigationController
+	
+	private var _navigationController: UINavigationController?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -20,15 +23,22 @@ class NewTrackerCoordinator: Coordinator {
 	func start() {
 		let viewController = NewTrackerViewController.instantiate()
 		viewController.coordinator = self
-        navigationController.viewControllers = [viewController]
-
 		let viewModel = TrackerRecorderViewModel()
 		viewController.viewModel = viewModel
+		
+		_navigationController = UINavigationController()
+		_navigationController?.viewControllers = [viewController]
+		navigationController.visibleViewController?.present(_navigationController!, animated: true)
 	}
-	
+
 	func startRecording(with viewModel: TrackerRecorderViewModel) {
 		let viewController = StartTrackingViewController.instantiate()
 		viewController.viewModel = viewModel
-		navigationController.showDetailViewController(viewController, sender: nil)
+		navigationController.visibleViewController?.present(viewController, animated: true)
+//		navigationController.showDetailViewController(viewController, sender: nil)
+	}
+	
+	func finish() {
+		parentCoordinator?.childCoordinatorDidFinish(self)
 	}
 }

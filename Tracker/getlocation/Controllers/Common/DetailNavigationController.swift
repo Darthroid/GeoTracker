@@ -22,9 +22,7 @@ class DetailNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.isTranslucent = false
     }
-
 }
 
 // MARK: - UINavigationControllerDelegate

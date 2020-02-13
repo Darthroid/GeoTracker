@@ -11,6 +11,7 @@ import UIKit
 
 class TrackerListCoordinator: Coordinator {
 	var childCoordinators = [Coordinator]()
+	weak var parentCoordinator: Coordinator?
 	var navigationController: UINavigationController
 	
 	init(navigationController: UINavigationController) {
@@ -30,6 +31,13 @@ class TrackerListCoordinator: Coordinator {
 		let viewController = TrackerDetailViewController.instantiate()
 		viewController.viewModel = viewModel
 		navigationController.showDetailViewController(viewController, sender: nil)
+	}
+	
+	func presenTrackerRecorder() {
+		let coordinator = NewTrackerCoordinator(navigationController: navigationController)
+		coordinator.parentCoordinator = self
+		childCoordinators.append(coordinator)
+		coordinator.start()
 	}
 	
 }

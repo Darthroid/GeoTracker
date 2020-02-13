@@ -15,7 +15,8 @@ class NewTrackerViewController: UITableViewController, Storyboarded {
     
     @IBOutlet weak var trackerNameTextField: UITextField!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var startTrakingButton: UIBarButtonItem!
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
+	@IBOutlet weak var startTrakingButton: UIBarButtonItem!
     @IBOutlet weak var updateFrequencyPicker: UIPickerView! {
         didSet {
             updateFrequencyPickerChanged()
@@ -45,6 +46,7 @@ class NewTrackerViewController: UITableViewController, Storyboarded {
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
 		self.clearInputs()
+		coordinator?.finish()
 	}
     
     // MARK: - User defined methods
@@ -63,7 +65,10 @@ class NewTrackerViewController: UITableViewController, Storyboarded {
 	}
     
     // MARK: - Actions methods
-    
+	@IBAction func cancel(_ sender: Any) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
     @IBAction func startTracking(_ sender: Any) {
 		self.trackerNameTextField.endEditing(true)
 		if viewModel.isValidTrackerInfo {

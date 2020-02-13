@@ -59,7 +59,8 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 	@objc func addButtonTap(_ sender: Any?) {
 		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		let newTrackerAction = UIAlertAction(title: "New tracker", style: .default, handler: { _ in
-			self.tabBarController?.selectedIndex = 0
+//			self.tabBarController?.selectedIndex = 0
+			self.coordinator?.presenTrackerRecorder()
 		})
 		
 		let importAction = UIAlertAction(title: "Import", style: .default, handler: { _ in
