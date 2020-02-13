@@ -14,7 +14,7 @@ class LocationManager: CLLocationManager {
     
     private override init() {
 		super.init()
-        self.requestWhenInUseAuthorization()
+//        self.requestWhenInUseAuthorization()
         self.allowsBackgroundLocationUpdates = true
         self.pausesLocationUpdatesAutomatically = false
     }

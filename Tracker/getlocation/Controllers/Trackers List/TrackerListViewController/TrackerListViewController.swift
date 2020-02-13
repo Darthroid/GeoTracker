@@ -8,14 +8,15 @@
 
 import UIKit
 
-class TrackerListViewController: UITableViewController {
+class TrackerListViewController: UITableViewController, Storyboarded {
 
     // MARK: - private properties
 
 	private var collapseDetailViewController = true
 	private var selectedViewModel: TrackerViewModel?
 	
-	public var viewModel = TrackerListViewModel()
+	public var viewModel: TrackerListViewModel!
+	public var coordinator: TrackerListCoordinator?
     
     // MARK: - ViewController LifeCycle methods
     
@@ -47,27 +48,6 @@ class TrackerListViewController: UITableViewController {
         super.viewWillAppear(true)
 		self.setupInterface()
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let viewController = segue.destination as? TrackerDetailViewController {
-//            viewController.tracker = selectedTracker
-//			viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-//			viewController.navigationItem.leftItemsSupplementBackButton = true
-//        }
-		
-        collapseDetailViewController = false
-        guard let navController = segue.destination as? UINavigationController
-			, let viewController = navController.topViewController as? TrackerDetailViewController else {
-                fatalError("Expected DetailViewController")
-        }
-
-//		guard let viewController = segue.destination as? TrackerDetailViewController else {
-//			fatalError("Expected DetailViewController")
-//		}
-		viewController.viewModel = selectedViewModel
-		viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-		viewController.navigationItem.leftItemsSupplementBackButton = true
-    }
     
     // MARK: - User defined methods
     
@@ -79,7 +59,8 @@ class TrackerListViewController: UITableViewController {
 	@objc func addButtonTap(_ sender: Any?) {
 		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		let newTrackerAction = UIAlertAction(title: "New tracker", style: .default, handler: { _ in
-			self.tabBarController?.selectedIndex = 0
+//			self.tabBarController?.selectedIndex = 0
+			self.coordinator?.presenTrackerRecorder()
 		})
 		
 		let importAction = UIAlertAction(title: "Import", style: .default, handler: { _ in
@@ -113,8 +94,8 @@ extension TrackerListViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-		self.selectedViewModel = self.viewModel.dataSource.data.value[indexPath.row]
-        self.performSegue(withIdentifier: "trackerDetail", sender: self)
+		let selectedViewModel = self.viewModel.dataSource.data.value[indexPath.row]
+		coordinator?.showDetail(with: selectedViewModel)
     }
 }
 

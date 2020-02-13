@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class StartTrackingViewController: UIViewController {
+class StartTrackingViewController: UIViewController, Storyboarded {
 	// MARK: - Outlets
 	
 	@IBOutlet weak var mapView: MKMapView!
@@ -20,6 +20,7 @@ class StartTrackingViewController: UIViewController {
 	// MARK: - Public properties
 	
 	public var viewModel: TrackerRecorderViewModel?
+	public weak var coordinator: NewTrackerCoordinator?
 	
 	// MARK: - ViewController lifecycle methods
 	

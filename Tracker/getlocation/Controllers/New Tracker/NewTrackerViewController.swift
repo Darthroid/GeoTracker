@@ -9,13 +9,14 @@
 import UIKit
 import CoreLocation
 
-class NewTrackerViewController: UITableViewController {
+class NewTrackerViewController: UITableViewController, Storyboarded {
     
     // MARK: - Outlets & connections
     
     @IBOutlet weak var trackerNameTextField: UITextField!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var startTrakingButton: UIBarButtonItem!
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
+	@IBOutlet weak var startTrakingButton: UIBarButtonItem!
     @IBOutlet weak var updateFrequencyPicker: UIPickerView! {
         didSet {
             updateFrequencyPickerChanged()
@@ -24,7 +25,8 @@ class NewTrackerViewController: UITableViewController {
             
 	// MARK: - Public properties
 	
-	public var viewModel = TrackerRecorderViewModel()
+	public var viewModel: TrackerRecorderViewModel!
+	public weak var coordinator: NewTrackerCoordinator?
 	
     // MARK: - ViewController LifeCycle methods
     
@@ -44,13 +46,8 @@ class NewTrackerViewController: UITableViewController {
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
 		self.clearInputs()
+		coordinator?.finish()
 	}
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "start", let vc = segue.destination as? StartTrackingViewController {
-			vc.viewModel = self.viewModel
-        }
-    }
     
     // MARK: - User defined methods
 	
@@ -68,11 +65,14 @@ class NewTrackerViewController: UITableViewController {
 	}
     
     // MARK: - Actions methods
-    
+	@IBAction func cancel(_ sender: Any) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
     @IBAction func startTracking(_ sender: Any) {
 		self.trackerNameTextField.endEditing(true)
 		if viewModel.isValidTrackerInfo {
-			performSegue(withIdentifier: "start", sender: self)
+			coordinator?.startRecording(with: viewModel)
 		} else {
 			AlertManager.showError(title: ERROR_TITLE, message: "Please fill in all fields and try again")
 		}
