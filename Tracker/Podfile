@@ -7,9 +7,9 @@ def shared_pods
   pod 'CoreGPX'
 end
 
-target 'getlocation' do
+target 'GeoTracker' do
   use_frameworks!
-  project 'getlocation.xcodeproj'
+  project 'GeoTracker.xcodeproj'
   shared_pods
 
 end
