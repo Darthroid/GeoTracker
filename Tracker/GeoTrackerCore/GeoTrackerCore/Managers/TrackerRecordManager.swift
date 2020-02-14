@@ -8,9 +8,9 @@
 
 import Foundation
 import CoreLocation
-import MapKit
+//import MapKit
 
-protocol TrackerRecordManagerDelegate: class {
+public protocol TrackerRecordManagerDelegate: class {
 	func trackerRecordingDidStart()
 	func trackerRecordingDidPaused()
 	func trackerRecordingDidFinished()
@@ -18,11 +18,11 @@ protocol TrackerRecordManagerDelegate: class {
 	func trackerRecordingDidUpdateLocation(_ location: CLLocation)
 }
 
-class TrackerRecordManager: NSObject {
+public class TrackerRecordManager: NSObject {
 	public static var shared = TrackerRecordManager()
 	
-	weak var timer: Timer?
-	weak var delegate: TrackerRecordManagerDelegate?
+	public weak var timer: Timer?
+	public weak var delegate: TrackerRecordManagerDelegate?
 	
 	public var updateFrequency: Double?
 	
@@ -78,12 +78,12 @@ class TrackerRecordManager: NSObject {
 }
 
 extension TrackerRecordManager: CLLocationManagerDelegate {
-	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+	public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = locations.last else { return }
 		delegate?.trackerRecordingDidUpdateLocation(location)
 	}
 	
-	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+	public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		switch status {
 		case .denied, .notDetermined, .restricted:
 			self.pause()

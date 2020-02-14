@@ -9,8 +9,8 @@
 import UIKit
 import CoreLocation
 
-class LocationManager: CLLocationManager {
-    static let shared = CLLocationManager()
+public class LocationManager: CLLocationManager {
+    public static let shared = CLLocationManager()
     
     private override init() {
 		super.init()

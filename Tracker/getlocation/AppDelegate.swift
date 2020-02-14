@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+import GeoTrackerCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,8 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-	
-	
+
 	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 		let fileName = (url.lastPathComponent as NSString).deletingPathExtension
 		let ac = UIAlertController(title: "Import \(fileName) ?", message: "", preferredStyle: .alert)

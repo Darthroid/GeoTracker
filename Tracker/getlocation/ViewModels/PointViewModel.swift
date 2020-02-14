@@ -8,10 +8,11 @@
 
 import Foundation
 import CoreLocation
+import GeoTrackerCore
 
 /// ViewModel representing individual point of TrackerViewModel
 class PointViewModel: RowViewModel {
-	private var point: Point
+	private var point: TrackerPoint
 	
 	public var latitude: Double {
 		return point.latitude
@@ -33,7 +34,7 @@ class PointViewModel: RowViewModel {
 		return "Latitude: \(self.latitude)\nLongitude: \(self.longitude)"
 	}
 	
-	public init(from point: Point) {
+	public init(from point: TrackerPoint) {
 		self.point = point
 	}
 }

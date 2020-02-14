@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import GeoTrackerCore
 
 class TrackerRecorderViewModel {
 	enum TrackerRecordEvent {
@@ -23,7 +24,7 @@ class TrackerRecorderViewModel {
 																		  ("10 minutes",  60.0 * 10),
 																		  ("30 minutes",  60.0 * 30),
 																		  ("1 hour",      60.0 * 60)]
-	private var points = [Point]()
+	private var points = [TrackerPoint]()
 	
 	//  Coordinates used by StartTrackingViewController to draw polyLine
 	public var storedCoordinates: [CLLocationCoordinate2D] {
@@ -104,7 +105,7 @@ extension TrackerRecorderViewModel: TrackerRecordManagerDelegate {
 	}
 	
 	func trackerRecordingDidTick(_ location: CLLocation) {
-		let point = Point()
+		let point = TrackerPoint()
 		point.id = UUID().uuidString
 		point.latitude = location.coordinate.latitude
 		point.longitude = location.coordinate.longitude

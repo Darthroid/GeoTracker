@@ -5,6 +5,9 @@
       location = "group:getlocation.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:GeoTrackerCore/GeoTrackerCore.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

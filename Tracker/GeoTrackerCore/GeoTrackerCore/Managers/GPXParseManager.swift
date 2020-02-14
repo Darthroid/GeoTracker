@@ -9,9 +9,9 @@
 import Foundation
 import CoreGPX
 
-class GPXParseManager {
+public class GPXParseManager {
 	@discardableResult
-	public class func parseGPX(fromUrl url: URL, save: Bool = false) throws -> [Point] {
+	public class func parseGPX(fromUrl url: URL, save: Bool = false) throws -> [TrackerPoint] {
 		_ = url.startAccessingSecurityScopedResource()
 		guard let gpx = GPXParser(withURL: url)?.parsedData() else {
 			throw NSError(domain: "Unable to parse gpx from path: \(url)", code: 1, userInfo: nil)
@@ -59,15 +59,15 @@ class GPXParseManager {
 		}
 	}
 	
-	private class func parse(_ name: String, waypoints: [GPXWaypoint], save: Bool = false) -> [Point] {
-		var trackerPoints: [Point] = []
+	private class func parse(_ name: String, waypoints: [GPXWaypoint], save: Bool = false) -> [TrackerPoint] {
+		var trackerPoints: [TrackerPoint] = []
 		let trackerId = UUID().uuidString
 		
 		waypoints.forEach({ waypoint in
 			guard let latitude = waypoint.latitude, let longitude = waypoint.longitude else { return }
 			let id = UUID().uuidString	// we need to generate uuid for every waypoint
 
-			let convertedPoint = Point()
+			let convertedPoint = TrackerPoint()
 			convertedPoint.latitude = latitude
 			convertedPoint.longitude = longitude
 			convertedPoint.id = id

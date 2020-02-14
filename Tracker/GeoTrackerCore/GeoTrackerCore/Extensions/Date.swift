@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
 	func stringfromTimeStamp(_ timestamp: Int64) -> String {
 		let df = DateFormatter()
 		df.dateFormat = "yyyy-MM-dd hh:mm:ss"

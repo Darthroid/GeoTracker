@@ -19,15 +19,27 @@ public protocol CoreDataObserver: class {
 public class CoreDataManager {
     public static var shared = CoreDataManager()
     
-    private let persistentContainer = NSPersistentContainer(name: "TrackerDataModel")
+	private let persistentContainer: NSPersistentContainer!
 	
 	private var observations = [ObjectIdentifier: Observation]()
     
     public var context: NSManagedObjectContext {
         return self.persistentContainer.viewContext
     }
+	
+	init() {
+		let bundle = Bundle(identifier: "com.darthroid.GeoTrackerCore")
+		
+		let modelURL = bundle!.url(forResource: "TrackerDataModel", withExtension: "momd")!
+		guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
+			fatalError("Could not create managedObjectModel")
+		}
+		
+		self.persistentContainer = NSPersistentContainer(name: "TrackerDataModel",
+														 managedObjectModel: managedObjectModel)
+	}
     
-    func initalizeStack(completion: @escaping () -> Void) {
+    public func initalizeStack(completion: @escaping () -> Void) {
         self.persistentContainer.loadPersistentStores { description, error in
             if let error = error {
                 print("could not load store \(error.localizedDescription)")
@@ -51,7 +63,7 @@ public class CoreDataManager {
     
     // MARK: - Create (Insert)
     
-    func insertTracker(withId id: String, name: String, points: [Point] = []) throws {
+    public func insertTracker(withId id: String, name: String, points: [TrackerPoint] = []) throws {
         let tracker = Tracker(context: self.context)
         tracker.id = id
         tracker.name = name
@@ -67,13 +79,13 @@ public class CoreDataManager {
     
     // MARK: - Read (Fetch)
     
-    func fetchTrackers() throws -> [Tracker] {
+   public func fetchTrackers() throws -> [Tracker] {
         let request = Tracker.fetchRequest() as NSFetchRequest<Tracker>
         let trackers = try self.context.fetch(request)
         return trackers
     }
     
-    func fetchTrackers(withId id: String) throws -> [Tracker] {
+    public func fetchTrackers(withId id: String) throws -> [Tracker] {
         let request = NSFetchRequest<Tracker>(entityName: "Tracker")
         request.predicate = NSPredicate(format: "id == %@", id)
         
@@ -81,7 +93,7 @@ public class CoreDataManager {
         return trackers
     }
     
-    func fetchTrackers(withName name: String) throws -> [Tracker] {
+    public func fetchTrackers(withName name: String) throws -> [Tracker] {
         let request = NSFetchRequest<Tracker>(entityName: "Tracker")
         request.predicate = NSPredicate(format: "name == %@", name)
         
@@ -91,7 +103,7 @@ public class CoreDataManager {
     
     // MARK: - Update
     // TODO: update with another parameters
-    func update(tracker: Tracker, points: [Point]) throws {
+    public func update(tracker: Tracker, points: [TrackerPoint]) throws {
         points.forEach({ tracker.addToPoints($0) })
 		self.event(.update, ids: [tracker.id], trackers: [tracker])
         if self.context.hasChanges {
@@ -101,7 +113,7 @@ public class CoreDataManager {
     
     // MARK: - Delete
 
-    func delete(tracker: Tracker) throws {
+    public func delete(tracker: Tracker) throws {
         self.context.delete(tracker)
 		self.event(.delete, ids: [tracker.id], trackers: [tracker])
         if self.context.hasChanges {
@@ -109,7 +121,7 @@ public class CoreDataManager {
         }
     }
 	
-    func deleteTrackers(withId id: String) throws {
+    public func deleteTrackers(withId id: String) throws {
         let fetchRequest = Tracker.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         

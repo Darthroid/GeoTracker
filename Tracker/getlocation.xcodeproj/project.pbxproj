@@ -7,18 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C0194491EFA8BDA00E162CC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0194481EFA8BDA00E162CC /* CoreData.framework */; };
-		5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C01944D1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld */; };
-		5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C11BF29233001AB000A12D2 /* LocationManager.swift */; };
-		5C11BF2D23302483000A12D2 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C11BF2C23302483000A12D2 /* Bundle.swift */; };
 		5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FE122326C51E0086BAE6 /* Constant.swift */; };
 		5C17FE162326C6F90086BAE6 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FE152326C6F90086BAE6 /* AlertManager.swift */; };
 		5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FE182326C7BD0086BAE6 /* CommonUtils.swift */; };
-		5C17FE222326D25F0086BAE6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FE212326D25F0086BAE6 /* CoreDataManager.swift */; };
-		5C17FED02326E00F0086BAE6 /* Tracker+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FECC2326E00F0086BAE6 /* Tracker+CoreDataClass.swift */; };
-		5C17FED22326E00F0086BAE6 /* Point+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FECE2326E00F0086BAE6 /* Point+CoreDataProperties.swift */; };
-		5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FECF2326E00F0086BAE6 /* Point+CoreDataClass.swift */; };
-		5C17FED52326E0410086BAE6 /* Tracker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17FED42326E0410086BAE6 /* Tracker+CoreDataProperties.swift */; };
 		5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C569093233771CE00265673 /* TrackerListViewController.swift */; };
 		5C569097233809B300265673 /* TrackerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C569096233809B300265673 /* TrackerCell.swift */; };
 		5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C637E142071595300603F17 /* StartTrackingViewController.swift */; };
@@ -31,7 +22,8 @@
 		5CA6B759233BE53100C6A0D5 /* TrackerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */; };
 		5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6B75C233E952F00C6A0D5 /* CardView.swift */; };
 		5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCF1F421E8FEFF0005D02ED /* MapKit.framework */; };
-		62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */; };
+		D106EFCB23F714C2007C80FF /* GeoTrackerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D106EFCA23F714C2007C80FF /* GeoTrackerCore.framework */; };
+		D106EFCC23F714C2007C80FF /* GeoTrackerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D106EFCA23F714C2007C80FF /* GeoTrackerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1300D3F23D76C6A00368DD8 /* TrackerListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */; };
 		D1300D4123D7723500368DD8 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1300D4023D7723500368DD8 /* CellConfigurable.swift */; };
 		D1320EEE23DA1ADC0082D268 /* TrackerDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */; };
@@ -39,7 +31,6 @@
 		D13B500723DE1D25001D5997 /* PointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B500623DE1D25001D5997 /* PointViewModel.swift */; };
 		D143ED5A23EDDC4F00D5334D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D143ED5923EDDC4F00D5334D /* String.swift */; };
 		D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6CF23C0D44200C1BE82 /* UITableView.swift */; };
-		D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */; };
 		D16C448E23EFEFC500FBF6CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16C448D23EFEFC500FBF6CE /* Coordinator.swift */; };
 		D16C449023EFF26700FBF6CE /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16C448F23EFF26700FBF6CE /* Storyboarded.swift */; };
 		D16C449223EFF77400FBF6CE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16C449123EFF77400FBF6CE /* MainCoordinator.swift */; };
@@ -58,27 +49,30 @@
 		D178197A23D44EED006A4104 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178197923D44EED006A4104 /* GenericDataSource.swift */; };
 		D178197C23D451D9006A4104 /* TrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178197B23D451D9006A4104 /* TrackerViewModel.swift */; };
 		D1950B1223C498DE0080F97F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1123C498DE0080F97F /* UIView.swift */; };
-		D1950B1423C4ACA90080F97F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1323C4ACA80080F97F /* Date.swift */; };
 		D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */; };
-		D19914CE23E1FB3E00029904 /* TrackerRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19914CD23E1FB3E00029904 /* TrackerRecordManager.swift */; };
 		D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */; };
+		F542316768FE4314FE47884F /* Pods_getlocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEA3E032E422B63E40B1AEC /* Pods_getlocation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D106EFCD23F714C3007C80FF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D106EFCC23F714C2007C80FF /* GeoTrackerCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.release.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.release.xcconfig"; sourceTree = "<group>"; };
-		25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_getlocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0194481EFA8BDA00E162CC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = getlocation.xcdatamodel; sourceTree = "<group>"; };
-		5C11BF29233001AB000A12D2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		5C11BF2C23302483000A12D2 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5C17FE122326C51E0086BAE6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5C17FE152326C6F90086BAE6 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5C17FE182326C7BD0086BAE6 /* CommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
-		5C17FE212326D25F0086BAE6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		5C17FECC2326E00F0086BAE6 /* Tracker+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tracker+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5C17FECE2326E00F0086BAE6 /* Point+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5C17FECF2326E00F0086BAE6 /* Point+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5C17FED42326E0410086BAE6 /* Tracker+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tracker+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5C569093233771CE00265673 /* TrackerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListViewController.swift; sourceTree = "<group>"; };
 		5C569096233809B300265673 /* TrackerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCell.swift; sourceTree = "<group>"; };
 		5C637E142071595300603F17 /* StartTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTrackingViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +88,10 @@
 		5CA6B75A233E8BED00C6A0D5 /* getlocation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = getlocation.entitlements; sourceTree = "<group>"; };
 		5CA6B75C233E952F00C6A0D5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
+		79309F49FAE3131B56FB847F /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
+		AFEA3E032E422B63E40B1AEC /* Pods_getlocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_getlocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C752EA46AA3629065817BEC4 /* Pods-getlocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.release.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.release.xcconfig"; sourceTree = "<group>"; };
+		D106EFCA23F714C2007C80FF /* GeoTrackerCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GeoTrackerCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListDataSource.swift; sourceTree = "<group>"; };
 		D1300D4023D7723500368DD8 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailsDataSource.swift; sourceTree = "<group>"; };
@@ -102,7 +99,6 @@
 		D13B500623DE1D25001D5997 /* PointViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewModel.swift; sourceTree = "<group>"; };
 		D143ED5923EDDC4F00D5334D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D146A6CF23C0D44200C1BE82 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParseManager.swift; sourceTree = "<group>"; };
 		D16C448D23EFEFC500FBF6CE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D16C448F23EFF26700FBF6CE /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		D16C449123EFF77400FBF6CE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -122,9 +118,7 @@
 		D178197923D44EED006A4104 /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
 		D178197B23D451D9006A4104 /* TrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewModel.swift; sourceTree = "<group>"; };
 		D1950B1123C498DE0080F97F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		D1950B1323C4ACA80080F97F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
-		D19914CD23E1FB3E00029904 /* TrackerRecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecordManager.swift; sourceTree = "<group>"; };
 		D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailBottomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,9 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C0194491EFA8BDA00E162CC /* CoreData.framework in Frameworks */,
+				D106EFCB23F714C2007C80FF /* GeoTrackerCore.framework in Frameworks */,
 				5CCF1F431E8FEFF0005D02ED /* MapKit.framework in Frameworks */,
-				62A83303D9097D1433B7ECF0 /* Pods_getlocation.framework in Frameworks */,
+				F542316768FE4314FE47884F /* Pods_getlocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,11 +139,9 @@
 		5C11BF2B2330242F000A12D2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5C11BF2C23302483000A12D2 /* Bundle.swift */,
 				5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */,
 				D146A6CF23C0D44200C1BE82 /* UITableView.swift */,
 				D1950B1123C498DE0080F97F /* UIView.swift */,
-				D1950B1323C4ACA80080F97F /* Date.swift */,
 				D143ED5923EDDC4F00D5334D /* String.swift */,
 			);
 			path = Extensions;
@@ -167,10 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				5C17FE152326C6F90086BAE6 /* AlertManager.swift */,
-				5C17FE212326D25F0086BAE6 /* CoreDataManager.swift */,
-				5C11BF29233001AB000A12D2 /* LocationManager.swift */,
-				D146A6D123C1E6E800C1BE82 /* GPXParseManager.swift */,
-				D19914CD23E1FB3E00029904 /* TrackerRecordManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -188,18 +176,6 @@
 				D16C449923F011D600FBF6CE /* PrimaryContainerType.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		5C17FECB2326DF220086BAE6 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				5C01944D1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld */,
-				5C17FECF2326E00F0086BAE6 /* Point+CoreDataClass.swift */,
-				5C17FECE2326E00F0086BAE6 /* Point+CoreDataProperties.swift */,
-				5C17FECC2326E00F0086BAE6 /* Tracker+CoreDataClass.swift */,
-				5C17FED42326E0410086BAE6 /* Tracker+CoreDataProperties.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		5C5690952338098B00265673 /* Trackers List */ = {
@@ -251,7 +227,6 @@
 				5C17FE112326C50D0086BAE6 /* Constant */,
 				D178197623D31E6C006A4104 /* ViewModels */,
 				5C637E162071596000603F17 /* Controllers */,
-				5C17FECB2326DF220086BAE6 /* CoreData */,
 				5CA6B75B233E951000C6A0D5 /* Custom */,
 				5C17FE142326C6E80086BAE6 /* Managers */,
 				5C17FE172326C7AD0086BAE6 /* Utils */,
@@ -303,10 +278,11 @@
 		5CCF1F411E8FEFF0005D02ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D106EFCA23F714C2007C80FF /* GeoTrackerCore.framework */,
 				D16C44A823F315DA00FBF6CE /* CoreGPX.framework */,
 				5C0194481EFA8BDA00E162CC /* CoreData.framework */,
 				5CCF1F421E8FEFF0005D02ED /* MapKit.framework */,
-				25A237F3EA5038E1635FC001 /* Pods_getlocation.framework */,
+				AFEA3E032E422B63E40B1AEC /* Pods_getlocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,8 +290,8 @@
 		AC3B0CA3C66174521E5AD62E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */,
-				0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */,
+				79309F49FAE3131B56FB847F /* Pods-getlocation.debug.xcconfig */,
+				C752EA46AA3629065817BEC4 /* Pods-getlocation.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -360,11 +336,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C8C3AD11E83F83400F8146E /* Build configuration list for PBXNativeTarget "getlocation" */;
 			buildPhases = (
-				D3B0238793B3F9D7BE584B70 /* [CP] Check Pods Manifest.lock */,
+				A3419FF45963C29A4053440E /* [CP] Check Pods Manifest.lock */,
 				5C8C3ABB1E83F83400F8146E /* Sources */,
 				5C8C3ABC1E83F83400F8146E /* Frameworks */,
 				5C8C3ABD1E83F83400F8146E /* Resources */,
-				014A648AC323E48B2E89F4E9 /* [CP] Embed Pods Frameworks */,
+				D106EFCD23F714C3007C80FF /* Embed Frameworks */,
+				2158636F949D7CBA686BC43D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -433,7 +410,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		014A648AC323E48B2E89F4E9 /* [CP] Embed Pods Frameworks */ = {
+		2158636F949D7CBA686BC43D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -451,7 +428,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-getlocation/Pods-getlocation-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3B0238793B3F9D7BE584B70 /* [CP] Check Pods Manifest.lock */ = {
+		A3419FF45963C29A4053440E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -484,17 +461,13 @@
 				D16C449A23F011D600FBF6CE /* PrimaryContainerType.swift in Sources */,
 				D143ED5A23EDDC4F00D5334D /* String.swift in Sources */,
 				D16C44A123F1D7FE00FBF6CE /* TrackerListCoordinator.swift in Sources */,
-				5C17FED02326E00F0086BAE6 /* Tracker+CoreDataClass.swift in Sources */,
 				5C569094233771CE00265673 /* TrackerListViewController.swift in Sources */,
 				D16C449823F011A500FBF6CE /* SplitViewDelegate.swift in Sources */,
 				D1300D4123D7723500368DD8 /* CellConfigurable.swift in Sources */,
 				D16C449423EFFCAF00FBF6CE /* NewTrackerCoordinator.swift in Sources */,
 				D16C44A323F1DF7000FBF6CE /* DetailNavigationController.swift in Sources */,
 				5C569097233809B300265673 /* TrackerCell.swift in Sources */,
-				5C17FED32326E00F0086BAE6 /* Point+CoreDataClass.swift in Sources */,
-				5C01944F1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld in Sources */,
 				D16C449023EFF26700FBF6CE /* Storyboarded.swift in Sources */,
-				D1950B1423C4ACA90080F97F /* Date.swift in Sources */,
 				5C7F00B82071283B0034A2AB /* NewTrackerViewController.swift in Sources */,
 				5C637E152071595300603F17 /* StartTrackingViewController.swift in Sources */,
 				D16C449C23F1D5E600FBF6CE /* NavigationController.swift in Sources */,
@@ -506,28 +479,21 @@
 				D16C448E23EFEFC500FBF6CE /* Coordinator.swift in Sources */,
 				D13B500523DE1BA8001D5997 /* PointCell.swift in Sources */,
 				D178197C23D451D9006A4104 /* TrackerViewModel.swift in Sources */,
-				D19914CE23E1FB3E00029904 /* TrackerRecordManager.swift in Sources */,
-				5C17FED52326E0410086BAE6 /* Tracker+CoreDataProperties.swift in Sources */,
 				D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */,
 				5C17FE162326C6F90086BAE6 /* AlertManager.swift in Sources */,
 				D16C449F23F1D61800FBF6CE /* PlaceholderViewController.swift in Sources */,
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
 				D1300D3F23D76C6A00368DD8 /* TrackerListDataSource.swift in Sources */,
-				5C11BF2A233001AB000A12D2 /* LocationManager.swift in Sources */,
 				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
 				D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */,
 				D1320EEE23DA1ADC0082D268 /* TrackerDetailsDataSource.swift in Sources */,
 				D1950B1223C498DE0080F97F /* UIView.swift in Sources */,
-				D146A6D223C1E6E800C1BE82 /* GPXParseManager.swift in Sources */,
 				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
 				D178197A23D44EED006A4104 /* GenericDataSource.swift in Sources */,
 				D16C44A523F1DFA200FBF6CE /* DetailNavigationControllerAnimator.swift in Sources */,
 				D178197523D31E4E006A4104 /* Dynamic.swift in Sources */,
 				D16C449223EFF77400FBF6CE /* MainCoordinator.swift in Sources */,
 				5CA6B755233A9C2800C6A0D5 /* MKMapSnapshotter.swift in Sources */,
-				5C17FED22326E00F0086BAE6 /* Point+CoreDataProperties.swift in Sources */,
-				5C11BF2D23302483000A12D2 /* Bundle.swift in Sources */,
-				5C17FE222326D25F0086BAE6 /* CoreDataManager.swift in Sources */,
 				D146A6D023C0D44200C1BE82 /* UITableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,7 +631,7 @@
 		};
 		5C8C3AD21E83F83400F8146E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0B0DBCB24C1C66DE95D627C /* Pods-getlocation.debug.xcconfig */;
+			baseConfigurationReference = 79309F49FAE3131B56FB847F /* Pods-getlocation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = getlocation/getlocation.entitlements;
@@ -683,7 +649,7 @@
 		};
 		5C8C3AD31E83F83400F8146E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D26B6B05E079FF8ABEE02C0 /* Pods-getlocation.release.xcconfig */;
+			baseConfigurationReference = C752EA46AA3629065817BEC4 /* Pods-getlocation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = getlocation/getlocation.entitlements;
@@ -721,19 +687,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5C01944D1EFA8C1100E162CC /* TrackerDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */,
-			);
-			currentVersion = 5C01944E1EFA8C1100E162CC /* getlocation.xcdatamodel */;
-			path = TrackerDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5C8C3AB71E83F83400F8146E /* Project object */;
 }

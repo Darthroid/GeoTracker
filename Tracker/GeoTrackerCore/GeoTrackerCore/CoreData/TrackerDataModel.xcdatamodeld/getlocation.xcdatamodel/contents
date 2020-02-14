@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Tracker" representedClassName=".Tracker" syncable="YES">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="points" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TrackerPoint" inverseName="tracker" inverseEntity="TrackerPoint"/>
+    </entity>
+    <entity name="TrackerPoint" representedClassName=".TrackerPoint" syncable="YES">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="tracker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tracker" inverseName="points" inverseEntity="Tracker"/>
+    </entity>
+    <elements>
+        <element name="Tracker" positionX="168.0390625" positionY="-81.41015625" width="128" height="88"/>
+        <element name="TrackerPoint" positionX="-124.87109375" positionY="30.44140625" width="128" height="118"/>
+    </elements>
+</model>

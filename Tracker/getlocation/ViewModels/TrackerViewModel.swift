@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GeoTrackerCore
 
 /// ViewModel representing tracker entity
 class TrackerViewModel: RowViewModel {

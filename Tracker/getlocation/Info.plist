@@ -68,7 +68,7 @@
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>we need your location info</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>we need your location info</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>we need your location info</string>
 	<key>UIApplicationExitsOnSuspend</key>

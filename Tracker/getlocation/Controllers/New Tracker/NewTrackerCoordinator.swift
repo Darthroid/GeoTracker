@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GeoTrackerCore
 
 class NewTrackerCoordinator: Coordinator {
 	var childCoordinators = [Coordinator]()
@@ -36,6 +37,8 @@ class NewTrackerCoordinator: Coordinator {
 		viewController.viewModel = viewModel
 		navigationController.visibleViewController?.present(viewController, animated: true)
 //		navigationController.showDetailViewController(viewController, sender: nil)
+		
+		LocationManager.shared.requestWhenInUseAuthorization()
 	}
 	
 	func finish() {
