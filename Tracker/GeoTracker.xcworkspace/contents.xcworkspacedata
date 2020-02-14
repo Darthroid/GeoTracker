@@ -2,15 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/okomaristy/Xcode_projects/GeoTracker/Tracker/GeoTracker.xcodeproj">
+      location = "group:GeoTracker.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:GeoTrackerCore/GeoTrackerCore.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:GeoTracker.xcodeproj">
    </FileRef>
 </Workspace>

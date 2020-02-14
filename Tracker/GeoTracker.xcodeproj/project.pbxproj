@@ -85,7 +85,7 @@
 		5C8C3ACE1E83F83400F8146E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CA6B754233A9C2800C6A0D5 /* MKMapSnapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapSnapshotter.swift; sourceTree = "<group>"; };
 		5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailViewController.swift; sourceTree = "<group>"; };
-		5CA6B75A233E8BED00C6A0D5 /* getlocation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = getlocation.entitlements; sourceTree = "<group>"; };
+		5CA6B75A233E8BED00C6A0D5 /* GeoTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeoTracker.entitlements; sourceTree = "<group>"; };
 		5CA6B75C233E952F00C6A0D5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		79309F49FAE3131B56FB847F /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 		5C8C3AC11E83F83400F8146E /* GeoTracker */ = {
 			isa = PBXGroup;
 			children = (
-				5CA6B75A233E8BED00C6A0D5 /* getlocation.entitlements */,
+				5CA6B75A233E8BED00C6A0D5 /* GeoTracker.entitlements */,
 				5C8C3ACE1E83F83400F8146E /* Info.plist */,
 				5C8C3AC21E83F83400F8146E /* AppDelegate.swift */,
 				D16C449123EFF77400FBF6CE /* MainCoordinator.swift */,
@@ -638,12 +638,12 @@
 			baseConfigurationReference = A139D9501154BAD3E1B441F0 /* Pods-GeoTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = getlocation/getlocation.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GeoTracker/GeoTracker.entitlements;
 				DEVELOPMENT_TEAM = 97A6BHXBQU;
 				INFOPLIST_FILE = GeoTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @rpath";
-				PRODUCT_BUNDLE_IDENTIFIER = com.darthroid.GeoTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.darthroid.geotracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -656,12 +656,12 @@
 			baseConfigurationReference = E10B1D75325F84B739D70F26 /* Pods-GeoTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = getlocation/getlocation.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GeoTracker/GeoTracker.entitlements;
 				DEVELOPMENT_TEAM = 97A6BHXBQU;
 				INFOPLIST_FILE = GeoTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @rpath";
-				PRODUCT_BUNDLE_IDENTIFIER = com.darthroid.GeoTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.darthroid.geotracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
