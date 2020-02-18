@@ -1,21 +1,22 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
-
 workspace 'GeoTracker.xcworkspace'
+platform :ios, '10.0'
+inhibit_all_warnings!
+use_frameworks!
 
 def shared_pods
   pod 'CoreGPX'
 end
 
 target 'GeoTracker' do
-  use_frameworks!
   project 'GeoTracker.xcodeproj'
   shared_pods
 
+	target 'GeoTrackerUITests' do
+			inherit! :search_paths
+	end
 end
 
 target 'GeoTrackerCore' do
-  use_frameworks!
   project 'GeoTrackerCore/GeoTrackerCore.xcodeproj'
   shared_pods
 end
