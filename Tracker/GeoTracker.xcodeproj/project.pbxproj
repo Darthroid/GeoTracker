@@ -102,9 +102,7 @@
 		5CA6B75A233E8BED00C6A0D5 /* GeoTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeoTracker.entitlements; sourceTree = "<group>"; };
 		5CA6B75C233E952F00C6A0D5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5CCF1F421E8FEFF0005D02ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		79309F49FAE3131B56FB847F /* Pods-getlocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.debug.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.debug.xcconfig"; sourceTree = "<group>"; };
 		A139D9501154BAD3E1B441F0 /* Pods-GeoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTracker.debug.xcconfig"; path = "Target Support Files/Pods-GeoTracker/Pods-GeoTracker.debug.xcconfig"; sourceTree = "<group>"; };
-		C752EA46AA3629065817BEC4 /* Pods-getlocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getlocation.release.xcconfig"; path = "Target Support Files/Pods-getlocation/Pods-getlocation.release.xcconfig"; sourceTree = "<group>"; };
 		CBCA5B5FF4BBCC5DB2563AE4 /* Pods-GeoTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackerUITests.release.xcconfig"; path = "Target Support Files/Pods-GeoTrackerUITests/Pods-GeoTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D106EFCA23F714C2007C80FF /* GeoTrackerCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GeoTrackerCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListDataSource.swift; sourceTree = "<group>"; };
@@ -321,8 +319,6 @@
 		AC3B0CA3C66174521E5AD62E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				79309F49FAE3131B56FB847F /* Pods-getlocation.debug.xcconfig */,
-				C752EA46AA3629065817BEC4 /* Pods-getlocation.release.xcconfig */,
 				A139D9501154BAD3E1B441F0 /* Pods-GeoTracker.debug.xcconfig */,
 				E10B1D75325F84B739D70F26 /* Pods-GeoTracker.release.xcconfig */,
 				434FFBB6F9A5C6A60A5C5C8C /* Pods-GeoTrackerUITests.debug.xcconfig */,
