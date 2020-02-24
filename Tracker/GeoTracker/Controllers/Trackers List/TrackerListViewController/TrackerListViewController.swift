@@ -12,8 +12,9 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 
     // MARK: - private properties
 
-	private var collapseDetailViewController = true
-	private var selectedViewModel: TrackerViewModel?
+	private var dataSource: GenericDataSource<TrackerViewModel>?
+	
+	// MARK: - public properties
 	
 	public var viewModel: TrackerListViewModel!
 	public var coordinator: TrackerListCoordinator?
@@ -22,31 +23,11 @@ class TrackerListViewController: UITableViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-																 target: self,
-																 action: #selector(addButtonTap(_:)))
-        self.tableView.delegate = self
-		self.tableView.dataSource = viewModel.dataSource
-		self.viewModel.fetchTrackers()
 		
-		viewModel.dataSource.data
-			.addAndNotify(observer: self) { [weak self] in
-				guard let `self` = self else { return }
-				print(self, "dataSource changed")
-				// TODO: move placeholder handling somewhere else
-				if self.viewModel.dataSource.data.value.count > 0 {
-					self.tableView.removeNoDataPlaceholder()
-				} else {
-					self.tableView.setNoDataPlaceholder("No available trackers")
-				}
-				
-				self.tableView.reloadData()
-			}
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        self.tableView.delegate = self
 		self.setupInterface()
+		self.setupDataSource()
+		self.setupBinding()
     }
     
     // MARK: - User defined methods
@@ -54,12 +35,54 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 	private func setupInterface() {
 		let interfaceIdiom = UIDevice.current.userInterfaceIdiom
 		self.tableView.separatorStyle = interfaceIdiom == .phone ? .none : .singleLine
+		
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+																 target: self,
+																 action: #selector(addButtonTap(_:)))
+	}
+	
+	private func setupDataSource() {
+		let dataSource = GenericDataSource(
+			models: viewModel.trackers,
+			isEditable: true,
+			reuseIdentifier: "TrackerCellSimple",
+			cellConfigurator: { (trackerViewModel, cell) in
+				if let cell = cell as? CellConfigurable {
+					cell.setup(viewModel: trackerViewModel)
+				}
+			},
+			eventHandler: { [weak self] (event, eventViewModel) in
+				switch event {
+				case .insert:
+					break
+				case .delete:
+					try? self?.viewModel.deleteTracker(eventViewModel)
+				}
+			}
+		)
+		
+		self.dataSource = dataSource
+		tableView.dataSource = self.dataSource
+	}
+	
+	private func setupBinding() {
+		self.dataSource?.models.addAndNotify(observer: self) { [weak self] in
+			guard let `self` = self else { return }
+			print(self, "dataSource changed")
+			// TODO: move placeholder handling somewhere else
+			if self.dataSource?.models.value.count ?? 0 > 0 {
+				self.tableView.removeNoDataPlaceholder()
+			} else {
+				self.tableView.setNoDataPlaceholder("No available trackers")
+			}
+			
+			self.tableView.reloadData()
+		}
 	}
 	
 	@objc func addButtonTap(_ sender: Any?) {
 		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		let newTrackerAction = UIAlertAction(title: "New tracker", style: .default, handler: { _ in
-//			self.tabBarController?.selectedIndex = 0
 			self.coordinator?.presenTrackerRecorder()
 		})
 		
@@ -94,8 +117,9 @@ extension TrackerListViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-		let selectedViewModel = self.viewModel.dataSource.data.value[indexPath.row]
-		coordinator?.showDetail(with: selectedViewModel)
+		if let selectedViewModel = self.dataSource?.models.value[indexPath.row] {
+			coordinator?.showDetail(with: selectedViewModel)
+		}
     }
 }
 
@@ -121,12 +145,4 @@ extension TrackerListViewController: UIDocumentPickerDelegate {
 		
 		self.present(ac, animated: true)
 	}
-}
-
-// MARK: - UISplitViewControllerDelegate methods
-
-extension TrackerListViewController: UISplitViewControllerDelegate {
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-        return collapseDetailViewController
-    }
 }

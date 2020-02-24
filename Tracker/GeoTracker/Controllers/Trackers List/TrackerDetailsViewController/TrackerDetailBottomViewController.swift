@@ -21,11 +21,15 @@ class TrackerDetailBottomViewController: UIViewController, Storyboarded {
 	@IBOutlet weak var shareButton: UIButton!
 	@IBOutlet weak var tableView: UITableView!
 	
+    // MARK: - private properties
+
+	private var dataSource: GenericDataSource<PointViewModel>?
+	
     // MARK: - Public properties
 	
 	public weak var delegate: TrackerDetailBottomDelegate?
 	
-	public var viewModel: TrackerViewModel?
+	public var viewModel: TrackerViewModel!
 
 
     // MARK: - ViewController LifeCycle methods
@@ -34,25 +38,40 @@ class TrackerDetailBottomViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
 		
 		tableView.delegate = self
-		tableView.dataSource = viewModel?.dataSource
-		
-		viewModel?.dataSource.data
-			.addAndNotify(observer: self) { [weak self] in
-				guard let `self` = self else { return }
-				print(self, "dataSource changed")
-				self.tableView.reloadData()
-			}
-    }
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
 		self.setupInterface()
-	}
+		self.setupDataSource()
+		self.setupBinding()
+    }
 	
     // MARK: - User defined methods
 	
 	private func setupInterface() {
 		self.trackerNameLabel.text = viewModel?.name
+	}
+	
+	private func setupDataSource() {
+		let dataSource = GenericDataSource(
+			models: viewModel.points,
+			isEditable: false,
+			reuseIdentifier: "PointCell",
+			cellConfigurator: { (trackerViewModel, cell) in
+				if let cell = cell as? CellConfigurable {
+					cell.setup(viewModel: trackerViewModel)
+				}
+			},
+			eventHandler: { (_,_) in}
+		)
+		
+		self.dataSource = dataSource
+		tableView.dataSource = self.dataSource
+	}
+	
+	private func setupBinding() {
+		self.dataSource?.models.addAndNotify(observer: self) { [weak self] in
+			guard let `self` = self else { return }
+			print(self, "dataSource changed")
+			self.tableView.reloadData()
+		}
 	}
 	
 	private func presentShareSheet(with itemsToShare: [Any], sender: Any) {
@@ -82,7 +101,7 @@ class TrackerDetailBottomViewController: UIViewController, Storyboarded {
 
 extension TrackerDetailBottomViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let pointModel = viewModel?.dataSource.data.value[indexPath.row] else { return }
+		guard let pointModel = self.dataSource?.models.value[indexPath.row] else { return }
 		delegate?.didSelectPoint(pointModel)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}

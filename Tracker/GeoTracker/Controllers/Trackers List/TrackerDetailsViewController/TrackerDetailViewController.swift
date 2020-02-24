@@ -104,7 +104,7 @@ extension TrackerDetailViewController: MKMapViewDelegate {
     }
     
     func drawOnMap() {
-		guard let points = self.viewModel?.dataSource.data.value else { return }
+		guard let points = self.viewModel?.points.value else { return }
         
         self.clearMap()
 		let coordinates = points.map({ $0.toCLLocationCoordinate })

@@ -90,7 +90,7 @@ class TrackerCell: UITableViewCell, CellConfigurable {
 		if let cachedImage = self.imageCache.object(forKey: (trackerModel.id) as NSString) {
             self.routeImageView.image = cachedImage
         } else {
-			self.takeSnapShot(points: trackerModel.dataSource.data.value, id: trackerModel.id)
+			self.takeSnapShot(points: trackerModel.points.value, id: trackerModel.id)
         }
 	}
 

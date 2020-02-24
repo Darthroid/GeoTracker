@@ -11,19 +11,11 @@ import GeoTrackerCore
 
 /// ViewModel representing tracker list screen
 class TrackerListViewModel {
-	var dataSource: TrackerListDataSource!
+	private(set) var trackers: Dynamic<[TrackerViewModel]> = Dynamic([])
 	
 	public init() {
 		self.subscribeForDbEvents()
-		
-		dataSource = TrackerListDataSource(eventHandler: { [weak self] event, eventViewModel in
-			switch event {
-			case .delete:
-				try? self?.deleteTracker(eventViewModel)
-			default:
-				assert(false, "not implemented")
-			}
-		})
+		self.fetchTrackers()
 	}
 	
 	public func subscribeForDbEvents() {
@@ -34,8 +26,8 @@ class TrackerListViewModel {
 		print(#function)
 		do {
 			let trackers = try CoreDataManager.shared.fetchTrackers()
-			let _dataSource = trackers.map({ TrackerViewModel(from: $0) })
-			self.dataSource.data.value = _dataSource
+			let trackerViewModels = trackers.map({ TrackerViewModel(from: $0) })
+			self.trackers = Dynamic(trackerViewModels)
 		} catch {
 			assert(false, error.localizedDescription)
 		}
@@ -63,7 +55,7 @@ class TrackerListViewModel {
 extension TrackerListViewModel: CoreDataObserver {
 	func didInsert(ids: [String], trackers: [Tracker]) {
 		trackers.forEach({ tracker in
-			self.dataSource.data.value.append(TrackerViewModel(from: tracker))
+			self.trackers.value.append(TrackerViewModel(from: tracker))
 		})
 	}
 	
@@ -74,11 +66,11 @@ extension TrackerListViewModel: CoreDataObserver {
 	func didDelete(ids: [String], trackers: [Tracker]?) {
 		if let trackers = trackers {
 			trackers.forEach({ tracker in
-				self.dataSource.data.value.removeAll(where: { $0.id == tracker.id })
+				self.trackers.value.removeAll(where: { $0.id == tracker.id })
 			})
 		} else {
 			ids.forEach({ id in
-				self.dataSource.data.value.removeAll(where: { $0.id == id })
+				self.trackers.value.removeAll(where: { $0.id == id })
 			})
 		}
 	}

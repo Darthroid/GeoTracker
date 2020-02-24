@@ -12,7 +12,9 @@ import GeoTrackerCore
 /// ViewModel representing tracker entity
 class TrackerViewModel: RowViewModel {
 	private var tracker: Tracker
-		
+	
+	private(set) var points: Dynamic<[PointViewModel]> = Dynamic([])
+	
 	public var name: String {
 		return tracker.name ?? ""
 	}
@@ -24,16 +26,11 @@ class TrackerViewModel: RowViewModel {
 	public var id: String {
 		return tracker.id
 	}
-	
-	public var dataSource: TrackerDetailsDataSource!
-	
+		
 	public init(from tracker: Tracker) {
 		self.tracker = tracker
-		
-		self.dataSource = TrackerDetailsDataSource(eventHandler: { _,_ in })
-		
-		let _points = Array(tracker.points ?? Set())
-		self.dataSource.data.value = _points.map({ PointViewModel(from: $0) })
+		let points = Array(tracker.points ?? Set())
+		self.points = Dynamic(points.map({ PointViewModel(from: $0) }))
 	}
 }
 

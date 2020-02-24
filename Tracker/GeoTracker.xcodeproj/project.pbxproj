@@ -26,9 +26,7 @@
 		C3B3BA061DD2640F406FF0E0 /* Pods_GeoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F75AE21867FFDD2EDCE735 /* Pods_GeoTracker.framework */; };
 		D106EFCB23F714C2007C80FF /* GeoTrackerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D106EFCA23F714C2007C80FF /* GeoTrackerCore.framework */; };
 		D106EFCC23F714C2007C80FF /* GeoTrackerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D106EFCA23F714C2007C80FF /* GeoTrackerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D1300D3F23D76C6A00368DD8 /* TrackerListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */; };
 		D1300D4123D7723500368DD8 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1300D4023D7723500368DD8 /* CellConfigurable.swift */; };
-		D1320EEE23DA1ADC0082D268 /* TrackerDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */; };
 		D13B500523DE1BA8001D5997 /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B500423DE1BA8001D5997 /* PointCell.swift */; };
 		D13B500723DE1D25001D5997 /* PointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B500623DE1D25001D5997 /* PointViewModel.swift */; };
 		D143ED5A23EDDC4F00D5334D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D143ED5923EDDC4F00D5334D /* String.swift */; };
@@ -105,9 +103,7 @@
 		A139D9501154BAD3E1B441F0 /* Pods-GeoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTracker.debug.xcconfig"; path = "Target Support Files/Pods-GeoTracker/Pods-GeoTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		CBCA5B5FF4BBCC5DB2563AE4 /* Pods-GeoTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackerUITests.release.xcconfig"; path = "Target Support Files/Pods-GeoTrackerUITests/Pods-GeoTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D106EFCA23F714C2007C80FF /* GeoTrackerCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GeoTrackerCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListDataSource.swift; sourceTree = "<group>"; };
 		D1300D4023D7723500368DD8 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
-		D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailsDataSource.swift; sourceTree = "<group>"; };
 		D13B500423DE1BA8001D5997 /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
 		D13B500623DE1D25001D5997 /* PointViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewModel.swift; sourceTree = "<group>"; };
 		D143ED5923EDDC4F00D5334D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -280,7 +276,6 @@
 				D16C44A023F1D7FE00FBF6CE /* TrackerListCoordinator.swift */,
 				5C569093233771CE00265673 /* TrackerListViewController.swift */,
 				5C569096233809B300265673 /* TrackerCell.swift */,
-				D1300D3E23D76C6A00368DD8 /* TrackerListDataSource.swift */,
 			);
 			path = TrackerListViewController;
 			sourceTree = "<group>";
@@ -363,7 +358,6 @@
 			children = (
 				5CA6B758233BE53100C6A0D5 /* TrackerDetailViewController.swift */,
 				D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */,
-				D1320EED23DA1ADC0082D268 /* TrackerDetailsDataSource.swift */,
 				D13B500423DE1BA8001D5997 /* PointCell.swift */,
 			);
 			path = TrackerDetailsViewController;
@@ -578,10 +572,8 @@
 				5C17FE162326C6F90086BAE6 /* AlertManager.swift in Sources */,
 				D16C449F23F1D61800FBF6CE /* PlaceholderViewController.swift in Sources */,
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
-				D1300D3F23D76C6A00368DD8 /* TrackerListDataSource.swift in Sources */,
 				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
 				D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */,
-				D1320EEE23DA1ADC0082D268 /* TrackerDetailsDataSource.swift in Sources */,
 				D1950B1223C498DE0080F97F /* UIView.swift in Sources */,
 				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
 				D178197A23D44EED006A4104 /* GenericDataSource.swift in Sources */,
