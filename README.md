@@ -3,12 +3,12 @@
 GeoTracker is an app for iOS you can use to create a route from tracked location, import and export created routes as GPX files.
 Supports: iOS 10.x and above
 
-## Branches:
+## Branches
 
 * master - stable app releases
 * dev - development branch, you can use it for submitting a pull request.
 
-## Dependencies:
+## Dependencies
 
 The project is using cocoapods for managing external libraries. To install the pods run
 
