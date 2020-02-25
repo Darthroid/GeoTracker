@@ -31,7 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		let importAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
 			do {
-				try GPXParseManager.parseGPX(fromUrl: url, save: true)
+				let parseResult = try GPXParseManager.parseGPX(fromUrl: url)
+				try CoreDataManager.shared.insertTracker(withId: parseResult.id,
+														 name: parseResult.name,
+														 points: parseResult.points)
 			} catch {
 				AlertManager.showError(title: ERROR_TITLE, message: error.localizedDescription)
 			}

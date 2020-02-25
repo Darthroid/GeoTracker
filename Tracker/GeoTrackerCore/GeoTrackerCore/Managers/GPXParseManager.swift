@@ -10,8 +10,9 @@ import Foundation
 import CoreGPX
 
 public class GPXParseManager {
-	@discardableResult
-	public class func parseGPX(fromUrl url: URL, save: Bool = false) throws -> [TrackerPoint] {
+	public typealias ParseResult = (id: String, name: String, points: [TrackerPoint])
+	
+	public class func parseGPX(fromUrl url: URL) throws -> ParseResult {
 		_ = url.startAccessingSecurityScopedResource()
 		guard let gpx = GPXParser(withURL: url)?.parsedData() else {
 			throw NSError(domain: "Unable to parse gpx from path: \(url)", code: 1, userInfo: nil)
@@ -19,13 +20,13 @@ public class GPXParseManager {
 		let trackerName = (url.lastPathComponent as NSString).deletingPathExtension
 		
 		url.stopAccessingSecurityScopedResource()
-		return GPXParseManager.parse(trackerName, waypoints: gpx.waypoints, save: save)
+		return GPXParseManager.parse(trackerName, waypoints: gpx.waypoints)
 	}
 	
 	/// Creates gpx formatted string and optionally saves to documents directory
 	/// - Parameters:
 	///   - tracker: Tracker with points to be processed
-	///   - save: Indicates whether it needs to be saved to file or not
+	///   - save: Indicates whether tracker needs to be saved to file or not
 	public class func createGPX(fromTracker tracker: Tracker, save: Bool = false, completionHandler: @escaping (String, URL?) -> Void) {
 		DispatchQueue.global(qos: .userInitiated).async {
 			let root = GPXRoot(creator: Bundle.main.displayName)
@@ -59,7 +60,7 @@ public class GPXParseManager {
 		}
 	}
 	
-	private class func parse(_ name: String, waypoints: [GPXWaypoint], save: Bool = false) -> [TrackerPoint] {
+	private class func parse(_ name: String, waypoints: [GPXWaypoint]) -> ParseResult {
 		var trackerPoints: [TrackerPoint] = []
 		let trackerId = UUID().uuidString
 		
@@ -76,16 +77,6 @@ public class GPXParseManager {
 			trackerPoints.append(convertedPoint)
 		})
 		
-		if save {
-			do {
-				try CoreDataManager.shared.insertTracker(withId: trackerId,
-														 name: name,
-														 points: trackerPoints)
-			} catch {
-				print(error)
-			}
-		}
-		
-		return trackerPoints
+		return (id: trackerId, name: name, points: trackerPoints)
 	}
 }

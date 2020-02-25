@@ -43,7 +43,10 @@ class TrackerListViewModel {
 	
 	public func parseGpxFrom(_ url: URL) throws {
 		do {
-			try GPXParseManager.parseGPX(fromUrl: url, save: true)
+			let parseResult = try GPXParseManager.parseGPX(fromUrl: url)
+			try CoreDataManager.shared.insertTracker(withId: parseResult.id,
+													 name: parseResult.name,
+													 points: parseResult.points)
 		} catch {
 			throw(error)
 		}
