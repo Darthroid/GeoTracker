@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 
 /// Custom implementation of MKPointAnnotation
-// currently used for removing annotations except start and finish, but maybe will be customized more in future
-class CustomPointAnnotation : MKPointAnnotation {
+/// currently used for removing annotations except start and finish, but maybe will be customized more in future
+class CustomPointAnnotation: MKPointAnnotation {
     var id: String?
 }

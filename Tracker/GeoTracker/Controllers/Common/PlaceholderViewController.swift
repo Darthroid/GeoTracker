@@ -22,9 +22,9 @@ class PlaceholderViewController: UIViewController, PlaceholderViewControllerType
             navigationItem.leftBarButtonItem = displayModeButtonItem
         }
     }
-	
+
 	// MARK: - View Methods
-	
+
 	func setupView() {
 		if #available(iOS 13.0, *) {
 			view.backgroundColor = UIColor.groupTableViewBackground

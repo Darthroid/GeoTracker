@@ -12,45 +12,45 @@ import CoreLocation
 
 class StartTrackingViewController: UIViewController, Storyboarded {
 	// MARK: - Outlets
-	
+
 	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var statusTextView: UITextView!
 	@IBOutlet weak var finishTrackingButton: UIButton!
-	
+
 	// MARK: - Public properties
-	
+
 	public var viewModel: TrackerRecorderViewModel?
 	public weak var coordinator: NewTrackerCoordinator?
-	
+
 	// MARK: - ViewController lifecycle methods
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		mapView.delegate = self
 		mapView.showsUserLocation = true
 		self.mapView.setUserTrackingMode(.followWithHeading, animated: true)
-		
+
 		viewModel?.startRecording()
 		self.observeLocationUpdates()
 	}
-	
+
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		viewModel?.stopRecording()
 	}
-	
+
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		viewModel?.stopRecording()
 	}
-	
+
 	// MARK: - User defined methods
-	
+
 	private func observeLocationUpdates() {
 		viewModel?.locationUpdateHandler = { [weak self] updateType in
 			guard let `self` = self else { return }
-			
+
 			switch updateType {
 			case .timerUpdate:
 				self.mapView.removeOverlays(self.mapView.overlays)
@@ -60,9 +60,9 @@ class StartTrackingViewController: UIViewController, Storyboarded {
 			}
 		}
 	}
-	
+
 	// MARK: - Actions
-	
+
 	@IBAction func finishTracking(_ sender: Any) {
 		viewModel?.stopRecording()
 		coordinator?.finish()
@@ -72,7 +72,7 @@ class StartTrackingViewController: UIViewController, Storyboarded {
 // MARK: - MKMapViewDelegate methods
 
 extension StartTrackingViewController: MKMapViewDelegate {
-	
+
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		guard let polyline = overlay as? MKPolyline else {
 			return MKOverlayRenderer(overlay: overlay)
@@ -82,7 +82,7 @@ extension StartTrackingViewController: MKMapViewDelegate {
 		renderer.lineWidth = 4
 		return renderer
 	}
-	
+
 	private func polyLine() -> MKPolyline {
 		let coordinates = viewModel?.storedCoordinates ?? []
 		return MKPolyline(coordinates: coordinates, count: coordinates.count)

@@ -24,14 +24,14 @@ extension UITableView {
 		} else {
 			label.textColor = UIColor.gray
 		}
-		
+
         label.sizeToFit()
 
         self.isScrollEnabled = false
         self.backgroundView = label
         self.separatorStyle = .none
     }
-	
+
     func removeNoDataPlaceholder() {
         self.isScrollEnabled = true
         self.backgroundView = nil

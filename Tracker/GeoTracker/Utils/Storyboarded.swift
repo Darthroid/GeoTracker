@@ -25,6 +25,7 @@ extension Storyboarded where Self: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
         // instantiate a view controller with that identifier, and force cast as the type that was requested
+		// swiftlint:disable force_cast
         return storyboard.instantiateViewController(withIdentifier: className) as! Self
     }
 }

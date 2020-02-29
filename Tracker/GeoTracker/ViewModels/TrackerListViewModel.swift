@@ -12,16 +12,16 @@ import GeoTrackerCore
 /// ViewModel representing tracker list screen
 class TrackerListViewModel {
 	private(set) var trackers: Dynamic<[TrackerViewModel]> = Dynamic([])
-	
+
 	public init() {
 		self.subscribeForDbEvents()
 		self.fetchTrackers()
 	}
-	
+
 	public func subscribeForDbEvents() {
 		CoreDataManager.shared.addObserver(self)
 	}
-	
+
 	public func fetchTrackers() {
 		print(#function)
 		do {
@@ -32,7 +32,7 @@ class TrackerListViewModel {
 			assert(false, error.localizedDescription)
 		}
 	}
-	
+
 	public func deleteTracker(_ tracker: TrackerViewModel) throws {
 		do {
 			try CoreDataManager.shared.deleteTrackers(withId: tracker.id)
@@ -40,7 +40,7 @@ class TrackerListViewModel {
 			throw error
 		}
 	}
-	
+
 	public func parseGpxFrom(_ url: URL) throws {
 		do {
 			let parseResult = try GPXParseManager.parseGPX(fromUrl: url)
@@ -61,11 +61,11 @@ extension TrackerListViewModel: CoreDataObserver {
 			self.trackers.value.append(TrackerViewModel(from: tracker))
 		})
 	}
-	
+
 	func didUpdate(ids: [String], trackers: [Tracker]?) {
-		// TODO:
+		//
 	}
-	
+
 	func didDelete(ids: [String], trackers: [Tracker]?) {
 		if let trackers = trackers {
 			trackers.forEach({ tracker in

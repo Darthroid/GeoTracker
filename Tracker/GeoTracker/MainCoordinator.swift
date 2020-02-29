@@ -16,11 +16,11 @@ class MainCoordinator: Coordinator {
 	init(window: UIWindow) {
 		self.window = window
 	}
-	
+
 	func start() {
 		self.showSplitView()
 	}
-	
+
 	private func showSplitView() {
 		let splitViewCoordinator = SplitViewCoordinator(window: self.window)
 		splitViewCoordinator.start()

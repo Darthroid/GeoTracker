@@ -9,14 +9,14 @@
 import Foundation
 import CoreData
 
-
 public class TrackerPoint: NSManagedObject {
 	convenience public init() {
 		let context = CoreDataManager.shared.context
-		guard let entity = NSEntityDescription.entity(forEntityName: String(describing: TrackerPoint.self), in: context) else {
+		let entityName = String(describing: TrackerPoint.self)
+		guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: context) else {
 			fatalError("Could not create entity of TrackerPoint")
 		}
-		
+
 		self.init(entity: entity, insertInto: context)
 	}
 }
