@@ -29,19 +29,29 @@ class NewTrackerCoordinator: Coordinator {
 		
 		_navigationController = UINavigationController()
 		_navigationController?.viewControllers = [viewController]
-		navigationController.visibleViewController?.present(_navigationController!, animated: true)
+		navigationController.present(_navigationController!, animated: true)
 	}
 
 	func startRecording(with viewModel: TrackerRecorderViewModel) {
 		let viewController = StartTrackingViewController.instantiate()
+		viewController.coordinator = self
 		viewController.viewModel = viewModel
-		navigationController.visibleViewController?.present(viewController, animated: true)
-//		navigationController.showDetailViewController(viewController, sender: nil)
 		
+		// dismiss NewTrackerViewController and then present StartTrackingViewController
+		navigationController.presentedViewController?
+			.dismiss(
+				animated: true,
+				completion: { [weak self] in
+					self?.navigationController.present(viewController, animated: true)
+				}
+			)
+				
 		LocationManager.shared.requestWhenInUseAuthorization()
 	}
 	
 	func finish() {
+		navigationController.presentedViewController?.dismiss(animated: true)
+		navigationController.popToRootViewController(animated: true)
 		parentCoordinator?.childCoordinatorDidFinish(self)
 	}
 }

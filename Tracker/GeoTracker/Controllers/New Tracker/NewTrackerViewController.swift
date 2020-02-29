@@ -46,7 +46,6 @@ class NewTrackerViewController: UITableViewController, Storyboarded {
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
 		self.clearInputs()
-		coordinator?.finish()
 	}
     
     // MARK: - User defined methods
@@ -66,7 +65,7 @@ class NewTrackerViewController: UITableViewController, Storyboarded {
     
     // MARK: - Actions methods
 	@IBAction func cancel(_ sender: Any) {
-		self.dismiss(animated: true, completion: nil)
+		coordinator?.finish()
 	}
 	
     @IBAction func startTracking(_ sender: Any) {

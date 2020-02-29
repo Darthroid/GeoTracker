@@ -65,7 +65,7 @@ class StartTrackingViewController: UIViewController, Storyboarded {
 	
 	@IBAction func finishTracking(_ sender: Any) {
 		viewModel?.stopRecording()
-		self.dismiss(animated: true, completion: nil)
+		coordinator?.finish()
 	}
 }
 
