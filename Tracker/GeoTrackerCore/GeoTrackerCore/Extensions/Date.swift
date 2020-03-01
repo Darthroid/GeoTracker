@@ -14,7 +14,7 @@ public extension Date {
 		df.dateFormat = "yyyy-MM-dd hh:mm:ss"
 		let timestampDate = Date(timeIntervalSince1970: TimeInterval(timestamp))
 		let dateString = df.string(from: timestampDate)
-		
+
 		return dateString
 	}
 }

@@ -11,7 +11,7 @@ import CoreLocation
 
 public class LocationManager: CLLocationManager {
     public static let shared = CLLocationManager()
-    
+
     private override init() {
 		super.init()
 //        self.requestWhenInUseAuthorization()

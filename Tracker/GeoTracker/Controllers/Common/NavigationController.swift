@@ -27,7 +27,7 @@ class NavigationController: UINavigationController, PrimaryContainerType {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+
 		self.navigationBar.isTranslucent = true
 		if #available(iOS 11.0, *) {
 			self.navigationBar.prefersLargeTitles = true
@@ -41,7 +41,7 @@ class NavigationController: UINavigationController, PrimaryContainerType {
             detailView = .placeholder
         case .separated:
             detailView = .placeholder
-            /// Set detail view controller to `PlaceholderViewControllerType` to prevent confusion
+            // Set detail view controller to `PlaceholderViewControllerType` to prevent confusion
             detailPopCompletion(makePlaceholderViewController())
         case .placeholder:
             break

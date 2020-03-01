@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 public extension Tracker {
 
 	@nonobjc class func fetchRequest() -> NSFetchRequest<Tracker> {

@@ -12,21 +12,21 @@ import GeoTrackerCore
 /// ViewModel representing tracker entity
 class TrackerViewModel: RowViewModel {
 	private var tracker: Tracker
-	
+
 	private(set) var points: Dynamic<[PointViewModel]> = Dynamic([])
-	
+
 	public var name: String {
 		return tracker.name ?? ""
 	}
-	
+
 	public var description: String {
 		"\(String(describing: tracker.points?.count ?? 0)) points"
 	}
-	
+
 	public var id: String {
 		return tracker.id
 	}
-		
+
 	public init(from tracker: Tracker) {
 		self.tracker = tracker
 		let points = Array(tracker.points ?? Set())

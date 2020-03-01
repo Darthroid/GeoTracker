@@ -14,41 +14,40 @@ protocol TrackerDetailBottomDelegate: class {
 }
 
 class TrackerDetailBottomViewController: UIViewController, Storyboarded {
-	
+
     // MARK: - Outlets & connections
-	
+
 	@IBOutlet weak var trackerNameLabel: UILabel!
 	@IBOutlet weak var shareButton: UIButton!
 	@IBOutlet weak var tableView: UITableView!
-	
+
     // MARK: - private properties
 
 	private var dataSource: GenericDataSource<PointViewModel>?
-	
-    // MARK: - Public properties
-	
-	public weak var delegate: TrackerDetailBottomDelegate?
-	
-	public var viewModel: TrackerViewModel!
 
+    // MARK: - Public properties
+
+	public weak var delegate: TrackerDetailBottomDelegate?
+
+	public var viewModel: TrackerViewModel!
 
     // MARK: - ViewController LifeCycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+
 		tableView.delegate = self
 		self.setupInterface()
 		self.setupDataSource()
 		self.setupBinding()
     }
-	
+
     // MARK: - User defined methods
-	
+
 	private func setupInterface() {
 		self.trackerNameLabel.text = viewModel?.name
 	}
-	
+
 	private func setupDataSource() {
 		let dataSource = GenericDataSource(
 			models: viewModel.points,
@@ -59,13 +58,13 @@ class TrackerDetailBottomViewController: UIViewController, Storyboarded {
 					cell.setup(viewModel: trackerViewModel)
 				}
 			},
-			eventHandler: { (_,_) in}
+			eventHandler: { (_, _) in}
 		)
-		
+
 		self.dataSource = dataSource
 		tableView.dataSource = self.dataSource
 	}
-	
+
 	private func setupBinding() {
 		self.dataSource?.models.addAndNotify(observer: self) { [weak self] in
 			guard let `self` = self else { return }
@@ -73,20 +72,20 @@ class TrackerDetailBottomViewController: UIViewController, Storyboarded {
 			self.tableView.reloadData()
 		}
 	}
-	
+
 	private func presentShareSheet(with itemsToShare: [Any], sender: Any) {
 		let activityViewController = UIActivityViewController(activityItems: itemsToShare,
 															  applicationActivities: [])
-		
+
 		activityViewController.popoverPresentationController?.sourceView = sender as? UIView
 
 		self.present(activityViewController, animated: true, completion: nil)
 	}
-	
+
 	// MARK: - Actions
-	
+
 	@IBAction func shareTap(_ sender: Any) {
-		self.viewModel?.exportAsGPX() { [weak self] gpxString, fileUrl in
+		self.viewModel?.exportAsGPX { [weak self] gpxString, fileUrl in
 			assert(Thread.isMainThread)
 			if let fileUrl = fileUrl {
 				self?.presentShareSheet(with: [fileUrl], sender: sender)

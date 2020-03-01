@@ -22,7 +22,7 @@ extension MKMapSnapshotter.Snapshot {
 
         let points = polyline.points()
         var i = 0
-        while (i < polyline.pointCount)  {
+        while i < polyline.pointCount {
             let point = points[i]
             let pointCoord = point.coordinate
             let pointInSnapshot = self.point(for: pointCoord)
@@ -34,7 +34,7 @@ extension MKMapSnapshotter.Snapshot {
         context!.setLineWidth(lineWidth)
 
         for point in pointsToDraw {
-            if (point == pointsToDraw.first) {
+            if point == pointsToDraw.first {
                 context!.move(to: point)
             } else {
                 context!.addLine(to: point)

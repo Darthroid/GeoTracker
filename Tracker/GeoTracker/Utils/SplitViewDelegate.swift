@@ -97,8 +97,9 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
         navigationControllers.forEach { $0.separateDetail() }
 
         /// There is no point in hiding the primary view controller with a placeholder detail view
-        if case .placeholder = selectedNavController.detailView, splitViewController.preferredDisplayMode == .primaryHidden {
-            splitViewController.preferredDisplayMode = .allVisible
+        if case .placeholder = selectedNavController.detailView,
+			splitViewController.preferredDisplayMode == .primaryHidden {
+				splitViewController.preferredDisplayMode = .allVisible
         }
         updateSecondaryWithDetail(from: selectedNavController)
         return detailNavigationController

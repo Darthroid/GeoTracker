@@ -57,7 +57,7 @@ class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTran
                 toVC.view.frame = transitionContext.finalFrame(for: toVC)
                 fromVC.view.frame = finalFrame.offsetBy(dx: dx / -2.5, dy: 0.0)
         },
-            completion: { (finished) in transitionContext.completeTransition(true) }
+            completion: { (_) in transitionContext.completeTransition(true) }
         )
     }
 
@@ -76,7 +76,7 @@ class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTran
                 toVC.view.frame = transitionContext.finalFrame(for: toVC)
                 fromVC.view.frame = finalFrame.offsetBy(dx: dx, dy: 0.0)
         },
-            completion: { (finished) in transitionContext.completeTransition(true) }
+            completion: { (_) in transitionContext.completeTransition(true) }
         )
     }
 
@@ -91,7 +91,7 @@ class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTran
                 fromVC.view.frame = containerView.bounds.offsetBy(dx: containerView.frame.width, dy: 0)
                 toVC.view.frame = containerView.bounds
         },
-            completion: { (finished) in transitionContext.completeTransition(true) }
+            completion: { (_) in transitionContext.completeTransition(true) }
         )
     }
 

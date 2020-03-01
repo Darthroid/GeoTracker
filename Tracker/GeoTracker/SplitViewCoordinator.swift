@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class SplitViewCoordinator: Coordinator {
-	
+
 	enum SectionTab: Int {
 		case newTracker = 0
 		case trackersList
 		case settings
-		
+
 		var title: String {
 			switch self {
 //			case .newTracker: return "New tracker"
@@ -24,7 +24,7 @@ class SplitViewCoordinator: Coordinator {
 			default: return ""
 			}
 		}
-		
+
 		var image: UIImage {
 			switch self {
 			case .newTracker: return #imageLiteral(resourceName: "marker")
@@ -34,20 +34,20 @@ class SplitViewCoordinator: Coordinator {
 			}
 		}
 	}
-	
+
 	var childCoordinators = [Coordinator]()
-	
+
 	var window: UIWindow
-	
+// swiftlint:disable weak_delegate
 	private let viewDelegate: SplitViewDelegate
-	
+// swiftlint:enable weak_delegate
 	init(window: UIWindow) {
 		self.window = window
-		
+
 		let detailNavigationController = DetailNavigationController()
 		self.viewDelegate = SplitViewDelegate(detailNavigationController: detailNavigationController)
 	}
-	
+
 	func start() {
 		let tabBarController = UITabBarController()
 		let tabs: [SectionTab] = [/*.newTracker,*/ .trackersList]
@@ -70,7 +70,7 @@ class SplitViewCoordinator: Coordinator {
         window.rootViewController = splitViewController
         window.makeKeyAndVisible()
 	}
-	
+
 	private func configureTabBarController(_ tabBarController: UITabBarController, with tabs: [SectionTab]) {
         let navControllers = tabs
             .map { tab -> UINavigationController in
@@ -82,9 +82,9 @@ class SplitViewCoordinator: Coordinator {
         tabBarController.viewControllers = navControllers
 		tabBarController.selectedIndex = SectionTab.trackersList.rawValue
         tabBarController.delegate = viewDelegate
-				
+
 		let coordinatorsSource = zip(tabs, navControllers)
-		
+
 		for (tab, navController) in coordinatorsSource {
 			switch tab {
 			case .newTracker:
@@ -101,5 +101,5 @@ class SplitViewCoordinator: Coordinator {
 			}
 		}
 	}
-	
+
 }

@@ -13,13 +13,13 @@ class PointCell: UITableViewCell, CellConfigurable {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-	
+
 	func setup(viewModel: RowViewModel) {
 		guard let pointModel = viewModel as? PointViewModel else {
 			assert(false)
 			return
 		}
-		
+
 		self.textLabel?.text = pointModel.dateString()
 		self.detailTextLabel?.text = pointModel.description
 	}
