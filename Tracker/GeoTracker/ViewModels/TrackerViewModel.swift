@@ -13,7 +13,10 @@ import GeoTrackerCore
 class TrackerViewModel: RowViewModel {
 	private var tracker: Tracker
 
-	private(set) var points: Dynamic<[PointViewModel]> = Dynamic([])
+	var points: Dynamic<[PointViewModel]> {
+		let points = Array(tracker.points ?? Set())
+		return Dynamic(points.map({ PointViewModel(from: $0) }))
+	}
 
 	public var name: String {
 		return tracker.name ?? ""
@@ -29,8 +32,6 @@ class TrackerViewModel: RowViewModel {
 
 	public init(from tracker: Tracker) {
 		self.tracker = tracker
-		let points = Array(tracker.points ?? Set())
-		self.points = Dynamic(points.map({ PointViewModel(from: $0) }))
 	}
 }
 
@@ -41,5 +42,15 @@ extension TrackerViewModel {
 				completionHandler(gpxString, fileUrl)
 			}
 		})
+	}
+}
+
+extension TrackerViewModel: Comparable {
+	static func < (lhs: TrackerViewModel, rhs: TrackerViewModel) -> Bool {
+		fatalError("not implemented")
+	}
+
+	static func == (lhs: TrackerViewModel, rhs: TrackerViewModel) -> Bool {
+		return lhs.id == rhs.id
 	}
 }

@@ -9,7 +9,11 @@
 import Foundation
 
 typealias CompletionHandler = (() -> Void)
-class Dynamic<T> {
+class Dynamic<T>: NSCopying {
+	func copy(with zone: NSZone? = nil) -> Any {
+		let copy = Dynamic(value)
+		return copy
+	}
 
     var value: T {
         didSet {

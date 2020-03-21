@@ -30,6 +30,13 @@ class TrackerListCoordinator: Coordinator {
 	func showDetail(with viewModel: TrackerViewModel) {
 		let viewController = TrackerDetailViewController.instantiate()
 		viewController.viewModel = viewModel
+
+		let mapContoller = MapViewController.instantiate()
+		let tableController = TrackerDetailBottomViewController.instantiate()
+		tableController.viewModel = viewModel
+		viewController.mapController = mapContoller
+		viewController.tableController = tableController
+
 		navigationController.showDetailViewController(viewController, sender: nil)
 	}
 

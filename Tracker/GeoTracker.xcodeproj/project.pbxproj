@@ -52,6 +52,7 @@
 		D1950B1623C4D1DB0080F97F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1950B1523C4D1DB0080F97F /* CustomPointAnnotation.swift */; };
 		D1A086B023FC709800138181 /* GeoTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A086AF23FC709800138181 /* GeoTrackerUITests.swift */; };
 		D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */; };
+		D1D0D13A241EABC2002EE1D3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D0D139241EABC2002EE1D3 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		D1A086AF23FC709800138181 /* GeoTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackerUITests.swift; sourceTree = "<group>"; };
 		D1A086B123FC709800138181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1BD527923C23D4C00427EA9 /* TrackerDetailBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetailBottomViewController.swift; sourceTree = "<group>"; };
+		D1D0D139241EABC2002EE1D3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E10B1D75325F84B739D70F26 /* Pods-GeoTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTracker.release.xcconfig"; path = "Target Support Files/Pods-GeoTracker/Pods-GeoTracker.release.xcconfig"; sourceTree = "<group>"; };
 		F1F75AE21867FFDD2EDCE735 /* Pods_GeoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -329,6 +331,7 @@
 				D16C449E23F1D61800FBF6CE /* PlaceholderViewController.swift */,
 				D16C44A223F1DF7000FBF6CE /* DetailNavigationController.swift */,
 				D16C44A423F1DFA200FBF6CE /* DetailNavigationControllerAnimator.swift */,
+				D1D0D139241EABC2002EE1D3 /* MapViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				D16C449F23F1D61800FBF6CE /* PlaceholderViewController.swift in Sources */,
 				5C17FE192326C7BD0086BAE6 /* CommonUtils.swift in Sources */,
 				5CA6B75D233E952F00C6A0D5 /* CardView.swift in Sources */,
+				D1D0D13A241EABC2002EE1D3 /* MapViewController.swift in Sources */,
 				D1BD527A23C23D4C00427EA9 /* TrackerDetailBottomViewController.swift in Sources */,
 				D1950B1223C498DE0080F97F /* UIView.swift in Sources */,
 				5C17FE132326C51E0086BAE6 /* Constant.swift in Sources */,
