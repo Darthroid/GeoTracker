@@ -42,6 +42,10 @@ class TrackerDetailBottomViewController: UIViewController, Storyboarded {
 		self.setupBinding()
     }
 
+	deinit {
+		self.dataSource?.models.remove(observer: self)
+	}
+
     // MARK: - User defined methods
 
 	private func setupInterface() {

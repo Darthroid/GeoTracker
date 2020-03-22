@@ -30,6 +30,10 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 		self.setupBinding()
     }
 
+	deinit {
+		viewModel.trackers.remove(observer: self)
+	}
+
     // MARK: - User defined methods
 
 	private func setupInterface() {

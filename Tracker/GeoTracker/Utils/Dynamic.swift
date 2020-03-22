@@ -36,6 +36,10 @@ class Dynamic<T>: NSCopying {
         self.notify()
     }
 
+	public func remove(observer: NSObject) {
+		self.observers.removeValue(forKey: observer.description)
+	}
+
     private func notify() {
         observers.forEach({ $0.value() })
     }
