@@ -36,6 +36,7 @@ class NewTrackerCoordinator: Coordinator {
 		let viewController = StartTrackingViewController.instantiate()
 		viewController.coordinator = self
 		viewController.viewModel = viewModel
+		viewController.mapController = MapViewController.instantiate()
 
 		// dismiss NewTrackerViewController and then present StartTrackingViewController
 		navigationController.presentedViewController?

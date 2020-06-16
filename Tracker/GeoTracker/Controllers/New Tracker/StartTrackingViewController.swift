@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import MapKit
+//import MapKit
 import CoreLocation
 
 class StartTrackingViewController: UIViewController, Storyboarded {
 	// MARK: - Outlets
 
-	@IBOutlet weak var mapView: MKMapView!
+//	@IBOutlet weak var mapView: MKMapView!
+	@IBOutlet weak var mapContainerView: UIView!
 	@IBOutlet weak var statusTextView: UITextView!
 	@IBOutlet weak var finishTrackingButton: UIButton!
 
@@ -22,14 +23,16 @@ class StartTrackingViewController: UIViewController, Storyboarded {
 	public var viewModel: TrackerRecorderViewModel?
 	public weak var coordinator: NewTrackerCoordinator?
 
+	var mapController: MapViewController!
+
 	// MARK: - ViewController lifecycle methods
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		mapView.delegate = self
-		mapView.showsUserLocation = true
-		self.mapView.setUserTrackingMode(.followWithHeading, animated: true)
+		self.setupChildViewControllers()
+		self.mapController.mapView.showsUserLocation = true
+		self.mapController.mapView.setUserTrackingMode(.followWithHeading, animated: true)
 
 		viewModel?.startRecording()
 		self.observeLocationUpdates()
@@ -47,14 +50,21 @@ class StartTrackingViewController: UIViewController, Storyboarded {
 
 	// MARK: - User defined methods
 
+	private func setupChildViewControllers() {
+		addChild(mapController)
+		mapController.didMove(toParent: self)
+		self.mapContainerView.addSubview(mapController.view)
+		self.mapController.view.frame = self.mapContainerView.bounds
+	}
+
 	private func observeLocationUpdates() {
 		viewModel?.locationUpdateHandler = { [weak self] updateType in
 			guard let `self` = self else { return }
 
 			switch updateType {
 			case .timerUpdate:
-				self.mapView.removeOverlays(self.mapView.overlays)
-				self.mapView.addOverlay(self.polyLine())
+				self.mapController.mapView.removeOverlays(self.mapController.mapView.overlays)
+				self.mapController.drawPolyline(with: self.viewModel?.storedCoordinates ?? [], isNeedToCenter: false)
 			case .locationUpdate:
 				self.statusTextView.text = self.viewModel?.locationInfoString
 			}
@@ -66,25 +76,5 @@ class StartTrackingViewController: UIViewController, Storyboarded {
 	@IBAction func finishTracking(_ sender: Any) {
 		viewModel?.stopRecording()
 		coordinator?.finish()
-	}
-}
-
-// MARK: - MKMapViewDelegate methods
-
-extension StartTrackingViewController: MKMapViewDelegate {
-
-	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-		guard let polyline = overlay as? MKPolyline else {
-			return MKOverlayRenderer(overlay: overlay)
-		}
-		let renderer = MKPolylineRenderer(polyline: polyline)
-		renderer.strokeColor = .blue
-		renderer.lineWidth = 4
-		return renderer
-	}
-
-	private func polyLine() -> MKPolyline {
-		let coordinates = viewModel?.storedCoordinates ?? []
-		return MKPolyline(coordinates: coordinates, count: coordinates.count)
 	}
 }

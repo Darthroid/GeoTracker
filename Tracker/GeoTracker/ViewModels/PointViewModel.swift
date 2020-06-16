@@ -48,3 +48,13 @@ extension PointViewModel {
 		return Date().stringfromTimeStamp(self.timestamp)
 	}
 }
+
+extension PointViewModel: Comparable {
+	static func < (lhs: PointViewModel, rhs: PointViewModel) -> Bool {
+		return lhs.timestamp < rhs.timestamp
+	}
+
+	static func == (lhs: PointViewModel, rhs: PointViewModel) -> Bool {
+		return lhs.id == rhs.id
+	}
+}

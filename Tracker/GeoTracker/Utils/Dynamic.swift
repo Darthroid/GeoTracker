@@ -9,7 +9,11 @@
 import Foundation
 
 typealias CompletionHandler = (() -> Void)
-class Dynamic<T> {
+class Dynamic<T>: NSCopying {
+	func copy(with zone: NSZone? = nil) -> Any {
+		let copy = Dynamic(value)
+		return copy
+	}
 
     var value: T {
         didSet {
@@ -31,6 +35,10 @@ class Dynamic<T> {
         self.addObserver(observer, completionHandler: completionHandler)
         self.notify()
     }
+
+	public func remove(observer: NSObject) {
+		self.observers.removeValue(forKey: observer.description)
+	}
 
     private func notify() {
         observers.forEach({ $0.value() })

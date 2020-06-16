@@ -30,6 +30,10 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 		self.setupBinding()
     }
 
+	deinit {
+		viewModel.trackers.remove(observer: self)
+	}
+
     // MARK: - User defined methods
 
 	private func setupInterface() {
@@ -43,7 +47,8 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 
 	private func setupDataSource() {
 		let dataSource = GenericDataSource(
-			models: viewModel.trackers,
+			// swiftlint:disable force_cast
+			models: viewModel.trackers.copy() as! Dynamic<[TrackerViewModel]>,
 			isEditable: true,
 			reuseIdentifier: "TrackerCellSimple",
 			cellConfigurator: { (trackerViewModel, cell) in
@@ -66,16 +71,16 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 	}
 
 	private func setupBinding() {
-		self.dataSource?.models.addAndNotify(observer: self) { [weak self] in
+		self.viewModel.trackers.addAndNotify(observer: self) { [weak self] in
 			guard let `self` = self else { return }
 			print(self, "dataSource changed")
-			if self.dataSource?.models.value.count ?? 0 > 0 {
-				self.tableView.removeNoDataPlaceholder()
+			if #available(iOS 13, *) {
+				self.applyUpdate()
 			} else {
-				self.tableView.setNoDataPlaceholder("No available trackers")
+				self.dataSource?.models = self.viewModel.trackers.copy() as! Dynamic<[TrackerViewModel]>
+				self.tableView.reloadData()
+				self.updatePlaceholder()
 			}
-
-			self.tableView.reloadData()
 		}
 	}
 
@@ -103,6 +108,42 @@ class TrackerListViewController: UITableViewController, Storyboarded {
 		}
 
 		self.present(actionSheet, animated: true)
+	}
+
+	@available(iOS 13, *)
+	func applyUpdate() {
+		var deletedIndexPaths = [IndexPath]()
+		var insertedIndexPaths = [IndexPath]()
+		let newData = self.viewModel.trackers
+		guard let dataSource = self.dataSource else { return }
+		let diff = newData.value.difference(from: dataSource.models.value)
+
+		// Gather the the index paths to be deleted and inserted via the diff
+		for change in diff {
+			switch change {
+			case let .remove(offset, _, _):
+				deletedIndexPaths.append(IndexPath(row: offset, section: 0))
+			case let .insert(offset, _, _):
+				insertedIndexPaths.append(IndexPath(row: offset, section: 0))
+			}
+		}
+
+		dataSource.models = newData.copy() as! Dynamic<[TrackerViewModel]>
+
+		self.tableView.performBatchUpdates({
+			self.tableView.deleteRows(at: deletedIndexPaths, with: .fade)
+			self.tableView.insertRows(at: insertedIndexPaths, with: .automatic)
+		}, completion: { (_) in
+			self.updatePlaceholder()
+		})
+	}
+
+	func updatePlaceholder() {
+		if dataSource?.models.value.count ?? 0 > 0 {
+			self.tableView.removeNoDataPlaceholder()
+		} else {
+			self.tableView.setNoDataPlaceholder("No available trackers")
+		}
 	}
 }
 
